@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("ZAG SERVICE : JavaScript chargé");
-
+alert("JavaScript ZAG SERVICE chargé");
     // ==========================================
     // ÉLÉMENTS
     // ==========================================
