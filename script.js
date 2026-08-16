@@ -573,4 +573,29 @@ if (contactForm) {
 
     });
 
+}// ================================
+// BOUTONS "EN SAVOIR PLUS"
+// ================================
+
+function activerBoutonInfo(boutonId, infoId) {
+    const bouton = document.getElementById(boutonId);
+    const info = document.getElementById(infoId);
+
+    if (bouton && info) {
+        bouton.addEventListener("click", function () {
+
+            if (info.style.display === "none" || info.style.display === "") {
+                info.style.display = "block";
+                bouton.textContent = "Masquer";
+            } else {
+                info.style.display = "none";
+                bouton.textContent = "En savoir plus";
+            }
+
+        });
+    }
 }
+
+activerBoutonInfo("eventButton", "eventInfo");
+activerBoutonInfo("transportButton", "transportInfo");
+activerBoutonInfo("immobilierButton", "immobilierInfo");
