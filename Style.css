@@ -1,1 +1,113 @@
+/* =================================
+   ZAG SERVICE — STYLE PRINCIPAL
+   ================================= */
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #F7F5F0;
+    color: #0B1F33;
+}
+
+
+/* =================================
+   BOUTONS
+   ================================= */
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.03);
+}
+
+
+/* =================================
+   HEADER
+   ================================= */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =================================
+   LOGO
+   ================================= */
+
+.logo {
+    cursor: pointer;
+    user-select: none;
+}
+
+
+/* =================================
+   MENU
+   ================================= */
+
+.menu {
+    box-sizing: border-box;
+}
+
+.menu a {
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #E0C45A !important;
+}
+
+
+/* =================================
+   SERVICES
+   ================================= */
+
+.service-card {
+    box-sizing: border-box;
+}
+
+.service-card button {
+    cursor: pointer;
+}
+
+
+/* =================================
+   RESPONSIVE MOBILE
+   ================================= */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .menu-button {
+        position: relative !important;
+        z-index: 100001 !important;
+        pointer-events: auto !important;
+    }
+
+    .menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: auto;
+        width: 220px;
+        z-index: 100000;
+    }
+
+}
