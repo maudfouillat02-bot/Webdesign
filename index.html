@@ -87,15 +87,26 @@ button:active {
      ZAG SERVICE
 </div>
 
-    <button id="menuButton" class="menu-button" style="
-    background: #0B1F33;
-    color: #C9A227;
-    border: 2px solid #C9A227;
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-size: 24px;
-    cursor: pointer;
-">
+    <button
+    id="menuButton"
+    class="menu-button"
+    type="button"
+    onclick="
+        const m = document.querySelector('.menu');
+        m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+    "
+    style="
+        background: #0B1F33;
+        color: #C9A227;
+        border: 2px solid #C9A227;
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-size: 24px;
+        cursor: pointer;
+        position: relative;
+        z-index: 100001;
+    "
+>
     ☰
 </button>
 
