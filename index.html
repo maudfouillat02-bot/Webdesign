@@ -3,353 +3,448 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAG SERVICE</title>
 
-    <title>ZAG SERVICE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+<link rel="stylesheet" href="Style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
-
-    <link rel="stylesheet" href="Style.css">
-
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-            async
-            defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async defer></script>
 
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: #F7F5F0;
-            color: #0B1F33;
-        }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #F7F5F0;
+    color: #0B1F33;
+}
 
-        button {
-            font-family: inherit;
-        }
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
 
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            padding: 5px 15px;
-            min-height: 70px;
-        }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
+/* =========================
+   HEADER
+========================= */
 
-        .logo img {
-            width: 130px;
-            height: 60px;
-            object-fit: contain;
-            display: block;
-        }
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 5px 15px;
+    min-height: 70px;
+}
 
-        .menu-button {
-            background: #0B1F33;
-            color: #C9A227;
-            border: 2px solid #C9A227;
-            border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 100001;
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
 
-        .menu {
-            display: none;
-            position: absolute;
-            top: 68px;
-            right: 15px;
-            background: #0B1F33;
-            padding: 15px;
-            border-radius: 8px;
-            gap: 8px;
-            flex-direction: column;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-            min-width: 170px;
-            z-index: 100000;
-        }
+.logo img {
+    width: 130px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+}
 
-        .menu a {
-            color: #C9A227;
-            text-decoration: none;
-            padding: 10px 15px;
-            font-weight: 600;
-            border-radius: 6px;
-        }
+.menu-button {
+    background: #0B1F33;
+    color: #C9A227;
+    border: 2px solid #C9A227;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100001;
+}
 
-        .menu a:hover {
-            background: rgba(201,162,39,0.12);
-        }
+.menu {
+    display: none;
+    position: absolute;
+    top: 68px;
+    right: 15px;
+    background: #0B1F33;
+    padding: 15px;
+    border-radius: 8px;
+    gap: 8px;
+    flex-direction: column;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    min-width: 180px;
+    z-index: 100000;
+}
 
-        .hero {
-            background: #0B1F33;
-            color: white;
-            min-height: 500px;
-            padding: 80px 20px 60px;
-            text-align: center;
-        }
+.menu.open {
+    display: flex;
+}
 
-        .hero h1 {
-            color: white;
-            font-size: clamp(34px, 8vw, 48px);
-            margin: 25px 0;
-        }
+.menu a {
+    color: #C9A227;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 600;
+    border-radius: 6px;
+}
 
-        .hero p {
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.menu a:hover {
+    background: rgba(201,162,39,0.12);
+}
 
-        .gold-button {
-            background: #C9A227;
-            color: #0B1F33;
-            font-weight: bold;
-            padding: 13px 22px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.15s ease;
-        }
 
-        .gold-button:active {
-            transform: scale(0.96);
-        }
+/* =========================
+   ACCUEIL
+========================= */
 
-        .services {
-            display: none;
-            background: #F7F5F0;
-            padding: 60px 20px;
-            text-align: center;
-        }
+.hero {
+    background: #0B1F33;
+    color: white;
+    min-height: 500px;
+    padding: 80px 20px 60px;
+    text-align: center;
+}
 
-        .services-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
+.hero h1 {
+    color: white;
+    font-size: clamp(34px, 8vw, 48px);
+    margin: 25px 0;
+}
 
-        .service-card {
-            width: 280px;
-            padding: 25px;
-            background: white;
-            border-radius: 16px;
-            border-top: 5px solid #C9A227;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.10);
-            transition: transform 0.2s ease;
-        }
+.hero p {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
 
-        .service-card:active {
-            transform: scale(0.98);
-        }
+.gold-button {
+    background: #C9A227;
+    color: #0B1F33;
+    font-weight: bold;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-        .service-image {
-            width: 100%;
-            height: 170px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
+.gold-button:active {
+    transform: scale(0.96);
+}
 
-        .service-card h3 {
-            color: #0B1F33;
-            margin-top: 5px;
-        }
 
-        .service-card p {
-            color: #555;
-            line-height: 1.6;
-        }
+/* =========================
+   SERVICES
+========================= */
 
-        .info-button {
-            margin-top: 15px;
-            padding: 10px 18px;
-            background: #C9A227;
-            color: #0B1F33;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.services {
+    display: none;
+    background: #F7F5F0;
+    padding: 60px 20px;
+    text-align: center;
+}
 
-        .service-info {
-            display: none;
-            color: #555;
-            margin-top: 20px;
-            line-height: 1.7;
-            text-align: left;
-        }
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
 
-        .service-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
+.service-card {
+    width: 280px;
+    padding: 25px;
+    background: white;
+    border-radius: 16px;
+    border-top: 5px solid #C9A227;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.10);
+    transition: transform 0.2s ease;
+}
 
-        .quote-button {
-            width: 100%;
-            padding: 12px;
-            background: #C9A227;
-            color: #0B1F33;
-            border: none;
-            border-radius: 7px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.service-card:active {
+    transform: scale(0.98);
+}
 
-        .contact-button {
-            width: 100%;
-            padding: 12px;
-            background: #0B1F33;
-            color: #C9A227;
-            border: none;
-            border-radius: 7px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.service-image {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
 
-        .hide-button {
-            display: none;
-            width: 100%;
-            margin-top: 15px;
-            padding: 10px;
-            background: #0B1F33;
-            color: white;
-            border: none;
-            border-radius: 7px;
-            cursor: pointer;
-        }
+.service-card h3 {
+    color: #0B1F33;
+    margin-top: 5px;
+}
 
-        .section-hidden {
-            display: none !important;
-        }
+.service-card p {
+    color: #555;
+    line-height: 1.6;
+}
 
-        .standard-section {
-            padding: 65px 20px;
-            text-align: center;
-        }
+.info-button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: #C9A227;
+    color: #0B1F33;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .why-card {
-            max-width: 300px;
-            margin: 30px auto 0;
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-            border-top: 4px solid #C9A227;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
+.service-info {
+    display: none;
+    color: #555;
+    margin-top: 20px;
+    line-height: 1.7;
+    text-align: left;
+}
 
-        #devis {
-            display: none;
-            background: white;
-            padding: 65px 20px;
-        }
+.service-info strong {
+    color: #0B1F33;
+}
 
-        .form-container {
-            max-width: 550px;
-            margin: auto;
-        }
+.hide-button {
+    display: none;
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background: #0B1F33;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
 
-        .form-container h2 {
-            text-align: center;
-            color: #0B1F33;
-        }
+.service-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
 
-        .form-container label {
-            display: block;
-            margin-top: 15px;
-            font-weight: 600;
-        }
+.quote-button,
+.contact-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .form-container input,
-        .form-container textarea,
-        .form-container select {
-            width: 100%;
-            padding: 13px;
-            margin-top: 7px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-            background: white;
-        }
+.quote-button {
+    background: #C9A227;
+    color: #0B1F33;
+}
 
-        .form-submit {
-            width: 100%;
-            margin-top: 25px;
-            padding: 14px;
-            background: #C9A227;
-            color: #0B1F33;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+.contact-button {
+    background: #0B1F33;
+    color: #C9A227;
+}
 
-        #contact {
-            display: none;
-        }
 
-        .success-message {
-            text-align: center;
-            color: #0B1F33;
-            font-weight: 600;
-            margin-top: 15px;
-        }
+/* =========================
+   POURQUOI
+========================= */
 
-        footer {
-            background: #0B1F33;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
+.standard-section {
+    padding: 65px 20px;
+    text-align: center;
+    background: #F7F5F0;
+}
 
-        @media (max-width: 600px) {
+.why-card {
+    max-width: 300px;
+    margin: 30px auto 0;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    border-top: 4px solid #C9A227;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
 
-            .header {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
 
-            .logo img {
-                width: 115px;
-                height: 55px;
-            }
+/* =========================
+   DEVIS
+========================= */
 
-            .service-card {
-                width: 100%;
-                max-width: 350px;
-            }
+#devis {
+    display: none;
+    background: white;
+    padding: 65px 20px;
+}
 
-        }
+.form-container {
+    max-width: 550px;
+    margin: auto;
+}
 
-    </style>
+.form-container h2 {
+    text-align: center;
+    color: #0B1F33;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 13px;
+    margin-top: 7px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+}
+
+.form-submit {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    background: #C9A227;
+    color: #0B1F33;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.close-devis {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    background: #0B1F33;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+#contact {
+    display: none;
+    background: #F7F5F0;
+    color: #0B1F33;
+    padding: 65px 20px;
+    text-align: center;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: auto;
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-top: 7px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.contact-submit {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: #C9A227;
+    color: #0B1F33;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.whatsapp-button {
+    display: block;
+    max-width: 500px;
+    margin: 25px auto 0;
+    padding: 15px;
+    background: #C9A227;
+    color: #0B1F33;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #0B1F33;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .logo img {
+        width: 115px;
+        height: 55px;
+    }
+
+    .service-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -357,14 +452,18 @@
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="header"
         style="
-            background:#0B1F33;
-            position:fixed;
-            top:0;
-            left:0;
-            width:100%;
-            z-index:1000;
+        background:#0B1F33;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        z-index:1000;
         ">
 
     <div class="logo" id="logo">
@@ -381,55 +480,43 @@
         id="menuButton"
         class="menu-button"
         type="button"
+        aria-label="Ouvrir le menu"
     >
         ☰
     </button>
 
 
-    <nav class="menu">
+    <nav class="menu" id="mainMenu">
 
-        <a href="#accueil">
-            Accueil
-        </a>
+        <a href="#accueil">Accueil</a>
 
-        <a href="#services">
-            Services
-        </a>
+        <a href="#services">Services</a>
 
-        <a href="#apropos">
-            À propos
-        </a>
+        <a href="#apropos">À propos</a>
 
-        <a href="#contact">
-            Contact
-        </a>
+        <a href="#contact">Contact</a>
 
     </nav>
 
 </header>
 
 
-
 <main style="padding-top:70px;">
 
 
+<!-- =========================
+     ACCUEIL
+========================= -->
 
-<!-- ========================= -->
-<!-- ACCUEIL -->
-<!-- ========================= -->
-
-<section
-    id="accueil"
-    class="hero"
->
+<section id="accueil" class="hero">
 
     <div class="hero-content">
 
         <p style="
-            color:#C9A227;
-            font-size:15px;
-            letter-spacing:3px;
-            font-weight:bold;
+        color:#C9A227;
+        font-size:15px;
+        letter-spacing:3px;
+        font-weight:bold;
         ">
             BIENVENUE CHEZ ZAG SERVICE
         </p>
@@ -441,9 +528,8 @@
 
 
         <p style="
-            color:white;
-            font-size:18px;
-            line-height:1.7;
+        color:white;
+        font-size:18px;
         ">
 
             Nous vous accompagnons avec des solutions
@@ -457,18 +543,21 @@
             id="serviceButton"
             class="gold-button"
             style="margin-top:20px;"
+            type="button"
         >
             Découvrir nos services
         </button>
 
 
         <div style="
-            margin-top:35px;
-            color:#C9A227;
-            font-size:14px;
-            letter-spacing:1px;
+        margin-top:35px;
+        color:#C9A227;
+        font-size:14px;
+        letter-spacing:1px;
         ">
+
             ↓ Faites défiler
+
         </div>
 
     </div>
@@ -477,37 +566,35 @@
 
 
 
-<!-- ========================= -->
-<!-- SERVICES -->
-<!-- ========================= -->
+<!-- =========================
+     SERVICES
+========================= -->
 
-<section
-    id="services"
-    class="services"
->
+<section id="services" class="services">
 
     <h2 style="
-        color:#0B1F33;
-        font-size:36px;
-        margin-bottom:40px;
+    color:#0B1F33;
+    font-size:36px;
+    margin-bottom:40px;
     ">
+
         Nos services
+
     </h2>
 
 
     <div class="services-container">
 
 
-
-        <!-- ================= -->
-        <!-- EVENEMENTIEL -->
-        <!-- ================= -->
+        <!-- =====================
+             EVENEMENTIEL
+        ====================== -->
 
         <div class="service-card">
 
             <img
-                src="./IMG-20260816-WA0005.jpg"
-                alt="Événementiel"
+                src="./IMG-20260816-WA0004.jpg"
+                alt="Organisation événementielle"
                 class="service-image"
             >
 
@@ -525,6 +612,7 @@
 
             <button
                 class="info-button"
+                type="button"
                 data-info="eventInfo"
             >
                 En savoir plus
@@ -542,22 +630,30 @@
 
                 <p>
                     ZAG SERVICE vous accompagne dans
-                    la préparation et la réalisation de
-                    vos événements avec une organisation
-                    adaptée à vos besoins.
+                    la préparation et la réalisation
+                    de vos événements avec une
+                    organisation adaptée à votre projet.
                 </p>
 
                 <p>
-                    Nous pouvons intervenir notamment
-                    pour la préparation, la coordination,
-                    la logistique et l'accompagnement
-                    de vos événements.
+                    Notre accompagnement peut concerner
+                    la préparation de l'événement,
+                    l'organisation générale, la coordination,
+                    la logistique et la mise en place
+                    des différents éléments nécessaires.
+                </p>
+
+                <p>
+                    Nous pouvons intervenir pour différents
+                    types d'événements privés ou professionnels,
+                    selon vos besoins et les caractéristiques
+                    de votre projet.
                 </p>
 
                 <p>
                     L'objectif est de vous permettre de
                     bénéficier d'une organisation sérieuse,
-                    structurée et adaptée à votre projet.
+                    structurée et adaptée à votre événement.
                 </p>
 
             </div>
@@ -565,6 +661,8 @@
 
             <button
                 class="hide-button"
+                type="button"
+                data-hide="eventInfo"
             >
                 Masquer
             </button>
@@ -574,6 +672,7 @@
 
                 <button
                     class="quote-button"
+                    type="button"
                     data-service="Événementiel"
                 >
                     Demander un devis
@@ -581,6 +680,7 @@
 
                 <button
                     class="contact-button"
+                    type="button"
                 >
                     Nous contacter
                 </button>
@@ -591,11 +691,17 @@
 
 
 
-        <!-- ================= -->
-        <!-- PHOTOGRAPHIE -->
-        <!-- ================= -->
+        <!-- =====================
+             PHOTOGRAPHIE
+        ====================== -->
 
         <div class="service-card">
+
+            <img
+                src="./IMG-20260816-WA0006.jpg"
+                alt="Photographie professionnelle"
+                class="service-image"
+            >
 
 
             <h3>
@@ -604,13 +710,14 @@
 
 
             <p>
-                Photographie événementielle
-                et couverture de vos moments importants.
+                Photographie événementielle et
+                couverture de vos moments importants.
             </p>
 
 
             <button
                 class="info-button"
+                type="button"
                 data-info="photoInfo"
             >
                 En savoir plus
@@ -623,27 +730,35 @@
             >
 
                 <strong>
-                    Photographie événementielle
+                    Photographie professionnelle
                 </strong>
 
                 <p>
                     ZAG SERVICE propose des prestations
                     photographiques destinées à conserver
-                    les moments importants de vos événements.
+                    les moments importants de vos événements
+                    et activités professionnelles.
                 </p>
 
                 <p>
-                    La prestation peut couvrir notamment
-                    les événements professionnels,
-                    cérémonies, manifestations,
-                    rencontres et autres événements
-                    nécessitant une couverture photographique.
+                    La prestation peut notamment concerner
+                    la couverture photographique d'événements
+                    professionnels, cérémonies, manifestations,
+                    rencontres et autres occasions nécessitant
+                    un reportage photographique.
                 </p>
 
                 <p>
-                    Nous adaptons la prestation au type
-                    d'événement, à sa durée et aux besoins
-                    du client.
+                    Nous pouvons également étudier les besoins
+                    liés à la photographie de produits,
+                    de biens, de lieux ou d'éléments destinés
+                    à une communication professionnelle.
+                </p>
+
+                <p>
+                    La prestation est adaptée au type
+                    de projet, à sa durée et aux besoins
+                    spécifiques du client.
                 </p>
 
                 <p>
@@ -659,6 +774,8 @@
 
             <button
                 class="hide-button"
+                type="button"
+                data-hide="photoInfo"
             >
                 Masquer
             </button>
@@ -668,6 +785,7 @@
 
                 <button
                     class="quote-button"
+                    type="button"
                     data-service="Photographie"
                 >
                     Demander un devis
@@ -675,6 +793,7 @@
 
                 <button
                     class="contact-button"
+                    type="button"
                 >
                     Nous contacter
                 </button>
@@ -685,15 +804,15 @@
 
 
 
-        <!-- ================= -->
-        <!-- TRANSPORT -->
-        <!-- ================= -->
+        <!-- =====================
+             TRANSPORT
+        ====================== -->
 
         <div class="service-card">
 
             <img
                 src="./IMG-20260816-WA0003.jpg"
-                alt="Transport"
+                alt="Transport professionnel"
                 class="service-image"
             >
 
@@ -711,6 +830,7 @@
 
             <button
                 class="info-button"
+                type="button"
                 data-info="transportInfo"
             >
                 En savoir plus
@@ -733,17 +853,23 @@
                 </p>
 
                 <p>
-                    Nous pouvons étudier vos besoins
-                    en fonction du trajet, du type de
-                    déplacement, du nombre de personnes
-                    et des contraintes particulières
-                    liées à votre demande.
+                    Nous étudions votre demande selon
+                    le trajet, le type de déplacement,
+                    le nombre de personnes et les éventuelles
+                    contraintes particulières.
                 </p>
 
                 <p>
-                    Chaque demande peut faire l'objet
-                    d'une étude afin de proposer une
-                    solution correspondant au projet.
+                    Les demandes peuvent concerner
+                    différents besoins de déplacement,
+                    selon les possibilités du service
+                    et les caractéristiques du trajet.
+                </p>
+
+                <p>
+                    Chaque demande fait l'objet d'une
+                    étude afin de proposer une solution
+                    correspondant au projet du client.
                 </p>
 
             </div>
@@ -751,6 +877,8 @@
 
             <button
                 class="hide-button"
+                type="button"
+                data-hide="transportInfo"
             >
                 Masquer
             </button>
@@ -760,6 +888,7 @@
 
                 <button
                     class="quote-button"
+                    type="button"
                     data-service="Transport"
                 >
                     Demander un devis
@@ -767,6 +896,7 @@
 
                 <button
                     class="contact-button"
+                    type="button"
                 >
                     Nous contacter
                 </button>
@@ -777,14 +907,14 @@
 
 
 
-        <!-- ================= -->
-        <!-- IMMOBILIER -->
-        <!-- ================= -->
+        <!-- =====================
+             IMMOBILIER
+        ====================== -->
 
         <div class="service-card">
 
             <img
-                src="./IMG-20260816-WAO004.jpg"
+                src="./IMG-20260816-WA0005.jpg"
                 alt="Immobilier"
                 class="service-image"
             >
@@ -803,6 +933,7 @@
 
             <button
                 class="info-button"
+                type="button"
                 data-info="immobilierInfo"
             >
                 En savoir plus
@@ -822,19 +953,26 @@
                     ZAG SERVICE vous accompagne dans
                     vos projets immobiliers avec une
                     approche adaptée à votre recherche
-                    ou à votre projet.
+                    et à vos objectifs.
                 </p>
 
                 <p>
-                    Nous pouvons vous accompagner
-                    dans vos démarches liées à l'achat
-                    ou à la vente d'un bien immobilier.
+                    Nous pouvons vous accompagner dans
+                    vos démarches liées à l'achat ou à
+                    la vente d'un bien immobilier.
+                </p>
+
+                <p>
+                    La recherche ou l'étude d'un projet
+                    peut notamment prendre en compte
+                    le type de bien, la localisation,
+                    le budget et les attentes du client.
                 </p>
 
                 <p>
                     Chaque demande est étudiée selon
-                    le type de bien, la localisation,
-                    le projet et les attentes du client.
+                    les caractéristiques du projet afin
+                    de proposer un accompagnement adapté.
                 </p>
 
             </div>
@@ -842,6 +980,8 @@
 
             <button
                 class="hide-button"
+                type="button"
+                data-hide="immobilierInfo"
             >
                 Masquer
             </button>
@@ -851,6 +991,7 @@
 
                 <button
                     class="quote-button"
+                    type="button"
                     data-service="Immobilier"
                 >
                     Demander un devis
@@ -858,6 +999,7 @@
 
                 <button
                     class="contact-button"
+                    type="button"
                 >
                     Nous contacter
                 </button>
@@ -873,9 +1015,9 @@
 
 
 
-<!-- ========================= -->
-<!-- POURQUOI -->
-<!-- ========================= -->
+<!-- =========================
+     POURQUOI CHOISIR ZAG SERVICE
+========================= -->
 
 <section
     id="pourquoi"
@@ -888,10 +1030,10 @@
 
 
     <p style="
-        max-width:700px;
-        margin:auto;
-        font-size:17px;
-        line-height:1.7;
+    max-width:700px;
+    margin:auto;
+    font-size:17px;
+    line-height:1.7;
     ">
 
         Une approche professionnelle et des solutions
@@ -957,29 +1099,37 @@
 
 
 
-<!-- ========================= -->
-<!-- A PROPOS -->
-<!-- ========================= -->
+<!-- =========================
+     A PROPOS
+========================= -->
 
 <section
     id="apropos"
-    class="standard-section"
     style="
-        background:#0B1F33;
-        color:white;
+    display:none;
+    background:#0B1F33;
+    color:white;
+    padding:70px 20px;
+    text-align:center;
     "
 >
 
-    <h2 style="color:#C9A227;">
+    <h2 style="
+    color:#C9A227;
+    font-size:36px;
+    margin-bottom:25px;
+    ">
+
         À propos de ZAG SERVICE
+
     </h2>
 
 
     <p style="
-        max-width:700px;
-        margin:auto;
-        font-size:18px;
-        line-height:1.8;
+    max-width:700px;
+    margin:auto;
+    font-size:18px;
+    line-height:1.8;
     ">
 
         ZAG SERVICE accompagne les particuliers
@@ -993,9 +1143,9 @@
 
 
 
-<!-- ========================= -->
-<!-- DEVIS -->
-<!-- ========================= -->
+<!-- =========================
+     DEVIS
+========================= -->
 
 <section id="devis">
 
@@ -1005,14 +1155,14 @@
             Demander un devis
         </h2>
 
-
         <p style="
-            text-align:center;
-            color:#555;
+        text-align:center;
+        color:#555;
+        line-height:1.6;
         ">
 
-            Décrivez votre besoin afin que nous
-            puissions étudier votre demande.
+            Décrivez votre besoin afin que ZAG SERVICE
+            puisse étudier votre demande.
 
         </p>
 
@@ -1060,10 +1210,7 @@
                 Service
             </label>
 
-            <select
-                id="devisService"
-                required
-            >
+            <select id="devisService" required>
 
                 <option value="">
                     Sélectionnez un service
@@ -1092,133 +1239,113 @@
                 Type
             </label>
 
-            <select
-                id="devisType"
-                required
-            >
+            <select id="devisType" required>
 
                 <option value="">
                     Sélectionnez le type
                 </option>
 
-                <option>
+                <option value="Particulier">
                     Particulier
                 </option>
 
-                <option>
+                <option value="Entreprise">
                     Entreprise
                 </option>
 
-                <option>
+                <option value="Association">
                     Association
                 </option>
 
-                <option>
+                <option value="Autre">
                     Autre
                 </option>
 
             </select>
 
 
-            <label for="accompagnement">
+            <label for="devisAccompagnement">
                 Type d'accompagnement
             </label>
 
-            <select
-                id="accompagnement"
-                required
-            >
+            <select id="devisAccompagnement" required>
 
                 <option value="">
                     Sélectionnez l'accompagnement
                 </option>
 
-                <option>
-                    Accompagnement ponctuel
+                <option value="Accompagnement simple">
+                    Accompagnement simple
                 </option>
 
-                <option>
-                    Accompagnement complet
+                <option value="Prestation complète">
+                    Prestation complète
                 </option>
 
-                <option>
-                    Organisation
+                <option value="Organisation et coordination">
+                    Organisation et coordination
                 </option>
 
-                <option>
-                    Conseil
-                </option>
-
-                <option>
+                <option value="À définir">
                     À définir
                 </option>
 
             </select>
 
 
-            <label for="trajet">
+            <label for="devisTrajet">
                 Trajet
             </label>
 
-            <select
-                id="trajet"
-                required
-            >
+            <select id="devisTrajet" required>
 
                 <option value="">
                     Sélectionnez le trajet
                 </option>
 
-                <option>
-                    Trajet local
+                <option value="Trajet simple">
+                    Trajet simple
                 </option>
 
-                <option>
-                    Trajet national
-                </option>
-
-                <option>
-                    Aller simple
-                </option>
-
-                <option>
+                <option value="Aller-retour">
                     Aller-retour
                 </option>
 
-                <option>
+                <option value="Plusieurs trajets">
+                    Plusieurs trajets
+                </option>
+
+                <option value="À définir">
                     À définir
                 </option>
 
             </select>
 
 
-            <label for="achatVente">
+            <label for="devisAchatVente">
                 Achat ou vente
             </label>
 
-            <select
-                id="achatVente"
-                required
-            >
+            <select id="devisAchatVente" required>
 
                 <option value="">
                     Sélectionnez
                 </option>
 
-                <option>
+                <option value="Achat">
                     Achat
                 </option>
 
-                <option>
+                <option value="Vente">
                     Vente
                 </option>
 
-                <option>
-                    Recherche d'un bien
+                <option value="Recherche de bien">
+                    Recherche de bien
                 </option>
 
-                <option>
-                    Estimation / accompagnement
+                <option value="À définir">
+                    À définir
                 </option>
 
             </select>
@@ -1232,7 +1359,7 @@
                 id="devisMessage"
                 rows="6"
                 required
-                placeholder="Expliquez-nous votre besoin..."
+                placeholder="Décrivez votre besoin, les dates, le lieu ou toute autre information utile..."
             ></textarea>
 
 
@@ -1244,11 +1371,19 @@
             </button>
 
 
+            <button
+                type="button"
+                class="close-devis"
+                id="closeDevis"
+            >
+                Retour aux services
+            </button>
+
+
             <p
                 id="devisMessageResult"
                 class="success-message"
             ></p>
-
 
         </form>
 
@@ -1258,107 +1393,87 @@
 
 
 
-<!-- ========================= -->
-<!-- CONTACT -->
-<!-- ========================= -->
+<!-- =========================
+     CONTACT
+========================= -->
 
-<section
-    id="contact"
-    class="standard-section"
->
+<section id="contact">
 
-    <h2>
+    <h2 style="
+    color:#0B1F33;
+    font-size:36px;
+    margin-bottom:15px;
+    ">
+
         Contactez-nous
+
     </h2>
 
 
-    <p>
+    <p style="
+    font-size:18px;
+    margin-bottom:35px;
+    ">
+
         Vous avez un projet ? Parlons-en.
+
     </p>
 
 
     <form
         id="contactForm"
-        style="
-            max-width:500px;
-            margin:auto;
-            text-align:left;
-        "
+        class="contact-form"
     >
 
-        <label>
+        <label for="nom">
             Nom
         </label>
 
         <input
             type="text"
             id="nom"
-            required
+            name="nom"
             placeholder="Votre nom"
-            style="
-                width:100%;
-                padding:14px;
-                margin:8px 0 20px;
-                border:1px solid #ddd;
-                border-radius:8px;
-            "
+            required
         >
 
 
-        <label>
+        <label for="telephone">
             Téléphone
         </label>
 
         <input
             type="tel"
             id="telephone"
-            required
+            name="telephone"
             placeholder="Votre numéro de téléphone"
-            style="
-                width:100%;
-                padding:14px;
-                margin:8px 0 20px;
-                border:1px solid #ddd;
-                border-radius:8px;
-            "
+            required
         >
 
 
-        <label>
+        <label for="email">
             Email
         </label>
 
         <input
             type="email"
             id="email"
-            required
+            name="email"
             placeholder="Votre adresse email"
-            style="
-                width:100%;
-                padding:14px;
-                margin:8px 0 20px;
-                border:1px solid #ddd;
-                border-radius:8px;
-            "
+            required
         >
 
 
-        <label>
+        <label for="message">
             Message
         </label>
 
         <textarea
             id="message"
+            name="message"
             rows="5"
-            required
             placeholder="Votre message"
-            style="
-                width:100%;
-                padding:14px;
-                margin:8px 0 20px;
-                border:1px solid #ddd;
-                border-radius:8px;
-            "
+            required
         ></textarea>
 
 
@@ -1371,7 +1486,7 @@
 
         <button
             type="submit"
-            class="form-submit"
+            class="contact-submit"
         >
             Envoyer le message
         </button>
@@ -1382,7 +1497,6 @@
             class="success-message"
         ></p>
 
-
     </form>
 
 
@@ -1390,20 +1504,11 @@
         href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20services."
         target="_blank"
         rel="noopener"
-        style="
-            display:block;
-            max-width:500px;
-            margin:25px auto 0;
-            padding:15px;
-            background:#C9A227;
-            color:#0B1F33;
-            text-decoration:none;
-            text-align:center;
-            font-weight:bold;
-            border-radius:8px;
-        "
+        class="whatsapp-button"
     >
+
         Nous contacter sur WhatsApp
+
     </a>
 
 </section>
@@ -1413,9 +1518,9 @@
 
 
 
-<!-- ========================= -->
-<!-- FOOTER -->
-<!-- ========================= -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1431,36 +1536,53 @@
 
 
     <p style="
-        color:#C9A227;
-        margin-top:25px;
+    color:#C9A227;
+    margin-top:25px;
     ">
+
         Événementiel • Photographie • Transport • Immobilier
+
     </p>
 
 
     <p style="
-        font-size:14px;
-        margin-top:25px;
+    font-size:14px;
+    margin-top:25px;
     ">
-        © 2026 ZAG SERVICE — Tous droits réservés.
+
+        © 2026 Zag Service — Tous droits réservés.
+
     </p>
 
 </footer>
 
 
 
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    console.log("ZAG SERVICE : JavaScript chargé");
 
+    /* =========================
+       ELEMENTS
+    ========================= */
 
     const menuButton =
         document.getElementById("menuButton");
 
     const menu =
-        document.querySelector(".menu");
+        document.getElementById("mainMenu");
 
     const serviceButton =
         document.getElementById("serviceButton");
@@ -1468,11 +1590,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const services =
         document.getElementById("services");
 
-    const logo =
-        document.getElementById("logo");
-
     const accueil =
         document.getElementById("accueil");
+
+    const pourquoi =
+        document.getElementById("pourquoi");
 
     const apropos =
         document.getElementById("apropos");
@@ -1480,12 +1602,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const contact =
         document.getElementById("contact");
 
-    const pourquoi =
-        document.getElementById("pourquoi");
-
     const devis =
         document.getElementById("devis");
 
+    const logo =
+        document.getElementById("logo");
 
 
     /* =========================
@@ -1496,165 +1617,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
         menuButton.addEventListener("click", function () {
 
-            if (menu.style.display === "flex") {
-
-                menu.style.display = "none";
-
-            } else {
-
-                menu.style.display = "flex";
-
-            }
+            menu.classList.toggle("open");
 
         });
 
     }
 
 
-
     /* =========================
-       AFFICHER SERVICES
-    ========================= */
-
-    if (serviceButton && services) {
-
-        serviceButton.addEventListener("click", function () {
-
-            services.style.display = "block";
-
-            services.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        });
-
-    }
-
-
-
-    /* =========================
-       BOUTONS EN SAVOIR PLUS
-    ========================= */
-
-    document
-        .querySelectorAll(".info-button")
-        .forEach(function (button) {
-
-            button.addEventListener("click", function () {
-
-                const infoId =
-                    button.getAttribute("data-info");
-
-                const info =
-                    document.getElementById(infoId);
-
-                const card =
-                    button.closest(".service-card");
-
-                const hideButton =
-                    card.querySelector(".hide-button");
-
-
-                if (!info) {
-                    return;
-                }
-
-
-                info.style.display = "block";
-
-                button.style.display = "none";
-
-                if (hideButton) {
-                    hideButton.style.display = "block";
-                }
-
-            });
-
-        });
-
-
-
-    /* =========================
-       BOUTONS MASQUER
-    ========================= */
-
-    document
-        .querySelectorAll(".hide-button")
-        .forEach(function (button) {
-
-            button.addEventListener("click", function () {
-
-                const card =
-                    button.closest(".service-card");
-
-                const info =
-                    card.querySelector(".service-info");
-
-                const infoButton =
-                    card.querySelector(".info-button");
-
-
-                if (info) {
-                    info.style.display = "none";
-                }
-
-                button.style.display = "none";
-
-                if (infoButton) {
-                    infoButton.style.display = "inline-block";
-                }
-
-            });
-
-        });
-
-
-
-    /* =========================
-       CACHER TOUTES LES SECTIONS
-    ========================= */
-
-    function cacherSections() {
-
-        if (accueil)
-            accueil.style.display = "none";
-
-        if (services)
-            services.style.display = "none";
-
-        if (apropos)
-            apropos.style.display = "none";
-
-        if (contact)
-            contact.style.display = "none";
-
-        if (pourquoi)
-            pourquoi.style.display = "none";
-
-        if (devis)
-            devis.style.display = "none";
-
-    }
-
-
-
-    /* =========================
-       ACCUEIL
+       AFFICHER ACCUEIL
     ========================= */
 
     function afficherAccueil() {
 
-        cacherSections();
-
-        if (accueil)
+        if (accueil) {
             accueil.style.display = "block";
+        }
 
-        if (pourquoi)
+        if (pourquoi) {
             pourquoi.style.display = "block";
+        }
 
-        if (menu)
-            menu.style.display = "none";
+        if (services) {
+            services.style.display = "none";
+        }
+
+        if (apropos) {
+            apropos.style.display = "none";
+        }
+
+        if (contact) {
+            contact.style.display = "none";
+        }
+
+        if (devis) {
+            devis.style.display = "none";
+        }
+
+        if (menu) {
+            menu.classList.remove("open");
+        }
 
         window.scrollTo({
             top: 0,
@@ -1663,6 +1665,386 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
+    /* =========================
+       BOUTON SERVICES
+    ========================= */
+
+    if (serviceButton && services) {
+
+        serviceButton.addEventListener("click", function () {
+
+            services.style.display = "block";
+
+            if (pourquoi) {
+                pourquoi.style.display = "none";
+            }
+
+            services.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+            serviceButton.textContent =
+                "Masquer les services";
+
+        });
+
+    }
+
+
+    /* =========================
+       BOUTONS EN SAVOIR PLUS
+    ========================= */
+
+    const infoButtons =
+        document.querySelectorAll(".info-button");
+
+
+    infoButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const infoId =
+                button.getAttribute("data-info");
+
+            const info =
+                document.getElementById(infoId);
+
+            const card =
+                button.closest(".service-card");
+
+            const hideButton =
+                card.querySelector(".hide-button");
+
+
+            if (!info) {
+                return;
+            }
+
+
+            info.style.display = "block";
+
+            button.style.display = "none";
+
+            if (hideButton) {
+                hideButton.style.display = "block";
+            }
+
+
+            setTimeout(function () {
+
+                info.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }, 100);
+
+        });
+
+    });
+
+
+    /* =========================
+       BOUTONS MASQUER
+    ========================= */
+
+    const hideButtons =
+        document.querySelectorAll(".hide-button");
+
+
+    hideButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const infoId =
+                button.getAttribute("data-hide");
+
+            const info =
+                document.getElementById(infoId);
+
+            const card =
+                button.closest(".service-card");
+
+            const infoButton =
+                card.querySelector(".info-button");
+
+
+            if (info) {
+                info.style.display = "none";
+            }
+
+            button.style.display = "none";
+
+            if (infoButton) {
+                infoButton.style.display = "inline-block";
+            }
+
+        });
+
+    });
+
+
+    /* =========================
+       OUVRIR DEVIS
+    ========================= */
+
+    const quoteButtons =
+        document.querySelectorAll(".quote-button");
+
+
+    quoteButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const service =
+                button.getAttribute("data-service");
+
+
+            if (services) {
+                services.style.display = "none";
+            }
+
+            if (accueil) {
+                accueil.style.display = "none";
+            }
+
+            if (pourquoi) {
+                pourquoi.style.display = "none";
+            }
+
+            if (apropos) {
+                apropos.style.display = "none";
+            }
+
+            if (contact) {
+                contact.style.display = "none";
+            }
+
+            if (devis) {
+                devis.style.display = "block";
+            }
+
+            if (menu) {
+                menu.classList.remove("open");
+            }
+
+
+            const serviceSelect =
+                document.getElementById("devisService");
+
+
+            if (serviceSelect && service) {
+
+                serviceSelect.value = service;
+
+            }
+
+
+            devis.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    });
+
+
+    /* =========================
+       CONTACT DEPUIS LES CARTES
+    ========================= */
+
+    const contactButtons =
+        document.querySelectorAll(".contact-button");
+
+
+    contactButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            if (services) {
+                services.style.display = "none";
+            }
+
+            if (accueil) {
+                accueil.style.display = "none";
+            }
+
+            if (pourquoi) {
+                pourquoi.style.display = "none";
+            }
+
+            if (apropos) {
+                apropos.style.display = "none";
+            }
+
+            if (devis) {
+                devis.style.display = "none";
+            }
+
+            if (contact) {
+                contact.style.display = "block";
+            }
+
+            if (menu) {
+                menu.classList.remove("open");
+            }
+
+            contact.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    });
+
+
+    /* =========================
+       NAVIGATION DU MENU
+    ========================= */
+
+    const menuLinks =
+        document.querySelectorAll(".menu a");
+
+
+    menuLinks.forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            const destination =
+                link.getAttribute("href");
+
+
+            if (menu) {
+                menu.classList.remove("open");
+            }
+
+
+            if (destination === "#accueil") {
+
+                afficherAccueil();
+
+                return;
+
+            }
+
+
+            if (destination === "#services") {
+
+                if (accueil) {
+                    accueil.style.display = "none";
+                }
+
+                if (pourquoi) {
+                    pourquoi.style.display = "none";
+                }
+
+                if (apropos) {
+                    apropos.style.display = "none";
+                }
+
+                if (contact) {
+                    contact.style.display = "none";
+                }
+
+                if (devis) {
+                    devis.style.display = "none";
+                }
+
+                if (services) {
+
+                    services.style.display = "block";
+
+                    services.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+                return;
+
+            }
+
+
+            if (destination === "#apropos") {
+
+                if (accueil) {
+                    accueil.style.display = "none";
+                }
+
+                if (pourquoi) {
+                    pourquoi.style.display = "none";
+                }
+
+                if (services) {
+                    services.style.display = "none";
+                }
+
+                if (contact) {
+                    contact.style.display = "none";
+                }
+
+                if (devis) {
+                    devis.style.display = "none";
+                }
+
+                if (apropos) {
+
+                    apropos.style.display = "block";
+
+                    apropos.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+                return;
+
+            }
+
+
+            if (destination === "#contact") {
+
+                if (accueil) {
+                    accueil.style.display = "none";
+                }
+
+                if (pourquoi) {
+                    pourquoi.style.display = "none";
+                }
+
+                if (services) {
+                    services.style.display = "none";
+                }
+
+                if (apropos) {
+                    apropos.style.display = "none";
+                }
+
+                if (devis) {
+                    devis.style.display = "none";
+                }
+
+                if (contact) {
+
+                    contact.style.display = "block";
+
+                    contact.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            }
+
+        });
+
+    });
 
 
     /* =========================
@@ -1680,135 +2062,41 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
     /* =========================
-       MENU NAVIGATION
+       RETOUR DEVIS
     ========================= */
 
-    document
-        .querySelectorAll(".menu a")
-        .forEach(function (link) {
-
-            link.addEventListener("click", function (event) {
-
-                event.preventDefault();
-
-                const destination =
-                    link.getAttribute("href");
+    const closeDevis =
+        document.getElementById("closeDevis");
 
 
-                if (menu)
-                    menu.style.display = "none";
+    if (closeDevis) {
 
+        closeDevis.addEventListener("click", function () {
 
-                if (destination === "#accueil") {
+            if (devis) {
+                devis.style.display = "none";
+            }
 
-                    afficherAccueil();
+            if (accueil) {
+                accueil.style.display = "none";
+            }
 
-                    return;
+            if (pourquoi) {
+                pourquoi.style.display = "none";
+            }
 
-                }
+            if (services) {
+                services.style.display = "block";
+            }
 
-
-                cacherSections();
-
-
-                if (destination === "#services") {
-
-                    services.style.display = "block";
-
-                    services.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-                }
-
-
-                if (destination === "#apropos") {
-
-                    apropos.style.display = "block";
-
-                    apropos.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-                }
-
-
-                if (destination === "#contact") {
-
-                    contact.style.display = "block";
-
-                    contact.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-                }
-
+            services.scrollIntoView({
+                behavior: "smooth"
             });
 
         });
 
-
-
-    /* =========================
-       BOUTON NOUS CONTACTER
-    ========================= */
-
-    document
-        .querySelectorAll(".contact-button")
-        .forEach(function (button) {
-
-            button.addEventListener("click", function () {
-
-                cacherSections();
-
-                contact.style.display = "block";
-
-                contact.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            });
-
-        });
-
-
-
-    /* =========================
-       BOUTON DEMANDER UN DEVIS
-    ========================= */
-
-    document
-        .querySelectorAll(".quote-button")
-        .forEach(function (button) {
-
-            button.addEventListener("click", function () {
-
-                const service =
-                    button.getAttribute("data-service");
-
-                cacherSections();
-
-                devis.style.display = "block";
-
-                const selectService =
-                    document.getElementById("devisService");
-
-                if (selectService && service) {
-
-                    selectService.value = service;
-
-                }
-
-                devis.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            });
-
-        });
-
+    }
 
 
     /* =========================
@@ -1818,21 +2106,74 @@ document.addEventListener("DOMContentLoaded", function () {
     const devisForm =
         document.getElementById("devisForm");
 
+
     if (devisForm) {
 
         devisForm.addEventListener("submit", function (event) {
 
             event.preventDefault();
 
-            const resultat =
-                document.getElementById(
-                    "devisMessageResult"
-                );
 
-            if (resultat) {
+            const nom =
+                document.getElementById("devisNom").value.trim();
 
-                resultat.textContent =
-                    "Votre demande de devis est prête à être traitée.";
+            const telephone =
+                document.getElementById("devisTelephone").value.trim();
+
+            const email =
+                document.getElementById("devisEmail").value.trim();
+
+            const service =
+                document.getElementById("devisService").value;
+
+            const type =
+                document.getElementById("devisType").value;
+
+            const accompagnement =
+                document.getElementById("devisAccompagnement").value;
+
+            const trajet =
+                document.getElementById("devisTrajet").value;
+
+            const achatVente =
+                document.getElementById("devisAchatVente").value;
+
+            const message =
+                document.getElementById("devisMessage").value.trim();
+
+
+            const texte =
+                "Bonjour ZAG SERVICE,%0A%0A" +
+                "Je souhaite demander un devis.%0A%0A" +
+                "Nom : " + encodeURIComponent(nom) + "%0A" +
+                "Téléphone : " + encodeURIComponent(telephone) + "%0A" +
+                "Email : " + encodeURIComponent(email) + "%0A" +
+                "Service : " + encodeURIComponent(service) + "%0A" +
+                "Type : " + encodeURIComponent(type) + "%0A" +
+                "Accompagnement : " + encodeURIComponent(accompagnement) + "%0A" +
+                "Trajet : " + encodeURIComponent(trajet) + "%0A" +
+                "Achat / Vente : " + encodeURIComponent(achatVente) + "%0A" +
+                "Projet : " + encodeURIComponent(message);
+
+
+            const whatsappURL =
+                "https://wa.me/2250779177086?text=" + texte;
+
+
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
+
+
+            const result =
+                document.getElementById("devisMessageResult");
+
+
+            if (result) {
+
+                result.textContent =
+                    "Votre demande est prête à être envoyée sur WhatsApp.";
 
             }
 
@@ -1841,13 +2182,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
     /* =========================
        FORMULAIRE CONTACT
     ========================= */
 
     const contactForm =
         document.getElementById("contactForm");
+
 
     let dernierEnvoi = 0;
 
@@ -1866,8 +2207,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 if (
-                    dernierEnvoi !== 0 &&
-                    maintenant - dernierEnvoi < 30000
+                    maintenant - dernierEnvoi < 30000 &&
+                    dernierEnvoi !== 0
                 ) {
 
                     return;
@@ -1876,23 +2217,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 const nom =
-                    document.getElementById("nom")
-                    ?.value.trim() || "";
-
+                    document.getElementById("nom")?.value.trim() || "";
 
                 const telephone =
-                    document.getElementById("telephone")
-                    ?.value.trim() || "";
-
+                    document.getElementById("telephone")?.value.trim() || "";
 
                 const email =
-                    document.getElementById("email")
-                    ?.value.trim() || "";
-
+                    document.getElementById("email")?.value.trim() || "";
 
                 const message =
-                    document.getElementById("message")
-                    ?.value.trim() || "";
+                    document.getElementById("message")?.value.trim() || "";
 
 
                 if (
@@ -1975,14 +2309,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 body: JSON.stringify({
 
                                     nom: nom,
-
-                                    telephone:
-                                        telephone,
-
+                                    telephone: telephone,
                                     email: email,
-
                                     message: message,
-
                                     turnstileToken:
                                         turnstileToken
 
@@ -2030,7 +2359,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } catch (error) {
 
                     console.error(
-                        "Erreur lors de l'envoi :",
+                        "Erreur :",
                         error
                     );
 
@@ -2053,7 +2382,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (submitButton) {
 
-                        submitButton.disabled = false;
+                        submitButton.disabled =
+                            false;
 
                         submitButton.textContent =
                             "Envoyer le message";
@@ -2068,15 +2398,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    console.log(
-        "ZAG SERVICE : tous les boutons sont initialisés"
-    );
-
 });
 
 </script>
 
 
 </body>
-
 </html>
