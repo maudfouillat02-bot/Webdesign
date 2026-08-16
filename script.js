@@ -7,17 +7,14 @@ const menu = document.querySelector(".menu");
 
 if (menuButton && menu) {
     menuButton.addEventListener("click", function () {
-        if (menu.style.display === "none" || menu.style.display === "") {
-            menu.style.display = "flex";
-        } else {
-            menu.style.display = "none";
-        }
+        menu.style.display =
+            menu.style.display === "flex" ? "none" : "flex";
     });
 }
 
 
 // ================================
-// BOUTON SERVICES
+// BOUTON "DÉCOUVRIR NOS SERVICES"
 // ================================
 
 const serviceButton = document.getElementById("serviceButton");
@@ -81,82 +78,39 @@ if (serviceButton && services) {
 // BOUTONS "EN SAVOIR PLUS"
 // ================================
 
-// ÉVÉNEMENTIEL
+function activerBoutonInfo(boutonId, infoId) {
 
-const eventButton = document.getElementById("eventButton");
-const eventInfo = document.getElementById("eventInfo");
+    const bouton = document.getElementById(boutonId);
+    const info = document.getElementById(infoId);
 
-if (eventButton && eventInfo) {
+    if (bouton && info) {
 
-    eventButton.addEventListener("click", function () {
+        bouton.addEventListener("click", function () {
 
-        if (eventInfo.style.display === "none" || eventInfo.style.display === "") {
+            if (
+                info.style.display === "none" ||
+                info.style.display === ""
+            ) {
 
-            eventInfo.style.display = "block";
-            eventButton.textContent = "Masquer";
+                info.style.display = "block";
+                bouton.textContent = "Masquer";
 
-        } else {
+            } else {
 
-            eventInfo.style.display = "none";
-            eventButton.textContent = "En savoir plus";
+                info.style.display = "none";
+                bouton.textContent = "En savoir plus";
 
-        }
+            }
 
-    });
+        });
 
-}
-
-
-// TRANSPORT
-
-const transportButton = document.getElementById("transportButton");
-const transportInfo = document.getElementById("transportInfo");
-
-if (transportButton && transportInfo) {
-
-    transportButton.addEventListener("click", function () {
-
-        if (transportInfo.style.display === "none" || transportInfo.style.display === "") {
-
-            transportInfo.style.display = "block";
-            transportButton.textContent = "Masquer";
-
-        } else {
-
-            transportInfo.style.display = "none";
-            transportButton.textContent = "En savoir plus";
-
-        }
-
-    });
+    }
 
 }
 
-
-// IMMOBILIER
-
-const immobilierButton = document.getElementById("immobilierButton");
-const immobilierInfo = document.getElementById("immobilierInfo");
-
-if (immobilierButton && immobilierInfo) {
-
-    immobilierButton.addEventListener("click", function () {
-
-        if (immobilierInfo.style.display === "none" || immobilierInfo.style.display === "") {
-
-            immobilierInfo.style.display = "block";
-            immobilierButton.textContent = "Masquer";
-
-        } else {
-
-            immobilierInfo.style.display = "none";
-            immobilierButton.textContent = "En savoir plus";
-
-        }
-
-    });
-
-}
+activerBoutonInfo("eventButton", "eventInfo");
+activerBoutonInfo("transportButton", "transportInfo");
+activerBoutonInfo("immobilierButton", "immobilierInfo");
 
 
 // ================================
@@ -167,7 +121,9 @@ const menuLinks = document.querySelectorAll(".menu a");
 
 menuLinks.forEach(function (link) {
 
-    link.addEventListener("click", function () {
+    link.addEventListener("click", function (event) {
+
+        event.preventDefault();
 
         if (menu) {
             menu.style.display = "none";
@@ -201,9 +157,7 @@ menuLinks.forEach(function (link) {
         const destination = link.getAttribute("href");
 
 
-        // ================================
         // ACCUEIL
-        // ================================
 
         if (destination === "#accueil") {
 
@@ -211,7 +165,8 @@ menuLinks.forEach(function (link) {
 
             if (serviceButton) {
                 serviceButton.style.display = "block";
-                serviceButton.textContent = "Découvrir nos services";
+                serviceButton.textContent =
+                    "Découvrir nos services";
             }
 
             if (accueil) {
@@ -225,9 +180,7 @@ menuLinks.forEach(function (link) {
         }
 
 
-        // ================================
         // SERVICES
-        // ================================
 
         if (destination === "#services") {
 
@@ -244,9 +197,7 @@ menuLinks.forEach(function (link) {
         }
 
 
-        // ================================
         // À PROPOS
-        // ================================
 
         if (destination === "#apropos") {
 
@@ -263,9 +214,7 @@ menuLinks.forEach(function (link) {
         }
 
 
-        // ================================
         // CONTACT
-        // ================================
 
         if (destination === "#contact") {
 
@@ -344,7 +293,8 @@ if (logo) {
 
         if (serviceButton) {
             serviceButton.style.display = "block";
-            serviceButton.textContent = "Découvrir nos services";
+            serviceButton.textContent =
+                "Découvrir nos services";
         }
 
         afficherLogoAccueil();
@@ -375,9 +325,7 @@ if (contactForm) {
         event.preventDefault();
 
 
-        // ================================
         // ANTI-SPAM
-        // ================================
 
         const maintenant = Date.now();
 
@@ -391,9 +339,7 @@ if (contactForm) {
         }
 
 
-        // ================================
         // RÉCUPÉRATION DES CHAMPS
-        // ================================
 
         const nom =
             document.getElementById("nom")?.value.trim() || "";
@@ -408,9 +354,7 @@ if (contactForm) {
             document.getElementById("message")?.value.trim() || "";
 
 
-        // ================================
         // VALIDATION
-        // ================================
 
         if (!nom) {
             alert("Veuillez entrer votre nom.");
@@ -433,16 +377,16 @@ if (contactForm) {
         }
 
         if (message.length < 10) {
+
             alert(
                 "Votre message doit contenir au moins 10 caractères."
             );
+
             return;
         }
 
 
-        // ================================
         // TURNSTILE
-        // ================================
 
         const turnstileToken =
             window.turnstile?.getResponse();
@@ -457,9 +401,7 @@ if (contactForm) {
         }
 
 
-        // ================================
         // BOUTON ENVOI
-        // ================================
 
         const submitButton =
             contactForm.querySelector(
@@ -480,9 +422,7 @@ if (contactForm) {
         }
 
 
-        // ================================
         // ENVOI VERS SUPABASE
-        // ================================
 
         try {
 
@@ -573,29 +513,13 @@ if (contactForm) {
 
     });
 
-}// ================================
-// BOUTONS "EN SAVOIR PLUS"
-// ================================
-
-function activerBoutonInfo(boutonId, infoId) {
-    const bouton = document.getElementById(boutonId);
-    const info = document.getElementById(infoId);
-
-    if (bouton && info) {
-        bouton.addEventListener("click", function () {
-
-            if (info.style.display === "none" || info.style.display === "") {
-                info.style.display = "block";
-                bouton.textContent = "Masquer";
-            } else {
-                info.style.display = "none";
-                bouton.textContent = "En savoir plus";
-            }
-
-        });
-    }
 }
 
-activerBoutonInfo("eventButton", "eventInfo");
-activerBoutonInfo("transportButton", "transportInfo");
-activerBoutonInfo("immobilierButton", "immobilierInfo");
+
+// ================================
+// CONFIRMATION DU CHARGEMENT
+// ================================
+
+console.log("ZAG SERVICE : script chargé");
+document.addEventListener("DOMContentLoaded", function () {
+});
