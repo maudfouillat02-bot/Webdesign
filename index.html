@@ -19,12 +19,15 @@
 
     <style>
 
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
         .menu {
             animation: menuApparition 0.3s ease;
         }
 
         @keyframes menuApparition {
-
             from {
                 opacity: 0;
                 transform: translateY(-10px);
@@ -34,7 +37,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-
         }
 
         .service-card {
@@ -54,8 +56,26 @@
             transform: scale(0.95);
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
+        .action-button {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .devis-button {
+            background: #C9A227;
+            color: #0B1F33;
+        }
+
+        .contact-button {
+            background: #0B1F33;
+            color: #C9A227;
         }
 
         @keyframes descendre {
@@ -90,9 +110,9 @@
 ">
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- HEADER -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <header class="header" style="
     background: #0B1F33;
@@ -107,6 +127,7 @@
     <div class="logo" style="
         display: flex;
         align-items: center;
+        cursor: pointer;
     ">
 
         <img
@@ -209,9 +230,9 @@
 <main style="padding-top: 70px;">
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- ACCUEIL -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <section
     id="accueil"
@@ -295,9 +316,9 @@
 
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- SERVICES -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <section
     id="services"
@@ -330,10 +351,9 @@
     >
 
 
-
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- ÉVÉNEMENTIEL -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <div
     class="service-card"
@@ -345,6 +365,7 @@
         border-radius: 16px;
         border-top: 5px solid #C9A227;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-sizing: border-box;
     "
 >
 
@@ -363,14 +384,14 @@
     >
 
 
-    <h3 style="color: #0B1F33;">
+    <h3 style="color:#0B1F33;">
         Événementiel
     </h3>
 
 
-    <p style="color: #555;">
-        Organisation et accompagnement
-        de vos événements.
+    <p style="color:#555;">
+        Organisation, coordination et photographie
+        événementielle.
     </p>
 
 
@@ -410,23 +431,20 @@
         <br><br>
 
         Zag Service vous accompagne dans la préparation,
-        l'organisation et la coordination de vos événements,
-        avec une attention particulière portée à la qualité
-        de chaque étape.
+        l'organisation et la coordination de vos événements.
 
         <br><br>
 
         <strong style="color:#0B1F33;">
-            Nos prestations événementielles peuvent comprendre :
+            Nos prestations peuvent comprendre :
         </strong>
 
         <br><br>
 
-        • Organisation et coordination de l'événement<br>
+        • Organisation et coordination<br>
         • Préparation et suivi logistique<br>
         • Coordination des différents intervenants<br>
-        • Accompagnement avant et pendant l'événement<br>
-        • Organisation d'événements privés et professionnels
+        • Accompagnement avant et pendant l'événement
 
         <br><br>
 
@@ -442,16 +460,31 @@
 
         <br><br>
 
-        La couverture photographique peut notamment
-        concerner les mariages, anniversaires, cérémonies,
+        La couverture photographique peut concerner
+        les mariages, anniversaires, cérémonies,
         événements familiaux et événements professionnels.
 
         <br><br>
 
         Notre objectif est de vous offrir un accompagnement
-        organisé et adapté à votre événement, tout en
-        permettant de conserver les moments importants
-        grâce à la photographie.
+        organisé et adapté à votre événement.
+
+        <br><br>
+
+        <a
+            href="#contact"
+            class="action-button devis-button"
+        >
+            Demander un devis
+        </a>
+
+        <a
+            href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20un%20devis%20pour%20un%20service%20%C3%A9v%C3%A9nementiel."
+            target="_blank"
+            class="action-button contact-button"
+        >
+            Nous contacter
+        </a>
 
     </p>
 
@@ -459,9 +492,9 @@
 
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- TRANSPORT -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <div
     class="service-card"
@@ -473,6 +506,7 @@
         border-radius: 16px;
         border-top: 5px solid #C9A227;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-sizing: border-box;
     "
 >
 
@@ -497,8 +531,8 @@
 
 
     <p style="color:#555;">
-        Des solutions de transport
-        adaptées à vos besoins.
+        Des solutions de transport adaptées
+        à vos besoins.
     </p>
 
 
@@ -532,20 +566,13 @@
     >
 
         <strong style="color:#0B1F33;">
-            Des solutions adaptées à vos déplacements
+            Des solutions de transport adaptées
         </strong>
 
         <br><br>
 
         Zag Service propose des solutions de transport
-        adaptées aux besoins des particuliers et des
-        entreprises.
-
-        <br><br>
-
-        Nous pouvons vous accompagner dans l'organisation
-        de vos déplacements selon vos besoins et les
-        caractéristiques de votre demande.
+        adaptées aux besoins des particuliers et des entreprises.
 
         <br><br>
 
@@ -564,9 +591,25 @@
 
         <br><br>
 
-        Notre priorité est de comprendre votre besoin afin
-        de vous orienter vers une solution de transport
-        adaptée.
+        Nous étudions votre demande afin de vous proposer
+        une solution adaptée à votre déplacement.
+
+        <br><br>
+
+        <a
+            href="#contact"
+            class="action-button devis-button"
+        >
+            Demander un devis
+        </a>
+
+        <a
+            href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20un%20devis%20pour%20un%20service%20de%20transport."
+            target="_blank"
+            class="action-button contact-button"
+        >
+            Nous contacter
+        </a>
 
     </p>
 
@@ -574,9 +617,9 @@
 
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- IMMOBILIER -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <div
     class="service-card"
@@ -588,6 +631,7 @@
         border-radius: 16px;
         border-top: 5px solid #C9A227;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-sizing: border-box;
     "
 >
 
@@ -596,12 +640,12 @@
         src="./IMG-20260816-WA0005.jpg"
         alt="Immobilier"
         style="
-            width:100%;
-            height:160px;
-            object-fit:cover;
-            border-radius:12px;
-            margin-bottom:15px;
-            display:block;
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: block;
         "
     >
 
@@ -612,8 +656,8 @@
 
 
     <p style="color:#555;">
-        Accompagnement dans vos
-        projets immobiliers.
+        Accompagnement dans vos projets
+        immobiliers.
     </p>
 
 
@@ -653,8 +697,8 @@
         <br><br>
 
         Zag Service vous accompagne dans vos recherches
-        et démarches immobilières en fonction de votre
-        projet et de vos critères.
+        et démarches immobilières selon votre projet
+        et vos critères.
 
         <br><br>
 
@@ -673,9 +717,25 @@
 
         <br><br>
 
-        Notre objectif est de comprendre votre projet et
-        de vous orienter vers des solutions correspondant
-        à vos besoins.
+        Notre objectif est de comprendre votre projet
+        afin de vous orienter vers une solution adaptée.
+
+        <br><br>
+
+        <a
+            href="#contact"
+            class="action-button devis-button"
+        >
+            Demander un devis
+        </a>
+
+        <a
+            href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20votre%20service%20immobilier."
+            target="_blank"
+            class="action-button contact-button"
+        >
+            Nous contacter
+        </a>
 
     </p>
 
@@ -688,9 +748,9 @@
 
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- POURQUOI CHOISIR ZAG SERVICE -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <section
     id="pourquoi"
@@ -836,9 +896,9 @@
 
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- À PROPOS -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <section
     id="apropos"
@@ -876,9 +936,9 @@
 
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- CONTACT -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <section
     id="contact"
@@ -1052,9 +1112,9 @@
 
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- FOOTER -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <footer style="
     background:#0B1F33;
@@ -1099,9 +1159,9 @@
 
 
 
-<!-- ============================= -->
+<!-- ============================== -->
 <!-- JAVASCRIPT -->
-<!-- ============================= -->
+<!-- ============================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
