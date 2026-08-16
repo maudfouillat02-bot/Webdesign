@@ -2,6 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("ZAG SERVICE : JavaScript chargé");
 alert("JavaScript ZAG SERVICE chargé");
+alert(
+    "Bouton services : " +
+    !!document.getElementById("serviceButton") +
+    "\nMenu : " +
+    !!document.getElementById("menuButton")
+);
     // ==========================================
     // ÉLÉMENTS
     // ==========================================
