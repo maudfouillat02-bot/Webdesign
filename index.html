@@ -5,278 +5,346 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Zag Service</title>
+    <title>ZAG SERVICE</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <!-- POLICE -->
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
 
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
+    <link rel="stylesheet" href="Style.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!-- CSS PRINCIPAL -->
-
-    <link
-        rel="stylesheet"
-        href="./Style.css"
-    >
-
-
-    <!-- TURNSTILE -->
-
-    <script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        async
-        defer
-    ></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            async
+            defer></script>
 
 
     <style>
 
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
+            box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
 
-        /* ========================= */
-        /* ANIMATION MENU */
-        /* ========================= */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #F7F5F0;
+            color: #0B1F33;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 5px 15px;
+            min-height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo img {
+            width: 130px;
+            height: 60px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .menu-button {
+            background: #0B1F33;
+            color: #C9A227;
+            border: 2px solid #C9A227;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 100001;
+        }
 
         .menu {
-            animation: menuApparition 0.3s ease;
+            display: none;
+            position: absolute;
+            top: 68px;
+            right: 15px;
+            background: #0B1F33;
+            padding: 15px;
+            border-radius: 8px;
+            gap: 8px;
+            flex-direction: column;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            min-width: 170px;
+            z-index: 100000;
         }
 
-        @keyframes menuApparition {
-
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
+        .menu a {
+            color: #C9A227;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 600;
+            border-radius: 6px;
         }
 
+        .menu a:hover {
+            background: rgba(201,162,39,0.12);
+        }
 
-        /* ========================= */
-        /* CARTES SERVICES */
-        /* ========================= */
+        .hero {
+            background: #0B1F33;
+            color: white;
+            min-height: 500px;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: clamp(34px, 8vw, 48px);
+            margin: 25px 0;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gold-button {
+            background: #C9A227;
+            color: #0B1F33;
+            font-weight: bold;
+            padding: 13px 22px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .gold-button:active {
+            transform: scale(0.96);
+        }
+
+        .services {
+            display: none;
+            background: #F7F5F0;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
 
         .service-card {
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
+            width: 280px;
+            padding: 25px;
+            background: white;
+            border-radius: 16px;
+            border-top: 5px solid #C9A227;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.10);
+            transition: transform 0.2s ease;
         }
 
         .service-card:active {
-            transform: scale(0.97);
-            box-shadow:
-                0 8px 18px rgba(0,0,0,0.18);
+            transform: scale(0.98);
         }
 
-
-        /* ========================= */
-        /* BOUTONS */
-        /* ========================= */
-
-        button {
-            transition:
-                transform 0.15s ease,
-                box-shadow 0.15s ease;
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-
-        .action-button {
-
-            display: block;
-
+        .service-image {
             width: 100%;
-
-            box-sizing: border-box;
-
-            padding: 12px;
-
-            border-radius: 8px;
-
-            text-align: center;
-
-            text-decoration: none;
-
-            font-weight: 700;
-
-            margin-top: 10px;
-
-            cursor: pointer;
-
+            height: 170px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
         }
 
-
-        .devis-button {
-
-            background: #C9A227;
-
+        .service-card h3 {
             color: #0B1F33;
-
+            margin-top: 5px;
         }
 
+        .service-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .info-button {
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #C9A227;
+            color: #0B1F33;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .service-info {
+            display: none;
+            color: #555;
+            margin-top: 20px;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .service-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .quote-button {
+            width: 100%;
+            padding: 12px;
+            background: #C9A227;
+            color: #0B1F33;
+            border: none;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
         .contact-button {
-
-            background: #0B1F33;
-
-            color: #C9A227;
-
-        }
-
-
-        /* ========================= */
-        /* CHAMPS FORMULAIRE */
-        /* ========================= */
-
-        .devis-field {
-
             width: 100%;
-
-            padding: 14px;
-
-            margin-top: 8px;
-
-            margin-bottom: 18px;
-
-            border: 1px solid #d8d8d8;
-
-            border-radius: 8px;
-
-            box-sizing: border-box;
-
-            background: white;
-
-            color: #0B1F33;
-
-            font-family: 'Poppins', sans-serif;
-
-            font-size: 15px;
-
+            padding: 12px;
+            background: #0B1F33;
+            color: #C9A227;
+            border: none;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-
-        .devis-field:focus {
-
-            outline: none;
-
-            border-color: #C9A227;
-
-            box-shadow:
-                0 0 0 2px rgba(201,162,39,0.15);
-
-        }
-
-
-        .devis-label {
-
-            display: block;
-
-            font-weight: 600;
-
-            color: #0B1F33;
-
-        }
-
-
-        .devis-group {
-
+        .hide-button {
             display: none;
-
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #0B1F33;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
         }
 
-
-        .devis-intro {
-
-            max-width: 700px;
-
-            margin: 0 auto 35px;
-
-            line-height: 1.7;
-
-            color: #555;
-
+        .section-hidden {
+            display: none !important;
         }
 
-
-        /* ========================= */
-        /* ANIMATION FLÈCHE */
-        /* ========================= */
-
-        @keyframes descendre {
-
-            0%, 100% {
-
-                transform: translateY(0);
-
-                opacity: 0.6;
-
-            }
-
-            50% {
-
-                transform: translateY(8px);
-
-                opacity: 1;
-
-            }
-
+        .standard-section {
+            padding: 65px 20px;
+            text-align: center;
         }
 
+        .why-card {
+            max-width: 300px;
+            margin: 30px auto 0;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            border-top: 4px solid #C9A227;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
 
-        /* ========================= */
-        /* MOBILE */
-        /* ========================= */
+        #devis {
+            display: none;
+            background: white;
+            padding: 65px 20px;
+        }
+
+        .form-container {
+            max-width: 550px;
+            margin: auto;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #0B1F33;
+        }
+
+        .form-container label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .form-container input,
+        .form-container textarea,
+        .form-container select {
+            width: 100%;
+            padding: 13px;
+            margin-top: 7px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            background: white;
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #C9A227;
+            color: #0B1F33;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #contact {
+            display: none;
+        }
+
+        .success-message {
+            text-align: center;
+            color: #0B1F33;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        footer {
+            background: #0B1F33;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
 
         @media (max-width: 600px) {
 
-            .hero h1 {
-
-                font-size: 34px !important;
-
+            .header {
+                padding-left: 10px;
+                padding-right: 10px;
             }
 
-            .hero p {
-
-                font-size: 16px !important;
-
+            .logo img {
+                width: 115px;
+                height: 55px;
             }
 
             .service-card {
-
-                width: 100% !important;
-
-                max-width: 360px;
-
+                width: 100%;
+                max-width: 350px;
             }
 
         }
@@ -286,149 +354,53 @@
 </head>
 
 
-<body style="
-    margin: 0;
-    background: #F7F5F0;
-    color: #0B1F33;
-">
+<body>
 
 
-<!-- ================================================= -->
-<!-- HEADER -->
-<!-- ================================================= -->
-
-<header
-    class="header"
-    style="
-        background: #0B1F33;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        box-sizing: border-box;
-    "
->
-
-
-    <!-- LOGO -->
-
-    <div
-        class="logo"
+<header class="header"
         style="
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        "
-    >
+            background:#0B1F33;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            z-index:1000;
+        ">
+
+    <div class="logo" id="logo">
 
         <img
             src="./3166-removebg-preview.png"
             alt="ZAG SERVICE"
-            style="
-                width: 130px;
-                height: 60px;
-                object-fit: contain;
-                display: block;
-            "
         >
 
     </div>
 
 
-    <!-- BOUTON MENU -->
-
     <button
         id="menuButton"
         class="menu-button"
         type="button"
-        style="
-            background: #0B1F33;
-            color: #C9A227;
-            border: 2px solid #C9A227;
-            border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 24px;
-            cursor: pointer;
-            position: relative;
-            z-index: 100001;
-        "
     >
         ☰
     </button>
 
 
-    <!-- MENU -->
+    <nav class="menu">
 
-    <nav
-        class="menu"
-        style="
-            display: none;
-            background: #0B1F33;
-            padding: 15px;
-            border-radius: 8px;
-            gap: 8px;
-            flex-direction: column;
-        "
-    >
-
-        <a
-            href="#accueil"
-            style="
-                color: #C9A227;
-                text-decoration: none;
-                padding: 10px 15px;
-                font-weight: bold;
-            "
-        >
+        <a href="#accueil">
             Accueil
         </a>
 
-
-        <a
-            href="#services"
-            style="
-                color: #C9A227;
-                text-decoration: none;
-                padding: 10px 15px;
-            "
-        >
+        <a href="#services">
             Services
         </a>
 
-
-        <a
-            href="#devis"
-            style="
-                color: #C9A227;
-                text-decoration: none;
-                padding: 10px 15px;
-            "
-        >
-            Demander un devis
-        </a>
-
-
-        <a
-            href="#apropos"
-            style="
-                color: #C9A227;
-                text-decoration: none;
-                padding: 10px 15px;
-            "
-        >
+        <a href="#apropos">
             À propos
         </a>
 
-
-        <a
-            href="#contact"
-            style="
-                color: #C9A227;
-                text-decoration: none;
-                padding: 10px 15px;
-            "
-        >
+        <a href="#contact">
             Contact
         </a>
 
@@ -438,93 +410,64 @@
 
 
 
-<main style="padding-top: 70px;">
+<main style="padding-top:70px;">
 
 
-<!-- ================================================= -->
+
+<!-- ========================= -->
 <!-- ACCUEIL -->
-<!-- ================================================= -->
+<!-- ========================= -->
 
 <section
     id="accueil"
     class="hero"
-    style="
-        background: #0B1F33;
-        color: white;
-        min-height: 500px;
-        padding: 60px 20px;
-        text-align: center;
-        box-sizing: border-box;
-    "
 >
 
     <div class="hero-content">
 
-
         <p style="
-            color: #C9A227;
-            font-size: 15px;
-            letter-spacing: 3px;
-            font-weight: bold;
+            color:#C9A227;
+            font-size:15px;
+            letter-spacing:3px;
+            font-weight:bold;
         ">
             BIENVENUE CHEZ ZAG SERVICE
         </p>
 
 
-        <h1
-            style="
-                color: white;
-                font-size: 48px;
-                margin: 25px 0;
-            "
-        >
+        <h1>
             Des solutions pour vos projets
         </h1>
 
 
-        <p
-            style="
-                color: white;
-                font-size: 19px;
-                line-height: 1.7;
-            "
-        >
+        <p style="
+            color:white;
+            font-size:18px;
+            line-height:1.7;
+        ">
+
             Nous vous accompagnons avec des solutions
-            adaptées dans l'événementiel, la photographie
-            événementielle, le transport et l'immobilier.
+            adaptées dans l'événementiel, la photographie,
+            le transport et l'immobilier.
+
         </p>
 
 
         <button
             id="serviceButton"
-            type="button"
-            style="
-                background: #C9A227;
-                color: #0B1F33;
-                font-weight: bold;
-                padding: 15px 28px;
-                margin: 20px auto;
-                display: block;
-                border: none;
-                border-radius: 8px;
-                font-size: 16px;
-                cursor: pointer;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-            "
+            class="gold-button"
+            style="margin-top:20px;"
         >
             Découvrir nos services
         </button>
 
 
-        <div
-            style="
-                margin-top: 30px;
-                color: #C9A227;
-                font-size: 14px;
-                letter-spacing: 1px;
-                animation: descendre 1.5s infinite;
-            "
-        >
+        <div style="
+            margin-top:35px;
+            color:#C9A227;
+            font-size:14px;
+            letter-spacing:1px;
+        ">
             ↓ Faites défiler
         </div>
 
@@ -534,548 +477,394 @@
 
 
 
-<!-- ================================================= -->
+<!-- ========================= -->
 <!-- SERVICES -->
-<!-- ================================================= -->
+<!-- ========================= -->
 
 <section
     id="services"
     class="services"
-    style="
-        display: none;
-        background: #F7F5F0;
-        padding: 60px 20px;
-        text-align: center;
-    "
 >
 
-
-    <h2
-        style="
-            color: #0B1F33;
-            font-size: 36px;
-            margin-bottom: 40px;
-        "
-    >
+    <h2 style="
+        color:#0B1F33;
+        font-size:36px;
+        margin-bottom:40px;
+    ">
         Nos services
     </h2>
 
 
-    <div
-        class="services-container"
-        style="
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        "
-    >
-
-
-
-<!-- ================================================= -->
-<!-- ÉVÉNEMENTIEL -->
-<!-- ================================================= -->
-
-<div
-    class="service-card"
-    style="
-        width: 250px;
-        min-height: 240px;
-        padding: 30px;
-        background: white;
-        border-radius: 16px;
-        border-top: 5px solid #C9A227;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        box-sizing: border-box;
-    "
->
-
-
-    <img
-        src="./IMG-20260816-WA0004.jpg"
-        alt="Événementiel"
-        style="
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            display: block;
-        "
-    >
-
-
-    <h3 style="color:#0B1F33;">
-        Événementiel
-    </h3>
-
-
-    <p style="color:#555;">
-        Organisation, coordination et accompagnement
-        de vos événements.
-    </p>
-
-
-    <button
-        id="eventButton"
-        type="button"
-        style="
-            margin-top: 15px;
-            padding: 10px 18px;
-            background: #C9A227;
-            color: #0B1F33;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        "
-    >
-        En savoir plus
-    </button>
-
-
-    <p
-        id="eventInfo"
-        style="
-            display: none;
-            color: #555;
-            margin-top: 20px;
-            line-height: 1.7;
-            text-align: left;
-        "
-    >
-
-        <strong style="color:#0B1F33;">
-            Organisation de vos événements
-        </strong>
-
-        <br><br>
-
-        Zag Service vous accompagne dans la préparation,
-        l'organisation et la coordination de vos événements.
-
-        <br><br>
-
-        Nous pouvons intervenir sur différents types
-        d'événements :
-
-        <br><br>
-
-        • Mariages<br>
-        • Anniversaires<br>
-        • Baptêmes<br>
-        • Cérémonies<br>
-        • Événements professionnels<br>
-        • Conférences<br>
-        • Autres événements
-
-        <br><br>
-
-        L'accompagnement peut être adapté à votre besoin :
-        organisation complète, organisation partielle,
-        coordination ou logistique.
-
-        <br><br>
-
-        <a
-            href="#devis"
-            class="action-button devis-button"
-            data-service="evenementiel"
-        >
-            Demander un devis
-        </a>
-
-
-        <a
-            href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20votre%20service%20%C3%A9v%C3%A9nementiel."
-            target="_blank"
-            class="action-button contact-button"
-        >
-            Nous contacter
-        </a>
-
-    </p>
-
-</div>
-
-
-
-<!-- ================================================= -->
-<!-- PHOTOGRAPHIE -->
-<!-- ================================================= -->
-
-<div
-    class="service-card"
-    style="
-        width: 250px;
-        min-height: 240px;
-        padding: 30px;
-        background: white;
-        border-radius: 16px;
-        border-top: 5px solid #C9A227;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        box-sizing: border-box;
-    "
->
-
-
-    <img
-        src="./IMG-20260816-WA0004.jpg"
-        alt="Photographie événementielle"
-        style="
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            display: block;
-        "
-    >
-
-
-    <h3 style="color:#0B1F33;">
-        Photographie événementielle
-    </h3>
-
-
-    <p style="color:#555;">
-        Capturer les moments importants de vos événements.
-    </p>
-
-
-    <button
-        id="photoButton"
-        type="button"
-        style="
-            margin-top: 15px;
-            padding: 10px 18px;
-            background: #C9A227;
-            color: #0B1F33;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        "
-    >
-        En savoir plus
-    </button>
-
-
-    <p
-        id="photoInfo"
-        style="
-            display: none;
-            color: #555;
-            margin-top: 20px;
-            line-height: 1.7;
-            text-align: left;
-        "
-    >
-
-        <strong style="color:#0B1F33;">
-            Photographie événementielle
-        </strong>
-
-        <br><br>
-
-        Zag Service assure la couverture photographique
-        de vos événements afin de conserver les moments
-        importants de votre journée.
-
-        <br><br>
-
-        Nous pouvons couvrir notamment :
-
-        <br><br>
-
-        • Mariages<br>
-        • Anniversaires<br>
-        • Baptêmes<br>
-        • Cérémonies<br>
-        • Événements professionnels<br>
-        • Conférences<br>
-        • Autres manifestations
-
-        <br><br>
-
-        Il ne s'agit pas de portraits ou de séances
-        photographiques individuelles, mais bien de
-        photographie liée à vos événements.
-
-        <br><br>
-
-        <a
-            href="#devis"
-            class="action-button devis-button"
-            data-service="photographie"
-        >
-            Demander un devis
-        </a>
-
-
-        <a
-            href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20votre%20service%20de%20photographie%20%C3%A9v%C3%A9nementielle."
-            target="_blank"
-            class="action-button contact-button"
-        >
-            Nous contacter
-        </a>
-
-    </p>
-
-</div>
-
-
-
-<!-- ================================================= -->
-<!-- TRANSPORT -->
-<!-- ================================================= -->
-
-<div
-    class="service-card"
-    style="
-        width: 250px;
-        min-height: 240px;
-        padding: 30px;
-        background: white;
-        border-radius: 16px;
-        border-top: 5px solid #C9A227;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        box-sizing: border-box;
-    "
->
-
-
-    <img
-        src="./IMG-20260816-WA0003.jpg"
-        alt="Transport"
-        style="
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            display: block;
-        "
-    >
-
-
-    <h3 style="color:#0B1F33;">
-        Transport
-    </h3>
-
-
-    <p style="color:#555;">
-        Des solutions de transport adaptées
-        à vos besoins.
-    </p>
-
-
-    <button
-        id="transportButton"
-        type="button"
-        style="
-            margin-top: 15px;
-            padding: 10px 18px;
-            background: #C9A227;
-            color: #0B1F33;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        "
-    >
-        En savoir plus
-    </button>
-
-
-    <p
-        id="transportInfo"
-        style="
-            display:none;
-            color:#555;
-            margin-top:20px;
-            line-height:1.7;
-            text-align:left;
-        "
-    >
-
-        <strong style="color:#0B1F33;">
-            Des solutions de transport adaptées
-        </strong>
-
-        <br><br>
-
-        Zag Service propose des solutions de transport
-        adaptées aux particuliers et aux entreprises.
-
-        <br><br>
-
-        Nos solutions peuvent concerner :
-
-        <br><br>
-
-        • Transport de personnes<br>
-        • Transport événementiel<br>
-        • Transport professionnel<br>
-        • Mise à disposition d'un véhicule<br>
-        • Autres besoins de déplacement
-
-        <br><br>
-
-        Chaque demande est étudiée selon le trajet,
-        la date, la durée et les besoins du client.
-
-        <br><br>
-
-        <a
-            href="#devis"
-            class="action-button devis-button"
-            data-service="transport"
-        >
-            Demander un devis
-        </a>
-
-
-        <a
-            href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20votre%20service%20de%20transport."
-            target="_blank"
-            class="action-button contact-button"
-        >
-            Nous contacter
-        </a>
-
-    </p>
-
-</div>
-
-
-
-<!-- ================================================= -->
-<!-- IMMOBILIER -->
-<!-- ================================================= -->
-
-<div
-    class="service-card"
-    style="
-        width: 250px;
-        min-height: 240px;
-        padding: 30px;
-        background: white;
-        border-radius: 16px;
-        border-top: 5px solid #C9A227;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        box-sizing: border-box;
-    "
->
-
-
-    <img
-        src="./IMG-20260816-WA0005.jpg"
-        alt="Immobilier"
-        style="
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            display: block;
-        "
-    >
-
-
-    <h3 style="color:#0B1F33;">
-        Immobilier
-    </h3>
-
-
-    <p style="color:#555;">
-        Accompagnement dans vos projets
-        immobiliers.
-    </p>
-
-
-    <button
-        id="immobilierButton"
-        type="button"
-        style="
-            margin-top:15px;
-            padding:10px 18px;
-            background:#C9A227;
-            color:#0B1F33;
-            border:none;
-            border-radius:6px;
-            font-weight:bold;
-            cursor:pointer;
-        "
-    >
-        En savoir plus
-    </button>
-
-
-    <p
-        id="immobilierInfo"
-        style="
-            display:none;
-            color:#555;
-            margin-top:20px;
-            line-height:1.7;
-            text-align:left;
-        "
-    >
-
-        <strong style="color:#0B1F33;">
-            Accompagnement immobilier
-        </strong>
-
-        <br><br>
-
-        Zag Service vous accompagne dans vos projets
-        immobiliers selon vos objectifs et vos critères.
-
-        <br><br>
-
-        Nous pouvons vous accompagner pour :
-
-        <br><br>
-
-        • Achat d'un bien<br>
-        • Vente d'un bien<br>
-        • Location<br>
-        • Recherche de maison<br>
-        • Recherche d'appartement<br>
-        • Recherche de terrain<br>
-        • Recherche de local professionnel
-
-        <br><br>
-
-        Le projet est étudié selon votre budget,
-        la zone recherchée, le type de bien et
-        vos critères particuliers.
-
-        <br><br>
-
-        <a
-            href="#devis"
-            class="action-button devis-button"
-            data-service="immobilier"
-        >
-            Demander un devis
-        </a>
-
-
-        <a
-            href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20votre%20service%20immobilier."
-            target="_blank"
-            class="action-button contact-button"
-        >
-            Nous contacter
-        </a>
-
-    </p>
-
-</div>
+    <div class="services-container">
+
+
+
+        <!-- ================= -->
+        <!-- EVENEMENTIEL -->
+        <!-- ================= -->
+
+        <div class="service-card">
+
+            <img
+                src="./IMG-20260816-WA0005.jpg"
+                alt="Événementiel"
+                class="service-image"
+            >
+
+
+            <h3>
+                Événementiel
+            </h3>
+
+
+            <p>
+                Organisation et accompagnement
+                de vos événements.
+            </p>
+
+
+            <button
+                class="info-button"
+                data-info="eventInfo"
+            >
+                En savoir plus
+            </button>
+
+
+            <div
+                id="eventInfo"
+                class="service-info"
+            >
+
+                <strong>
+                    Organisation événementielle
+                </strong>
+
+                <p>
+                    ZAG SERVICE vous accompagne dans
+                    la préparation et la réalisation de
+                    vos événements avec une organisation
+                    adaptée à vos besoins.
+                </p>
+
+                <p>
+                    Nous pouvons intervenir notamment
+                    pour la préparation, la coordination,
+                    la logistique et l'accompagnement
+                    de vos événements.
+                </p>
+
+                <p>
+                    L'objectif est de vous permettre de
+                    bénéficier d'une organisation sérieuse,
+                    structurée et adaptée à votre projet.
+                </p>
+
+            </div>
+
+
+            <button
+                class="hide-button"
+            >
+                Masquer
+            </button>
+
+
+            <div class="service-actions">
+
+                <button
+                    class="quote-button"
+                    data-service="Événementiel"
+                >
+                    Demander un devis
+                </button>
+
+                <button
+                    class="contact-button"
+                >
+                    Nous contacter
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= -->
+        <!-- PHOTOGRAPHIE -->
+        <!-- ================= -->
+
+        <div class="service-card">
+
+
+            <h3>
+                Photographie
+            </h3>
+
+
+            <p>
+                Photographie événementielle
+                et couverture de vos moments importants.
+            </p>
+
+
+            <button
+                class="info-button"
+                data-info="photoInfo"
+            >
+                En savoir plus
+            </button>
+
+
+            <div
+                id="photoInfo"
+                class="service-info"
+            >
+
+                <strong>
+                    Photographie événementielle
+                </strong>
+
+                <p>
+                    ZAG SERVICE propose des prestations
+                    photographiques destinées à conserver
+                    les moments importants de vos événements.
+                </p>
+
+                <p>
+                    La prestation peut couvrir notamment
+                    les événements professionnels,
+                    cérémonies, manifestations,
+                    rencontres et autres événements
+                    nécessitant une couverture photographique.
+                </p>
+
+                <p>
+                    Nous adaptons la prestation au type
+                    d'événement, à sa durée et aux besoins
+                    du client.
+                </p>
+
+                <p>
+                    <strong>
+                        Cette offre ne comprend pas les
+                        portraits individuels ni les séances
+                        de photos.
+                    </strong>
+                </p>
+
+            </div>
+
+
+            <button
+                class="hide-button"
+            >
+                Masquer
+            </button>
+
+
+            <div class="service-actions">
+
+                <button
+                    class="quote-button"
+                    data-service="Photographie"
+                >
+                    Demander un devis
+                </button>
+
+                <button
+                    class="contact-button"
+                >
+                    Nous contacter
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= -->
+        <!-- TRANSPORT -->
+        <!-- ================= -->
+
+        <div class="service-card">
+
+            <img
+                src="./IMG-20260816-WA0003.jpg"
+                alt="Transport"
+                class="service-image"
+            >
+
+
+            <h3>
+                Transport
+            </h3>
+
+
+            <p>
+                Des solutions de transport
+                adaptées à vos besoins.
+            </p>
+
+
+            <button
+                class="info-button"
+                data-info="transportInfo"
+            >
+                En savoir plus
+            </button>
+
+
+            <div
+                id="transportInfo"
+                class="service-info"
+            >
+
+                <strong>
+                    Solutions de transport
+                </strong>
+
+                <p>
+                    ZAG SERVICE propose des solutions
+                    de transport adaptées aux particuliers
+                    et aux entreprises.
+                </p>
+
+                <p>
+                    Nous pouvons étudier vos besoins
+                    en fonction du trajet, du type de
+                    déplacement, du nombre de personnes
+                    et des contraintes particulières
+                    liées à votre demande.
+                </p>
+
+                <p>
+                    Chaque demande peut faire l'objet
+                    d'une étude afin de proposer une
+                    solution correspondant au projet.
+                </p>
+
+            </div>
+
+
+            <button
+                class="hide-button"
+            >
+                Masquer
+            </button>
+
+
+            <div class="service-actions">
+
+                <button
+                    class="quote-button"
+                    data-service="Transport"
+                >
+                    Demander un devis
+                </button>
+
+                <button
+                    class="contact-button"
+                >
+                    Nous contacter
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= -->
+        <!-- IMMOBILIER -->
+        <!-- ================= -->
+
+        <div class="service-card">
+
+            <img
+                src="./IMG-20260816-WAO004.jpg"
+                alt="Immobilier"
+                class="service-image"
+            >
+
+
+            <h3>
+                Immobilier
+            </h3>
+
+
+            <p>
+                Accompagnement dans vos
+                projets immobiliers.
+            </p>
+
+
+            <button
+                class="info-button"
+                data-info="immobilierInfo"
+            >
+                En savoir plus
+            </button>
+
+
+            <div
+                id="immobilierInfo"
+                class="service-info"
+            >
+
+                <strong>
+                    Accompagnement immobilier
+                </strong>
+
+                <p>
+                    ZAG SERVICE vous accompagne dans
+                    vos projets immobiliers avec une
+                    approche adaptée à votre recherche
+                    ou à votre projet.
+                </p>
+
+                <p>
+                    Nous pouvons vous accompagner
+                    dans vos démarches liées à l'achat
+                    ou à la vente d'un bien immobilier.
+                </p>
+
+                <p>
+                    Chaque demande est étudiée selon
+                    le type de bien, la localisation,
+                    le projet et les attentes du client.
+                </p>
+
+            </div>
+
+
+            <button
+                class="hide-button"
+            >
+                Masquer
+            </button>
+
+
+            <div class="service-actions">
+
+                <button
+                    class="quote-button"
+                    data-service="Immobilier"
+                >
+                    Demander un devis
+                </button>
+
+                <button
+                    class="contact-button"
+                >
+                    Nous contacter
+                </button>
+
+            </div>
+
+        </div>
 
 
     </div>
@@ -1084,77 +873,44 @@
 
 
 
-<!-- ================================================= -->
-<!-- POURQUOI CHOISIR ZAG SERVICE -->
-<!-- ================================================= -->
+<!-- ========================= -->
+<!-- POURQUOI -->
+<!-- ========================= -->
 
 <section
     id="pourquoi"
-    style="
-        background:#F7F5F0;
-        color:#0B1F33;
-        padding:60px 20px;
-        text-align:center;
-    "
+    class="standard-section"
 >
 
-
-    <h2
-        style="
-            color:#0B1F33;
-            font-size:32px;
-            margin-bottom:20px;
-        "
-    >
-        Pourquoi choisir Zag Service ?
+    <h2>
+        Pourquoi choisir ZAG SERVICE ?
     </h2>
 
 
-    <p
-        style="
-            max-width:700px;
-            margin:auto;
-            font-size:17px;
-            line-height:1.7;
-        "
-    >
+    <p style="
+        max-width:700px;
+        margin:auto;
+        font-size:17px;
+        line-height:1.7;
+    ">
+
         Une approche professionnelle et des solutions
         adaptées pour vous accompagner dans vos projets.
+
     </p>
 
 
-    <div
-        style="
-            max-width:300px;
-            margin:30px auto 0;
-            padding:25px;
-            background:white;
-            border-radius:12px;
-            border-top:4px solid #C9A227;
-            box-shadow:0 5px 15px rgba(0,0,0,0.08);
-            box-sizing:border-box;
-        "
-    >
+    <div class="why-card">
 
-        <div style="
-            font-size:30px;
-            margin-bottom:10px;
-        ">
+        <div style="font-size:30px;">
             ⭐
         </div>
 
-        <h3 style="
-            color:#0B1F33;
-            margin:10px 0;
-        ">
+        <h3>
             Professionnalisme
         </h3>
 
-        <p style="
-            color:#555;
-            line-height:1.6;
-            margin:0;
-        ">
+        <p>
             Un accompagnement sérieux et attentif
             pour répondre à vos besoins.
         </p>
@@ -1162,38 +918,17 @@
     </div>
 
 
-    <div
-        style="
-            max-width:300px;
-            margin:30px auto 0;
-            padding:25px;
-            background:white;
-            border-radius:12px;
-            border-top:4px solid #C9A227;
-            box-shadow:0 5px 15px rgba(0,0,0,0.08);
-            box-sizing:border-box;
-        "
-    >
+    <div class="why-card">
 
-        <div style="
-            font-size:30px;
-            margin-bottom:10px;
-        ">
+        <div style="font-size:30px;">
             🤝
         </div>
 
-        <h3 style="
-            color:#0B1F33;
-            margin:10px 0;
-        ">
+        <h3>
             Fiabilité
         </h3>
 
-        <p style="
-            color:#555;
-            line-height:1.6;
-            margin:0;
-        ">
+        <p>
             Nous accordons de l'importance à la qualité
             et au respect de nos engagements.
         </p>
@@ -1201,38 +936,17 @@
     </div>
 
 
-    <div
-        style="
-            max-width:300px;
-            margin:30px auto 0;
-            padding:25px;
-            background:white;
-            border-radius:12px;
-            border-top:4px solid #C9A227;
-            box-shadow:0 5px 15px rgba(0,0,0,0.08);
-            box-sizing:border-box;
-        "
-    >
+    <div class="why-card">
 
-        <div style="
-            font-size:30px;
-            margin-bottom:10px;
-        ">
+        <div style="font-size:30px;">
             🔹
         </div>
 
-        <h3 style="
-            color:#0B1F33;
-            margin:10px 0;
-        ">
+        <h3>
             Polyvalence
         </h3>
 
-        <p style="
-            color:#555;
-            line-height:1.6;
-            margin:0;
-        ">
+        <p>
             Plusieurs domaines de services réunis
             pour vous accompagner selon vos besoins.
         </p>
@@ -1243,140 +957,160 @@
 
 
 
-<!-- ================================================= -->
-<!-- DEVIS -->
-<!-- ================================================= -->
+<!-- ========================= -->
+<!-- A PROPOS -->
+<!-- ========================= -->
 
 <section
-    id="devis"
+    id="apropos"
+    class="standard-section"
     style="
-        background:#FFFFFF;
-        color:#0B1F33;
-        padding:70px 20px;
-        text-align:center;
+        background:#0B1F33;
+        color:white;
     "
 >
 
-
-    <h2
-        style="
-            color:#0B1F33;
-            font-size:36px;
-            margin-bottom:15px;
-        "
-    >
-        Demander un devis
+    <h2 style="color:#C9A227;">
+        À propos de ZAG SERVICE
     </h2>
 
 
-    <p class="devis-intro">
-        Décrivez votre projet. Les informations demandées
-        s'adapteront automatiquement au service que vous
-        souhaitez.
+    <p style="
+        max-width:700px;
+        margin:auto;
+        font-size:18px;
+        line-height:1.8;
+    ">
+
+        ZAG SERVICE accompagne les particuliers
+        et les entreprises dans la réalisation
+        de leurs projets avec des solutions adaptées,
+        professionnelles et fiables.
+
     </p>
 
-
-    <form
-        id="devisForm"
-        style="
-            max-width:600px;
-            margin:auto;
-            text-align:left;
-        "
-    >
-
-
-        <!-- SERVICE -->
-
-        <label
-            class="devis-label"
-            for="devisService"
-        >
-            Service souhaité
-        </label>
-
-
-        <select
-            id="devisService"
-            name="service"
-            class="devis-field"
-            required
-        >
-
-            <option value="">
-                Sélectionnez un service
-            </option>
-
-            <option value="evenementiel">
-                Événementiel
-            </option>
-
-            <option value="photographie">
-                Photographie événementielle
-            </option>
-
-            <option value="transport">
-                Transport
-            </option>
-
-            <option value="immobilier">
-                Immobilier
-            </option>
-
-        </select>
+</section>
 
 
 
-        <!-- =============================== -->
-        <!-- GROUPE ÉVÉNEMENTIEL -->
-        <!-- =============================== -->
+<!-- ========================= -->
+<!-- DEVIS -->
+<!-- ========================= -->
 
-        <div
-            id="groupeEvenementiel"
-            class="devis-group"
-        >
+<section id="devis">
+
+    <div class="form-container">
+
+        <h2>
+            Demander un devis
+        </h2>
 
 
-            <label
-                class="devis-label"
-                for="typeEvenement"
-            >
-                Type d'événement
+        <p style="
+            text-align:center;
+            color:#555;
+        ">
+
+            Décrivez votre besoin afin que nous
+            puissions étudier votre demande.
+
+        </p>
+
+
+        <form id="devisForm">
+
+
+            <label for="devisNom">
+                Nom
             </label>
 
+            <input
+                type="text"
+                id="devisNom"
+                required
+                placeholder="Votre nom"
+            >
+
+
+            <label for="devisTelephone">
+                Téléphone
+            </label>
+
+            <input
+                type="tel"
+                id="devisTelephone"
+                required
+                placeholder="Votre numéro de téléphone"
+            >
+
+
+            <label for="devisEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="devisEmail"
+                required
+                placeholder="Votre adresse email"
+            >
+
+
+            <label for="devisService">
+                Service
+            </label>
 
             <select
-                id="typeEvenement"
-                name="type_evenement"
-                class="devis-field"
+                id="devisService"
+                required
             >
 
                 <option value="">
-                    Sélectionnez le type d'événement
+                    Sélectionnez un service
+                </option>
+
+                <option value="Événementiel">
+                    Événementiel
+                </option>
+
+                <option value="Photographie">
+                    Photographie
+                </option>
+
+                <option value="Transport">
+                    Transport
+                </option>
+
+                <option value="Immobilier">
+                    Immobilier
+                </option>
+
+            </select>
+
+
+            <label for="devisType">
+                Type
+            </label>
+
+            <select
+                id="devisType"
+                required
+            >
+
+                <option value="">
+                    Sélectionnez le type
                 </option>
 
                 <option>
-                    Mariage
+                    Particulier
                 </option>
 
                 <option>
-                    Anniversaire
+                    Entreprise
                 </option>
 
                 <option>
-                    Baptême
-                </option>
-
-                <option>
-                    Cérémonie
-                </option>
-
-                <option>
-                    Événement professionnel
-                </option>
-
-                <option>
-                    Conférence
+                    Association
                 </option>
 
                 <option>
@@ -1386,163 +1120,33 @@
             </select>
 
 
-            <label
-                class="devis-label"
-                for="accompagnementEvenement"
-            >
+            <label for="accompagnement">
                 Type d'accompagnement
             </label>
 
-
             <select
-                id="accompagnementEvenement"
-                name="accompagnement_evenement"
-                class="devis-field"
+                id="accompagnement"
+                required
             >
 
                 <option value="">
-                    Sélectionnez un accompagnement
+                    Sélectionnez l'accompagnement
                 </option>
 
                 <option>
-                    Organisation complète
+                    Accompagnement ponctuel
                 </option>
 
                 <option>
-                    Organisation partielle
+                    Accompagnement complet
                 </option>
 
                 <option>
-                    Coordination de l'événement
+                    Organisation
                 </option>
 
                 <option>
-                    Logistique
-                </option>
-
-                <option>
-                    Photographie événementielle
-                </option>
-
-                <option>
-                    Autre
-                </option>
-
-            </select>
-
-
-            <label
-                class="devis-label"
-                for="nombreInvites"
-            >
-                Nombre approximatif de personnes
-            </label>
-
-
-            <input
-                type="number"
-                id="nombreInvites"
-                name="nombre_invites"
-                class="devis-field"
-                min="1"
-                placeholder="Exemple : 100"
-            >
-
-        </div>
-
-
-
-        <!-- =============================== -->
-        <!-- GROUPE PHOTOGRAPHIE -->
-        <!-- =============================== -->
-
-        <div
-            id="groupePhotographie"
-            class="devis-group"
-        >
-
-
-            <label
-                class="devis-label"
-                for="typeEvenementPhoto"
-            >
-                Type d'événement
-            </label>
-
-
-            <select
-                id="typeEvenementPhoto"
-                name="type_evenement_photo"
-                class="devis-field"
-            >
-
-                <option value="">
-                    Sélectionnez le type d'événement
-                </option>
-
-                <option>
-                    Mariage
-                </option>
-
-                <option>
-                    Anniversaire
-                </option>
-
-                <option>
-                    Baptême
-                </option>
-
-                <option>
-                    Cérémonie
-                </option>
-
-                <option>
-                    Événement professionnel
-                </option>
-
-                <option>
-                    Conférence
-                </option>
-
-                <option>
-                    Autre
-                </option>
-
-            </select>
-
-
-            <label
-                class="devis-label"
-                for="typeCouverture"
-            >
-                Type de couverture
-            </label>
-
-
-            <select
-                id="typeCouverture"
-                name="type_couverture"
-                class="devis-field"
-            >
-
-                <option value="">
-                    Sélectionnez la couverture
-                </option>
-
-                <option>
-                    Couverture complète
-                </option>
-
-                <option>
-                    Couverture partielle
-                </option>
-
-                <option>
-                    Photos pendant la cérémonie
-                </option>
-
-                <option>
-                    Photos pendant la réception
+                    Conseil
                 </option>
 
                 <option>
@@ -1551,77 +1155,26 @@
 
             </select>
 
-        </div>
 
-
-
-        <!-- =============================== -->
-        <!-- GROUPE TRANSPORT -->
-        <!-- =============================== -->
-
-        <div
-            id="groupeTransport"
-            class="devis-group"
-        >
-
-
-            <label
-                class="devis-label"
-                for="typeTransport"
-            >
-                Type de transport
-            </label>
-
-
-            <select
-                id="typeTransport"
-                name="type_transport"
-                class="devis-field"
-            >
-
-                <option value="">
-                    Sélectionnez le type de transport
-                </option>
-
-                <option>
-                    Transport de personnes
-                </option>
-
-                <option>
-                    Transport événementiel
-                </option>
-
-                <option>
-                    Transport professionnel
-                </option>
-
-                <option>
-                    Mise à disposition d'un véhicule
-                </option>
-
-                <option>
-                    Autre
-                </option>
-
-            </select>
-
-
-            <label
-                class="devis-label"
-                for="trajetTransport"
-            >
+            <label for="trajet">
                 Trajet
             </label>
 
-
             <select
-                id="trajetTransport"
-                name="trajet"
-                class="devis-field"
+                id="trajet"
+                required
             >
 
                 <option value="">
-                    Sélectionnez le type de trajet
+                    Sélectionnez le trajet
+                </option>
+
+                <option>
+                    Trajet local
+                </option>
+
+                <option>
+                    Trajet national
                 </option>
 
                 <option>
@@ -1633,63 +1186,23 @@
                 </option>
 
                 <option>
-                    Mise à disposition
-                </option>
-
-                <option>
-                    Trajet avec plusieurs étapes
+                    À définir
                 </option>
 
             </select>
 
 
-            <label
-                class="devis-label"
-                for="nombrePersonnesTransport"
-            >
-                Nombre de personnes
+            <label for="achatVente">
+                Achat ou vente
             </label>
-
-
-            <input
-                type="number"
-                id="nombrePersonnesTransport"
-                name="nombre_personnes_transport"
-                class="devis-field"
-                min="1"
-                placeholder="Exemple : 4"
-            >
-
-        </div>
-
-
-
-        <!-- =============================== -->
-        <!-- GROUPE IMMOBILIER -->
-        <!-- =============================== -->
-
-        <div
-            id="groupeImmobilier"
-            class="devis-group"
-        >
-
-
-            <label
-                class="devis-label"
-                for="operationImmobilier"
-            >
-                Opération
-            </label>
-
 
             <select
-                id="operationImmobilier"
-                name="operation_immobilier"
-                class="devis-field"
+                id="achatVente"
+                required
             >
 
                 <option value="">
-                    Sélectionnez une opération
+                    Sélectionnez
                 </option>
 
                 <option>
@@ -1701,308 +1214,65 @@
                 </option>
 
                 <option>
-                    Location
+                    Recherche d'un bien
+                </option>
+
+                <option>
+                    Estimation / accompagnement
                 </option>
 
             </select>
 
 
-            <label
-                class="devis-label"
-                for="typeBien"
-            >
-                Type de bien
+            <label for="devisMessage">
+                Décrivez votre projet
             </label>
 
+            <textarea
+                id="devisMessage"
+                rows="6"
+                required
+                placeholder="Expliquez-nous votre besoin..."
+            ></textarea>
 
-            <select
-                id="typeBien"
-                name="type_bien"
-                class="devis-field"
+
+            <button
+                type="submit"
+                class="form-submit"
             >
-
-                <option value="">
-                    Sélectionnez le type de bien
-                </option>
-
-                <option>
-                    Appartement
-                </option>
-
-                <option>
-                    Maison
-                </option>
-
-                <option>
-                    Terrain
-                </option>
-
-                <option>
-                    Local commercial
-                </option>
-
-                <option>
-                    Bureau
-                </option>
-
-                <option>
-                    Autre
-                </option>
-
-            </select>
+                Envoyer ma demande de devis
+            </button>
 
 
-            <label
-                class="devis-label"
-                for="budgetImmobilier"
-            >
-                Budget approximatif
-            </label>
+            <p
+                id="devisMessageResult"
+                class="success-message"
+            ></p>
 
 
-            <input
-                type="text"
-                id="budgetImmobilier"
-                name="budget_immobilier"
-                class="devis-field"
-                placeholder="Exemple : 25 000 000 FCFA"
-            >
+        </form>
 
-        </div>
-
-
-
-        <!-- =============================== -->
-        <!-- INFORMATIONS COMMUNES -->
-        <!-- =============================== -->
-
-
-        <label
-            class="devis-label"
-            for="dateProjet"
-        >
-            Date prévue
-        </label>
-
-
-        <input
-            type="date"
-            id="dateProjet"
-            name="date_projet"
-            class="devis-field"
-        >
-
-
-        <label
-            class="devis-label"
-            for="lieuProjet"
-        >
-            Lieu / Zone
-        </label>
-
-
-        <input
-            type="text"
-            id="lieuProjet"
-            name="lieu_projet"
-            class="devis-field"
-            placeholder="Ville, commune ou zone"
-        >
-
-
-        <label
-            class="devis-label"
-            for="nomDevis"
-        >
-            Nom
-        </label>
-
-
-        <input
-            type="text"
-            id="nomDevis"
-            name="nom"
-            class="devis-field"
-            placeholder="Votre nom"
-            required
-        >
-
-
-        <label
-            class="devis-label"
-            for="telephoneDevis"
-        >
-            Téléphone
-        </label>
-
-
-        <input
-            type="tel"
-            id="telephoneDevis"
-            name="telephone"
-            class="devis-field"
-            placeholder="Votre numéro de téléphone"
-            required
-        >
-
-
-        <label
-            class="devis-label"
-            for="emailDevis"
-        >
-            Email
-        </label>
-
-
-        <input
-            type="email"
-            id="emailDevis"
-            name="email"
-            class="devis-field"
-            placeholder="Votre adresse email"
-            required
-        >
-
-
-        <label
-            class="devis-label"
-            for="messageDevis"
-        >
-            Informations complémentaires
-        </label>
-
-
-        <textarea
-            id="messageDevis"
-            name="message"
-            class="devis-field"
-            rows="5"
-            placeholder="Décrivez votre projet ou ajoutez une information importante..."
-        ></textarea>
-
-
-        <!-- TURNSTILE -->
-
-        <div
-            class="cf-turnstile"
-            data-sitekey="0x4AAAAAAEQQNc9tHUCp53Vn"
-            data-theme="light"
-        ></div>
-
-
-        <button
-            type="submit"
-            style="
-                width:100%;
-                background:#C9A227;
-                color:#0B1F33;
-                font-weight:bold;
-                padding:15px;
-                border:none;
-                border-radius:8px;
-                cursor:pointer;
-                font-size:16px;
-                margin-top:15px;
-            "
-        >
-            Envoyer ma demande de devis
-        </button>
-
-
-        <p
-            id="devisMessage"
-            style="
-                text-align:center;
-                margin-top:20px;
-                font-weight:600;
-            "
-        ></p>
-
-
-    </form>
+    </div>
 
 </section>
 
 
 
-<!-- ================================================= -->
-<!-- À PROPOS -->
-<!-- ================================================= -->
-
-<section
-    id="apropos"
-    style="
-        display:none;
-        background:#0B1F33;
-        color:white;
-        padding:70px 20px;
-        text-align:center;
-    "
->
-
-
-    <h2
-        style="
-            color:#C9A227;
-            font-size:36px;
-            margin-bottom:25px;
-        "
-    >
-        À propos de Zag Service
-    </h2>
-
-
-    <p
-        style="
-            max-width:700px;
-            margin:auto;
-            font-size:18px;
-            line-height:1.8;
-        "
-    >
-        Zag Service accompagne les particuliers et les
-        entreprises dans la réalisation de leurs projets
-        avec des solutions adaptées, professionnelles
-        et fiables.
-    </p>
-
-</section>
-
-
-
-<!-- ================================================= -->
+<!-- ========================= -->
 <!-- CONTACT -->
-<!-- ================================================= -->
+<!-- ========================= -->
 
 <section
     id="contact"
-    style="
-        display:none;
-        background:#F7F5F0;
-        color:#0B1F33;
-        padding:70px 20px;
-        text-align:center;
-    "
+    class="standard-section"
 >
 
-
-    <h2
-        style="
-            color:#0B1F33;
-            font-size:36px;
-            margin-bottom:15px;
-        "
-    >
+    <h2>
         Contactez-nous
     </h2>
 
 
-    <p
-        style="
-            font-size:18px;
-            margin-bottom:35px;
-        "
-    >
+    <p>
         Vous avez un projet ? Parlons-en.
     </p>
 
@@ -2016,83 +1286,78 @@
         "
     >
 
-
-        <label>Nom</label>
-
+        <label>
+            Nom
+        </label>
 
         <input
             type="text"
             id="nom"
-            name="nom"
-            placeholder="Votre nom"
             required
+            placeholder="Votre nom"
             style="
                 width:100%;
                 padding:14px;
                 margin:8px 0 20px;
                 border:1px solid #ddd;
                 border-radius:8px;
-                box-sizing:border-box;
             "
         >
 
 
-        <label>Téléphone</label>
-
+        <label>
+            Téléphone
+        </label>
 
         <input
             type="tel"
             id="telephone"
-            name="telephone"
-            placeholder="Votre numéro de téléphone"
             required
+            placeholder="Votre numéro de téléphone"
             style="
                 width:100%;
                 padding:14px;
                 margin:8px 0 20px;
                 border:1px solid #ddd;
                 border-radius:8px;
-                box-sizing:border-box;
             "
         >
 
 
-        <label>Email</label>
-
+        <label>
+            Email
+        </label>
 
         <input
             type="email"
             id="email"
-            name="email"
-            placeholder="Votre adresse email"
             required
+            placeholder="Votre adresse email"
             style="
                 width:100%;
                 padding:14px;
                 margin:8px 0 20px;
                 border:1px solid #ddd;
                 border-radius:8px;
-                box-sizing:border-box;
             "
         >
 
 
-        <label>Message</label>
-
+        <label>
+            Message
+        </label>
 
         <textarea
             id="message"
-            name="message"
-            placeholder="Votre message"
             rows="5"
             required
+            placeholder="Votre message"
             style="
                 width:100%;
                 padding:14px;
                 margin:8px 0 20px;
                 border:1px solid #ddd;
                 border-radius:8px;
-                box-sizing:border-box;
             "
         ></textarea>
 
@@ -2106,16 +1371,7 @@
 
         <button
             type="submit"
-            style="
-                width:100%;
-                background:#C9A227;
-                color:#0B1F33;
-                font-weight:bold;
-                padding:14px;
-                border:none;
-                border-radius:8px;
-                cursor:pointer;
-            "
+            class="form-submit"
         >
             Envoyer le message
         </button>
@@ -2133,6 +1389,7 @@
     <a
         href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20services."
         target="_blank"
+        rel="noopener"
         style="
             display:block;
             max-width:500px;
@@ -2144,7 +1401,6 @@
             text-align:center;
             font-weight:bold;
             border-radius:8px;
-            box-sizing:border-box;
         "
     >
         Nous contacter sur WhatsApp
@@ -2157,705 +1413,666 @@
 
 
 
-<!-- ================================================= -->
+<!-- ========================= -->
 <!-- FOOTER -->
-<!-- ================================================= -->
+<!-- ========================= -->
 
-<footer
-    style="
-        background:#0B1F33;
-        color:white;
-        text-align:center;
-        padding:40px 20px;
-    "
->
+<footer>
 
-
-    <h2
-        style="
-            color:#C9A227;
-            margin-bottom:15px;
-        "
-    >
+    <h2 style="color:#C9A227;">
         ZAG SERVICE
     </h2>
 
 
-    <p
-        style="
-            color:white;
-            font-size:16px;
-        "
-    >
-        Des solutions professionnelles pour vos projets.
+    <p>
+        Des solutions professionnelles
+        pour vos projets.
     </p>
 
 
-    <p
-        style="
-            color:#C9A227;
-            margin-top:25px;
-        "
-    >
+    <p style="
+        color:#C9A227;
+        margin-top:25px;
+    ">
         Événementiel • Photographie • Transport • Immobilier
     </p>
 
 
-    <p
-        style="
-            color:white;
-            font-size:14px;
-            margin-top:25px;
-        "
-    >
-        © 2026 Zag Service — Tous droits réservés.
+    <p style="
+        font-size:14px;
+        margin-top:25px;
+    ">
+        © 2026 ZAG SERVICE — Tous droits réservés.
     </p>
 
 </footer>
 
 
 
-<!-- ================================================= -->
-<!-- SUPABASE -->
-<!-- ================================================= -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-
-<!-- ================================================= -->
-<!-- SCRIPT EXISTANT -->
-<!-- ================================================= -->
-
-<script src="./Script.js"></script>
-
-
-
-<!-- ================================================= -->
-<!-- SCRIPT DU FORMULAIRE DEVIS -->
-<!-- ================================================= -->
-
 <script>
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+document.addEventListener("DOMContentLoaded", function () {
+
+    console.log("ZAG SERVICE : JavaScript chargé");
 
 
-        /* ========================================= */
-        /* ÉLÉMENTS */
-        /* ========================================= */
+    const menuButton =
+        document.getElementById("menuButton");
 
-        const devisService =
-            document.getElementById("devisService");
+    const menu =
+        document.querySelector(".menu");
 
+    const serviceButton =
+        document.getElementById("serviceButton");
 
-        const groupeEvenementiel =
-            document.getElementById("groupeEvenementiel");
+    const services =
+        document.getElementById("services");
 
+    const logo =
+        document.getElementById("logo");
 
-        const groupePhotographie =
-            document.getElementById("groupePhotographie");
+    const accueil =
+        document.getElementById("accueil");
 
+    const apropos =
+        document.getElementById("apropos");
 
-        const groupeTransport =
-            document.getElementById("groupeTransport");
+    const contact =
+        document.getElementById("contact");
 
+    const pourquoi =
+        document.getElementById("pourquoi");
 
-        const groupeImmobilier =
-            document.getElementById("groupeImmobilier");
-
-
-        const devisForm =
-            document.getElementById("devisForm");
-
-
-        const devisMessage =
-            document.getElementById("devisMessage");
-
+    const devis =
+        document.getElementById("devis");
 
 
-        /* ========================================= */
-        /* AFFICHER LE BON FORMULAIRE */
-        /* ========================================= */
 
-        function afficherGroupe(service) {
+    /* =========================
+       MENU
+    ========================= */
 
+    if (menuButton && menu) {
 
-            groupeEvenementiel.style.display = "none";
+        menuButton.addEventListener("click", function () {
 
-            groupePhotographie.style.display = "none";
+            if (menu.style.display === "flex") {
 
-            groupeTransport.style.display = "none";
+                menu.style.display = "none";
 
-            groupeImmobilier.style.display = "none";
+            } else {
 
-
-            if (service === "evenementiel") {
-
-                groupeEvenementiel.style.display = "block";
+                menu.style.display = "flex";
 
             }
 
+        });
 
-            if (service === "photographie") {
-
-                groupePhotographie.style.display = "block";
-
-            }
-
-
-            if (service === "transport") {
-
-                groupeTransport.style.display = "block";
-
-            }
-
-
-            if (service === "immobilier") {
-
-                groupeImmobilier.style.display = "block";
-
-            }
-
-        }
+    }
 
 
 
-        /* ========================================= */
-        /* CHANGEMENT DU SERVICE */
-        /* ========================================= */
+    /* =========================
+       AFFICHER SERVICES
+    ========================= */
 
-        if (devisService) {
+    if (serviceButton && services) {
 
-            devisService.addEventListener(
-                "change",
-                function () {
+        serviceButton.addEventListener("click", function () {
 
-                    afficherGroupe(
-                        devisService.value
-                    );
+            services.style.display = "block";
+
+            services.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    }
+
+
+
+    /* =========================
+       BOUTONS EN SAVOIR PLUS
+    ========================= */
+
+    document
+        .querySelectorAll(".info-button")
+        .forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const infoId =
+                    button.getAttribute("data-info");
+
+                const info =
+                    document.getElementById(infoId);
+
+                const card =
+                    button.closest(".service-card");
+
+                const hideButton =
+                    card.querySelector(".hide-button");
+
+
+                if (!info) {
+                    return;
+                }
+
+
+                info.style.display = "block";
+
+                button.style.display = "none";
+
+                if (hideButton) {
+                    hideButton.style.display = "block";
+                }
+
+            });
+
+        });
+
+
+
+    /* =========================
+       BOUTONS MASQUER
+    ========================= */
+
+    document
+        .querySelectorAll(".hide-button")
+        .forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const card =
+                    button.closest(".service-card");
+
+                const info =
+                    card.querySelector(".service-info");
+
+                const infoButton =
+                    card.querySelector(".info-button");
+
+
+                if (info) {
+                    info.style.display = "none";
+                }
+
+                button.style.display = "none";
+
+                if (infoButton) {
+                    infoButton.style.display = "inline-block";
+                }
+
+            });
+
+        });
+
+
+
+    /* =========================
+       CACHER TOUTES LES SECTIONS
+    ========================= */
+
+    function cacherSections() {
+
+        if (accueil)
+            accueil.style.display = "none";
+
+        if (services)
+            services.style.display = "none";
+
+        if (apropos)
+            apropos.style.display = "none";
+
+        if (contact)
+            contact.style.display = "none";
+
+        if (pourquoi)
+            pourquoi.style.display = "none";
+
+        if (devis)
+            devis.style.display = "none";
+
+    }
+
+
+
+    /* =========================
+       ACCUEIL
+    ========================= */
+
+    function afficherAccueil() {
+
+        cacherSections();
+
+        if (accueil)
+            accueil.style.display = "block";
+
+        if (pourquoi)
+            pourquoi.style.display = "block";
+
+        if (menu)
+            menu.style.display = "none";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+
+    /* =========================
+       LOGO
+    ========================= */
+
+    if (logo) {
+
+        logo.addEventListener("click", function () {
+
+            afficherAccueil();
+
+        });
+
+    }
+
+
+
+    /* =========================
+       MENU NAVIGATION
+    ========================= */
+
+    document
+        .querySelectorAll(".menu a")
+        .forEach(function (link) {
+
+            link.addEventListener("click", function (event) {
+
+                event.preventDefault();
+
+                const destination =
+                    link.getAttribute("href");
+
+
+                if (menu)
+                    menu.style.display = "none";
+
+
+                if (destination === "#accueil") {
+
+                    afficherAccueil();
+
+                    return;
 
                 }
-            );
-
-        }
 
 
-
-        /* ========================================= */
-        /* BOUTONS DEMANDER UN DEVIS */
-        /* ========================================= */
-
-        const boutonsDevis =
-            document.querySelectorAll(
-                ".devis-button[data-service]"
-            );
+                cacherSections();
 
 
-        boutonsDevis.forEach(
-            function (bouton) {
+                if (destination === "#services") {
+
+                    services.style.display = "block";
+
+                    services.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
 
 
-                bouton.addEventListener(
-                    "click",
-                    function () {
+                if (destination === "#apropos") {
+
+                    apropos.style.display = "block";
+
+                    apropos.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
 
 
-                        const service =
-                            bouton.getAttribute(
-                                "data-service"
-                            );
+                if (destination === "#contact") {
+
+                    contact.style.display = "block";
+
+                    contact.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            });
+
+        });
 
 
-                        if (devisService) {
 
-                            devisService.value =
-                                service;
+    /* =========================
+       BOUTON NOUS CONTACTER
+    ========================= */
 
-                            afficherGroupe(
-                                service
-                            );
+    document
+        .querySelectorAll(".contact-button")
+        .forEach(function (button) {
 
-                        }
+            button.addEventListener("click", function () {
+
+                cacherSections();
+
+                contact.style.display = "block";
+
+                contact.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            });
+
+        });
 
 
-                        const devis =
-                            document.getElementById(
-                                "devis"
-                            );
+
+    /* =========================
+       BOUTON DEMANDER UN DEVIS
+    ========================= */
+
+    document
+        .querySelectorAll(".quote-button")
+        .forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const service =
+                    button.getAttribute("data-service");
+
+                cacherSections();
+
+                devis.style.display = "block";
+
+                const selectService =
+                    document.getElementById("devisService");
+
+                if (selectService && service) {
+
+                    selectService.value = service;
+
+                }
+
+                devis.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            });
+
+        });
 
 
-                        if (devis) {
 
-                            setTimeout(
-                                function () {
+    /* =========================
+       FORMULAIRE DEVIS
+    ========================= */
 
-                                    devis.scrollIntoView({
-                                        behavior: "smooth",
-                                        block: "start"
-                                    });
+    const devisForm =
+        document.getElementById("devisForm");
 
-                                },
-                                100
-                            );
+    if (devisForm) {
 
-                        }
+        devisForm.addEventListener("submit", function (event) {
 
-                    }
+            event.preventDefault();
+
+            const resultat =
+                document.getElementById(
+                    "devisMessageResult"
                 );
 
+            if (resultat) {
+
+                resultat.textContent =
+                    "Votre demande de devis est prête à être traitée.";
+
             }
-        );
+
+        });
+
+    }
 
 
 
-        /* ========================================= */
-        /* ENVOI DU DEVIS */
-        /* ========================================= */
+    /* =========================
+       FORMULAIRE CONTACT
+    ========================= */
 
-        if (devisForm) {
+    const contactForm =
+        document.getElementById("contactForm");
 
-
-            devisForm.addEventListener(
-                "submit",
-                async function (event) {
+    let dernierEnvoi = 0;
 
 
-                    event.preventDefault();
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
 
 
-                    const service =
-                        devisService.value;
+                const maintenant =
+                    Date.now();
 
 
-                    if (!service) {
+                if (
+                    dernierEnvoi !== 0 &&
+                    maintenant - dernierEnvoi < 30000
+                ) {
 
-                        devisMessage.textContent =
-                            "Veuillez sélectionner un service.";
+                    return;
 
-                        devisMessage.style.color =
-                            "#b00020";
+                }
 
-                        return;
+
+                const nom =
+                    document.getElementById("nom")
+                    ?.value.trim() || "";
+
+
+                const telephone =
+                    document.getElementById("telephone")
+                    ?.value.trim() || "";
+
+
+                const email =
+                    document.getElementById("email")
+                    ?.value.trim() || "";
+
+
+                const message =
+                    document.getElementById("message")
+                    ?.value.trim() || "";
+
+
+                if (
+                    !nom ||
+                    !telephone ||
+                    !email ||
+                    !message ||
+                    message.length < 10
+                ) {
+
+                    return;
+
+                }
+
+
+                let turnstileToken = "";
+
+
+                if (window.turnstile) {
+
+                    try {
+
+                        turnstileToken =
+                            window.turnstile.getResponse();
+
+                    } catch (error) {
+
+                        console.error(
+                            "Erreur Turnstile :",
+                            error
+                        );
+
+                    }
+
+                }
+
+
+                if (!turnstileToken) {
+
+                    return;
+
+                }
+
+
+                const submitButton =
+                    contactForm.querySelector(
+                        'button[type="submit"]'
+                    );
+
+
+                const successMessage =
+                    document.getElementById(
+                        "successMessage"
+                    );
+
+
+                if (submitButton) {
+
+                    submitButton.disabled = true;
+
+                    submitButton.textContent =
+                        "Envoi en cours...";
+
+                }
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "https://bkmhffpzhdhxrgxkinkk.supabase.co/functions/v1/swift-api",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    nom: nom,
+
+                                    telephone:
+                                        telephone,
+
+                                    email: email,
+
+                                    message: message,
+
+                                    turnstileToken:
+                                        turnstileToken
+
+                                })
+
+                            }
+                        );
+
+
+                    const result =
+                        await response.json();
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            result.error ||
+                            "Erreur lors de l'envoi."
+                        );
 
                     }
 
 
-                    const nom =
-                        document
-                        .getElementById("nomDevis")
-                        .value
-                        .trim();
+                    if (successMessage) {
 
-
-                    const telephone =
-                        document
-                        .getElementById("telephoneDevis")
-                        .value
-                        .trim();
-
-
-                    const email =
-                        document
-                        .getElementById("emailDevis")
-                        .value
-                        .trim();
-
-
-                    const date =
-                        document
-                        .getElementById("dateProjet")
-                        .value;
-
-
-                    const lieu =
-                        document
-                        .getElementById("lieuProjet")
-                        .value
-                        .trim();
-
-
-                    const message =
-                        document
-                        .getElementById("messageDevis")
-                        .value
-                        .trim();
-
-
-
-                    if (!nom) {
-
-                        devisMessage.textContent =
-                            "Veuillez entrer votre nom.";
-
-                        devisMessage.style.color =
-                            "#b00020";
-
-                        return;
+                        successMessage.textContent =
+                            "✓ Merci ! Votre message a bien été envoyé.";
 
                     }
 
 
-                    if (!telephone) {
+                    contactForm.reset();
 
-                        devisMessage.textContent =
-                            "Veuillez entrer votre numéro de téléphone.";
-
-                        devisMessage.style.color =
-                            "#b00020";
-
-                        return;
-
-                    }
-
-
-                    if (!email) {
-
-                        devisMessage.textContent =
-                            "Veuillez entrer votre adresse email.";
-
-                        devisMessage.style.color =
-                            "#b00020";
-
-                        return;
-
-                    }
-
-
-
-                    /* ================================= */
-                    /* RÉCUPÉRATION DES INFORMATIONS */
-                    /* ================================= */
-
-                    let details = "";
-
-
-                    if (service === "evenementiel") {
-
-
-                        details +=
-                            "Type d'événement : " +
-                            document
-                            .getElementById("typeEvenement")
-                            .value +
-                            "\n";
-
-
-                        details +=
-                            "Type d'accompagnement : " +
-                            document
-                            .getElementById("accompagnementEvenement")
-                            .value +
-                            "\n";
-
-
-                        details +=
-                            "Nombre de personnes : " +
-                            document
-                            .getElementById("nombreInvites")
-                            .value +
-                            "\n";
-
-                    }
-
-
-
-                    if (service === "photographie") {
-
-
-                        details +=
-                            "Type d'événement : " +
-                            document
-                            .getElementById("typeEvenementPhoto")
-                            .value +
-                            "\n";
-
-
-                        details +=
-                            "Type de couverture : " +
-                            document
-                            .getElementById("typeCouverture")
-                            .value +
-                            "\n";
-
-                    }
-
-
-
-                    if (service === "transport") {
-
-
-                        details +=
-                            "Type de transport : " +
-                            document
-                            .getElementById("typeTransport")
-                            .value +
-                            "\n";
-
-
-                        details +=
-                            "Trajet : " +
-                            document
-                            .getElementById("trajetTransport")
-                            .value +
-                            "\n";
-
-
-                        details +=
-                            "Nombre de personnes : " +
-                            document
-                            .getElementById("nombrePersonnesTransport")
-                            .value +
-                            "\n";
-
-                    }
-
-
-
-                    if (service === "immobilier") {
-
-
-                        details +=
-                            "Opération : " +
-                            document
-                            .getElementById("operationImmobilier")
-                            .value +
-                            "\n";
-
-
-                        details +=
-                            "Type de bien : " +
-                            document
-                            .getElementById("typeBien")
-                            .value +
-                            "\n";
-
-
-                        details +=
-                            "Budget : " +
-                            document
-                            .getElementById("budgetImmobilier")
-                            .value +
-                            "\n";
-
-                    }
-
-
-
-                    /* ================================= */
-                    /* MESSAGE FINAL */
-                    /* ================================= */
-
-                    const messageFinal =
-
-                        "DEMANDE DE DEVIS ZAG SERVICE\n\n" +
-
-                        "Service : " +
-                        service +
-                        "\n\n" +
-
-                        details +
-
-                        "\nDate prévue : " +
-                        date +
-
-                        "\nLieu / Zone : " +
-                        lieu +
-
-                        "\n\nInformations complémentaires :\n" +
-                        message;
-
-
-
-                    /* ================================= */
-                    /* TURNSTILE */
-                    /* ================================= */
-
-                    let turnstileToken = "";
+                    dernierEnvoi =
+                        Date.now();
 
 
                     if (window.turnstile) {
 
-                        try {
-
-                            turnstileToken =
-                                window.turnstile.getResponse();
-
-                        } catch (error) {
-
-                            console.error(
-                                "Erreur Turnstile :",
-                                error
-                            );
-
-                        }
+                        window.turnstile.reset();
 
                     }
 
 
-                    if (!turnstileToken) {
+                } catch (error) {
 
-                        devisMessage.textContent =
-                            "Veuillez effectuer la vérification anti-robot.";
-
-                        devisMessage.style.color =
-                            "#b00020";
-
-                        return;
-
-                    }
+                    console.error(
+                        "Erreur lors de l'envoi :",
+                        error
+                    );
 
 
+                    if (successMessage) {
 
-                    /* ================================= */
-                    /* BOUTON */
-                    /* ================================= */
-
-                    const boutonEnvoi =
-                        devisForm.querySelector(
-                            'button[type="submit"]'
-                        );
-
-
-                    if (boutonEnvoi) {
-
-                        boutonEnvoi.disabled = true;
-
-                        boutonEnvoi.textContent =
-                            "Envoi en cours...";
+                        successMessage.textContent =
+                            "Une erreur est survenue. Votre message n'a pas pu être envoyé.";
 
                     }
 
 
+                    if (window.turnstile) {
 
-                    /* ================================= */
-                    /* ENVOI SUPABASE */
-                    /* ================================= */
-
-                    try {
-
-
-                        const response =
-                            await fetch(
-                                "https://bkmhffpzhdhxrgxkinkk.supabase.co/functions/v1/swift-api",
-                                {
-                                    method: "POST",
-
-                                    headers: {
-                                        "Content-Type":
-                                            "application/json"
-                                    },
-
-                                    body: JSON.stringify({
-
-                                        nom: nom,
-
-                                        telephone:
-                                            telephone,
-
-                                        email: email,
-
-                                        message:
-                                            messageFinal,
-
-                                        turnstileToken:
-                                            turnstileToken
-
-                                    })
-
-                                }
-                            );
-
-
-
-                        const result =
-                            await response.json();
-
-
-
-                        if (!response.ok) {
-
-                            throw new Error(
-                                result.error ||
-                                "Erreur lors de l'envoi."
-                            );
-
-                        }
-
-
-
-                        devisMessage.textContent =
-                            "✓ Votre demande de devis a bien été envoyée. Nous reviendrons vers vous prochainement.";
-
-
-                        devisMessage.style.color =
-                            "#176b36";
-
-
-                        devisForm.reset();
-
-
-                        afficherGroupe("");
-
-
-                        if (window.turnstile) {
-
-                            window.turnstile.reset();
-
-                        }
-
+                        window.turnstile.reset();
 
                     }
 
-                    catch (error) {
+                } finally {
 
+                    if (submitButton) {
 
-                        console.error(
-                            "Erreur devis :",
-                            error
-                        );
+                        submitButton.disabled = false;
 
-
-                        devisMessage.textContent =
-                            "Une erreur est survenue. Votre demande n'a pas pu être envoyée.";
-
-
-                        devisMessage.style.color =
-                            "#b00020";
-
-
-                        if (window.turnstile) {
-
-                            window.turnstile.reset();
-
-                        }
-
-                    }
-
-
-                    finally {
-
-
-                        if (boutonEnvoi) {
-
-                            boutonEnvoi.disabled = false;
-
-                            boutonEnvoi.textContent =
-                                "Envoyer ma demande de devis";
-
-                        }
+                        submitButton.textContent =
+                            "Envoyer le message";
 
                     }
 
                 }
-            );
 
-        }
+            }
+        );
 
     }
 
-);
+
+    console.log(
+        "ZAG SERVICE : tous les boutons sont initialisés"
+    );
+
+});
 
 </script>
 
