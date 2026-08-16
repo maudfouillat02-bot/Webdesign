@@ -9,6 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet"
@@ -17,11 +18,13 @@
     <link rel="stylesheet" href="./Style.css">
 
     <style>
+
         .menu {
             animation: menuApparition 0.3s ease;
         }
 
         @keyframes menuApparition {
+
             from {
                 opacity: 0;
                 transform: translateY(-10px);
@@ -31,6 +34,7 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         .service-card {
@@ -55,6 +59,7 @@
         }
 
         @keyframes descendre {
+
             0%, 100% {
                 transform: translateY(0);
                 opacity: 0.6;
@@ -64,7 +69,9 @@
                 transform: translateY(8px);
                 opacity: 1;
             }
+
         }
+
     </style>
 
     <script
@@ -72,13 +79,20 @@
         async
         defer>
     </script>
+
 </head>
+
 
 <body style="
     margin: 0;
     background: #F7F5F0;
     color: #0B1F33;
 ">
+
+
+<!-- ============================= -->
+<!-- HEADER -->
+<!-- ============================= -->
 
 <header class="header" style="
     background: #0B1F33;
@@ -108,6 +122,7 @@
 
     </div>
 
+
     <button
         id="menuButton"
         class="menu-button"
@@ -127,33 +142,61 @@
         ☰
     </button>
 
-    <nav class="menu" style="
-        display: none;
-        background: #0B1F33;
-        padding: 15px;
-        border-radius: 8px;
-        gap: 8px;
-        flex-direction: column;
-    ">
 
-        <a href="#accueil" style="
-            color: #C9A227;
-            text-decoration: none;
-            padding: 10px 15px;
-            font-weight: bold;
-        ">
+    <nav
+        class="menu"
+        style="
+            display: none;
+            background: #0B1F33;
+            padding: 15px;
+            border-radius: 8px;
+            gap: 8px;
+            flex-direction: column;
+        "
+    >
+
+        <a
+            href="#accueil"
+            style="
+                color: #C9A227;
+                text-decoration: none;
+                padding: 10px 15px;
+                font-weight: bold;
+            "
+        >
             Accueil
         </a>
 
-        <a href="#services" style="color: #C9A227;">
+        <a
+            href="#services"
+            style="
+                color: #C9A227;
+                text-decoration: none;
+                padding: 10px 15px;
+            "
+        >
             Services
         </a>
 
-        <a href="#apropos" style="color: #C9A227;">
+        <a
+            href="#apropos"
+            style="
+                color: #C9A227;
+                text-decoration: none;
+                padding: 10px 15px;
+            "
+        >
             À propos
         </a>
 
-        <a href="#contact" style="color: #C9A227;">
+        <a
+            href="#contact"
+            style="
+                color: #C9A227;
+                text-decoration: none;
+                padding: 10px 15px;
+            "
+        >
             Contact
         </a>
 
@@ -161,715 +204,893 @@
 
 </header>
 
+
+
 <main style="padding-top: 70px;">
 
-    <!-- ACCUEIL -->
 
-    <section
-        id="accueil"
-        class="hero"
-        style="
-            background: #0B1F33;
-            color: white;
-            min-height: 500px;
-            padding: 60px 20px;
-            text-align: center;
-            box-sizing: border-box;
-        "
-    >
+<!-- ============================= -->
+<!-- ACCUEIL -->
+<!-- ============================= -->
 
-        <div class="hero-content">
+<section
+    id="accueil"
+    class="hero"
+    style="
+        background: #0B1F33;
+        color: white;
+        min-height: 500px;
+        padding: 60px 20px;
+        text-align: center;
+        box-sizing: border-box;
+    "
+>
 
-            <p style="
-                color: #C9A227;
-                font-size: 15px;
-                letter-spacing: 3px;
-                font-weight: bold;
-            ">
-                BIENVENUE CHEZ ZAG SERVICE
-            </p>
-
-            <h1 style="
-                color: white;
-                font-size: 48px;
-                margin: 25px 0;
-            ">
-                Des solutions pour vos projets
-            </h1>
-
-            <p style="
-                color: white;
-                font-size: 19px;
-                line-height: 1.7;
-            ">
-                Nous vous accompagnons avec des solutions
-                adaptées dans l'événementiel, le transport
-                et l'immobilier.
-            </p>
-
-            <button
-                id="serviceButton"
-                type="button"
-                style="
-                    background: #C9A227;
-                    color: #0B1F33;
-                    font-weight: bold;
-                    padding: 15px 28px;
-                    margin: 20px auto;
-                    display: block;
-                    border: none;
-                    border-radius: 8px;
-                    font-size: 16px;
-                    cursor: pointer;
-                    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-                "
-            >
-                Découvrir nos services
-            </button>
-
-            <div style="
-                margin-top: 30px;
-                color: #C9A227;
-                font-size: 14px;
-                letter-spacing: 1px;
-                animation: descendre 1.5s infinite;
-            ">
-                ↓ Faites défiler
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SERVICES -->
-
-    <section
-        id="services"
-        class="services"
-        style="
-            display: none;
-            background: #F7F5F0;
-            padding: 60px 20px;
-            text-align: center;
-        "
-    >
-
-        <h2 style="
-            color: #0B1F33;
-            font-size: 36px;
-            margin-bottom: 40px;
-        ">
-            Nos services
-        </h2>
-
-        <div
-            class="services-container"
-            style="
-                display: flex;
-                justify-content: center;
-                gap: 25px;
-                flex-wrap: wrap;
-            "
-        >
-
-            <!-- ÉVÉNEMENTIEL -->
-
-            <div
-                class="service-card"
-                style="
-                    width: 250px;
-                    min-height: 240px;
-                    padding: 30px;
-                    background: white;
-                    border-radius: 16px;
-                    border-top: 5px solid #C9A227;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                "
-            >
-
-                <img
-                    src="./IMG-20260816-WA0004.jpg"
-                    alt="Événementiel"
-                    style="
-                        width: 100%;
-                        height: 160px;
-                        object-fit: cover;
-                        border-radius: 12px;
-                        margin-bottom: 15px;
-                        display: block;
-                    "
-                >
-
-                <h3 style="color: #0B1F33;">
-                    Événementiel
-                </h3>
-
-                <p style="color: #555;">
-                    Organisation et accompagnement
-                    de vos événements.
-                </p>
-
-                <button
-                    id="eventButton"
-                    type="button"
-                    style="
-                        margin-top: 15px;
-                        padding: 10px 18px;
-                        background: #C9A227;
-                        color: #0B1F33;
-                        border: none;
-                        border-radius: 6px;
-                        font-weight: bold;
-                        cursor: pointer;
-                    "
-                >
-                    En savoir plus
-                </button>
-
-                <p
-                    id="eventInfo"
-                    style="
-                        display: none;
-                        color: #555;
-                        margin-top: 20px;
-                        line-height: 1.6;
-                    "
-                >
-                    Zag Service vous accompagne dans
-                    l'organisation de vos événements,
-                    de la préparation à la réalisation.
-                </p>
-
-            </div>
-
-
-            <!-- TRANSPORT -->
-
-            <div
-                class="service-card"
-                style="
-                    width: 250px;
-                    min-height: 240px;
-                    padding: 30px;
-                    background: white;
-                    border-radius: 16px;
-                    border-top: 5px solid #C9A227;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                "
-            >
-
-                <img
-                    src="./IMG-20260816-WA0003.jpg"
-                    alt="Transport"
-                    style="
-                        width: 100%;
-                        height: 160px;
-                        object-fit: cover;
-                        border-radius: 12px;
-                        margin-bottom: 15px;
-                        display: block;
-                    "
-                >
-
-                <h3 style="color: #0B1F33;">
-                    Transport
-                </h3>
-
-                <p style="color: #555;">
-                    Des solutions de transport
-                    adaptées à vos besoins.
-                </p>
-
-                <button
-                    id="transportButton"
-                    type="button"
-                    style="
-                        margin-top: 15px;
-                        padding: 10px 18px;
-                        background: #C9A227;
-                        color: #0B1F33;
-                        border: none;
-                        border-radius: 6px;
-                        font-weight: bold;
-                        cursor: pointer;
-                    "
-                >
-                    En savoir plus
-                </button>
-
-                <p
-                    id="transportInfo"
-                    style="
-                        display: none;
-                        color: #555;
-                        margin-top: 20px;
-                        line-height: 1.6;
-                    "
-                >
-                    Zag Service propose des solutions
-                    de transport adaptées aux besoins
-                    des particuliers et des entreprises.
-                </p>
-
-            </div>
-
-
-            <!-- IMMOBILIER -->
-
-            <div
-                class="service-card"
-                style="
-                    width: 250px;
-                    min-height: 240px;
-                    padding: 30px;
-                    background: white;
-                    border-radius: 16px;
-                    border-top: 5px solid #C9A227;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                "
-            >
-
-                <img
-                    src="./IMG-20260816-WA0005.jpg"
-                    alt="Immobilier"
-                    style="
-                        width: 100%;
-                        height: 160px;
-                        object-fit: cover;
-                        border-radius: 12px;
-                        margin-bottom: 15px;
-                        display: block;
-                    "
-                >
-
-                <h3 style="color: #0B1F33;">
-                    Immobilier
-                </h3>
-
-                <p style="color: #555;">
-                    Accompagnement dans vos
-                    projets immobiliers.
-                </p>
-
-                <button
-                    id="immobilierButton"
-                    type="button"
-                    style="
-                        margin-top: 15px;
-                        padding: 10px 18px;
-                        background: #C9A227;
-                        color: #0B1F33;
-                        border: none;
-                        border-radius: 6px;
-                        font-weight: bold;
-                        cursor: pointer;
-                    "
-                >
-                    En savoir plus
-                </button>
-
-                <p
-                    id="immobilierInfo"
-                    style="
-                        display: none;
-                        color: #555;
-                        margin-top: 20px;
-                        line-height: 1.6;
-                    "
-                >
-                    Zag Service vous accompagne dans
-                    vos projets immobiliers avec des
-                    solutions adaptées à vos besoins.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- POURQUOI ZAG SERVICE -->
-
-    <section
-        id="pourquoi"
-        style="
-            background: #F7F5F0;
-            color: #0B1F33;
-            padding: 60px 20px;
-            text-align: center;
-        "
-    >
-
-        <h2 style="
-            color: #0B1F33;
-            font-size: 32px;
-            margin-bottom: 20px;
-        ">
-            Pourquoi choisir Zag Service ?
-        </h2>
+    <div class="hero-content">
 
         <p style="
-            max-width: 700px;
-            margin: auto;
-            font-size: 17px;
+            color: #C9A227;
+            font-size: 15px;
+            letter-spacing: 3px;
+            font-weight: bold;
+        ">
+            BIENVENUE CHEZ ZAG SERVICE
+        </p>
+
+
+        <h1 style="
+            color: white;
+            font-size: 48px;
+            margin: 25px 0;
+        ">
+            Des solutions pour vos projets
+        </h1>
+
+
+        <p style="
+            color: white;
+            font-size: 19px;
             line-height: 1.7;
         ">
-            Une approche professionnelle et des solutions adaptées
-            pour vous accompagner dans vos projets.
+            Nous vous accompagnons avec des solutions
+            adaptées dans l'événementiel, le transport
+            et l'immobilier.
         </p>
 
 
-        <div style="
-            max-width: 300px;
-            margin: 30px auto 0;
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-            border-top: 4px solid #C9A227;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            box-sizing: border-box;
-        ">
-
-            <div style="
-                font-size: 30px;
-                margin-bottom: 10px;
-            ">
-                ⭐
-            </div>
-
-            <h3 style="
-                color: #0B1F33;
-                margin: 10px 0;
-            ">
-                Professionnalisme
-            </h3>
-
-            <p style="
-                color: #555;
-                line-height: 1.6;
-                margin: 0;
-            ">
-                Un accompagnement sérieux et attentif
-                pour répondre à vos besoins.
-            </p>
-
-        </div>
-
-
-        <div style="
-            max-width: 300px;
-            margin: 30px auto 0;
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-            border-top: 4px solid #C9A227;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            box-sizing: border-box;
-        ">
-
-            <div style="
-                font-size: 30px;
-                margin-bottom: 10px;
-            ">
-                🤝
-            </div>
-
-            <h3 style="
-                color: #0B1F33;
-                margin: 10px 0;
-            ">
-                Fiabilité
-            </h3>
-
-            <p style="
-                color: #555;
-                line-height: 1.6;
-                margin: 0;
-            ">
-                Nous accordons de l'importance à la qualité
-                et au respect de nos engagements.
-            </p>
-
-        </div>
-
-
-        <div style="
-            max-width: 300px;
-            margin: 30px auto 0;
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-            border-top: 4px solid #C9A227;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            box-sizing: border-box;
-        ">
-
-            <div style="
-                font-size: 30px;
-                margin-bottom: 10px;
-            ">
-                🔹
-            </div>
-
-            <h3 style="
-                color: #0B1F33;
-                margin: 10px 0;
-            ">
-                Polyvalence
-            </h3>
-
-            <p style="
-                color: #555;
-                line-height: 1.6;
-                margin: 0;
-            ">
-                Plusieurs domaines de services réunis
-                pour vous accompagner selon vos besoins.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- À PROPOS -->
-
-    <section
-        id="apropos"
-        style="
-            display: none;
-            background: #0B1F33;
-            color: white;
-            padding: 70px 20px;
-            text-align: center;
-        "
-    >
-
-        <h2 style="
-            color: #C9A227;
-            font-size: 36px;
-            margin-bottom: 25px;
-        ">
-            À propos de Zag Service
-        </h2>
-
-        <p style="
-            max-width: 700px;
-            margin: auto;
-            font-size: 18px;
-            line-height: 1.8;
-        ">
-            Zag Service accompagne les particuliers et les entreprises
-            dans la réalisation de leurs projets avec des solutions
-            adaptées, professionnelles et fiables.
-        </p>
-
-    </section>
-
-
-    <!-- CONTACT -->
-
-    <section
-        id="contact"
-        style="
-            display: none;
-            background: #F7F5F0;
-            color: #0B1F33;
-            padding: 70px 20px;
-            text-align: center;
-        "
-    >
-
-        <h2 style="
-            color: #0B1F33;
-            font-size: 36px;
-            margin-bottom: 15px;
-        ">
-            Contactez-nous
-        </h2>
-
-        <p style="
-            font-size: 18px;
-            margin-bottom: 35px;
-        ">
-            Vous avez un projet ? Parlons-en.
-        </p>
-
-
-        <form
-            id="contactForm"
+        <button
+            id="serviceButton"
+            type="button"
             style="
-                max-width: 500px;
-                margin: auto;
-                text-align: left;
-            "
-        >
-
-            <label>Nom</label>
-
-            <input
-                type="text"
-                id="nom"
-                name="nom"
-                placeholder="Votre nom"
-                required
-                style="
-                    width: 100%;
-                    padding: 14px;
-                    margin: 8px 0 20px;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    box-sizing: border-box;
-                "
-            >
-
-
-            <label>Téléphone</label>
-
-            <input
-                type="tel"
-                id="telephone"
-                name="telephone"
-                placeholder="Votre numéro de téléphone"
-                required
-                style="
-                    width: 100%;
-                    padding: 14px;
-                    margin: 8px 0 20px;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    box-sizing: border-box;
-                "
-            >
-
-
-            <label>Email</label>
-
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Votre adresse email"
-                required
-                style="
-                    width: 100%;
-                    padding: 14px;
-                    margin: 8px 0 20px;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    box-sizing: border-box;
-                "
-            >
-
-
-            <label>Message</label>
-
-            <textarea
-                id="message"
-                name="message"
-                placeholder="Votre message"
-                rows="5"
-                required
-                style="
-                    width: 100%;
-                    padding: 14px;
-                    margin: 8px 0 20px;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    box-sizing: border-box;
-                "
-            ></textarea>
-
-
-            <div
-                class="cf-turnstile"
-                data-sitekey="0x4AAAAAAEQQNc9tHUCp53Vn"
-                data-theme="light"
-            ></div>
-
-
-            <button
-                type="submit"
-                style="
-                    width: 100%;
-                    background: #C9A227;
-                    color: #0B1F33;
-                    font-weight: bold;
-                    padding: 14px;
-                    border: none;
-                    border-radius: 8px;
-                    cursor: pointer;
-                "
-            >
-                Envoyer le message
-            </button>
-
-            <p id="successMessage" class="success-message"></p>
-
-        </form>
-
-
-        <a
-            href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20services."
-            target="_blank"
-            style="
-                display: block;
-                max-width: 500px;
-                margin: 25px auto 0;
-                padding: 15px;
                 background: #C9A227;
                 color: #0B1F33;
-                text-decoration: none;
-                text-align: center;
                 font-weight: bold;
+                padding: 15px 28px;
+                margin: 20px auto;
+                display: block;
+                border: none;
                 border-radius: 8px;
-                box-sizing: border-box;
+                font-size: 16px;
+                cursor: pointer;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.25);
             "
         >
-            Nous contacter sur WhatsApp
-        </a>
+            Découvrir nos services
+        </button>
 
-    </section>
+
+        <div style="
+            margin-top: 30px;
+            color: #C9A227;
+            font-size: 14px;
+            letter-spacing: 1px;
+            animation: descendre 1.5s infinite;
+        ">
+            ↓ Faites défiler
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ============================= -->
+<!-- SERVICES -->
+<!-- ============================= -->
+
+<section
+    id="services"
+    class="services"
+    style="
+        display: none;
+        background: #F7F5F0;
+        padding: 60px 20px;
+        text-align: center;
+    "
+>
+
+    <h2 style="
+        color: #0B1F33;
+        font-size: 36px;
+        margin-bottom: 40px;
+    ">
+        Nos services
+    </h2>
+
+
+    <div
+        class="services-container"
+        style="
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        "
+    >
+
+
+
+<!-- ============================= -->
+<!-- ÉVÉNEMENTIEL -->
+<!-- ============================= -->
+
+<div
+    class="service-card"
+    style="
+        width: 250px;
+        min-height: 240px;
+        padding: 30px;
+        background: white;
+        border-radius: 16px;
+        border-top: 5px solid #C9A227;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    "
+>
+
+
+    <img
+        src="./IMG-20260816-WA0004.jpg"
+        alt="Événementiel"
+        style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: block;
+        "
+    >
+
+
+    <h3 style="color: #0B1F33;">
+        Événementiel
+    </h3>
+
+
+    <p style="color: #555;">
+        Organisation et accompagnement
+        de vos événements.
+    </p>
+
+
+    <button
+        id="eventButton"
+        type="button"
+        style="
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #C9A227;
+            color: #0B1F33;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        "
+    >
+        En savoir plus
+    </button>
+
+
+    <p
+        id="eventInfo"
+        style="
+            display: none;
+            color: #555;
+            margin-top: 20px;
+            line-height: 1.7;
+            text-align: left;
+        "
+    >
+
+        <strong style="color:#0B1F33;">
+            Organisation de vos événements
+        </strong>
+
+        <br><br>
+
+        Zag Service vous accompagne dans la préparation,
+        l'organisation et la coordination de vos événements,
+        avec une attention particulière portée à la qualité
+        de chaque étape.
+
+        <br><br>
+
+        <strong style="color:#0B1F33;">
+            Nos prestations événementielles peuvent comprendre :
+        </strong>
+
+        <br><br>
+
+        • Organisation et coordination de l'événement<br>
+        • Préparation et suivi logistique<br>
+        • Coordination des différents intervenants<br>
+        • Accompagnement avant et pendant l'événement<br>
+        • Organisation d'événements privés et professionnels
+
+        <br><br>
+
+        <strong style="color:#0B1F33;">
+            Photographie événementielle
+        </strong>
+
+        <br><br>
+
+        Nous proposons également la photographie
+        événementielle afin de conserver les moments
+        importants de vos manifestations.
+
+        <br><br>
+
+        La couverture photographique peut notamment
+        concerner les mariages, anniversaires, cérémonies,
+        événements familiaux et événements professionnels.
+
+        <br><br>
+
+        Notre objectif est de vous offrir un accompagnement
+        organisé et adapté à votre événement, tout en
+        permettant de conserver les moments importants
+        grâce à la photographie.
+
+    </p>
+
+</div>
+
+
+
+<!-- ============================= -->
+<!-- TRANSPORT -->
+<!-- ============================= -->
+
+<div
+    class="service-card"
+    style="
+        width: 250px;
+        min-height: 240px;
+        padding: 30px;
+        background: white;
+        border-radius: 16px;
+        border-top: 5px solid #C9A227;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    "
+>
+
+
+    <img
+        src="./IMG-20260816-WA0003.jpg"
+        alt="Transport"
+        style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: block;
+        "
+    >
+
+
+    <h3 style="color:#0B1F33;">
+        Transport
+    </h3>
+
+
+    <p style="color:#555;">
+        Des solutions de transport
+        adaptées à vos besoins.
+    </p>
+
+
+    <button
+        id="transportButton"
+        type="button"
+        style="
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #C9A227;
+            color: #0B1F33;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        "
+    >
+        En savoir plus
+    </button>
+
+
+    <p
+        id="transportInfo"
+        style="
+            display:none;
+            color:#555;
+            margin-top:20px;
+            line-height:1.7;
+            text-align:left;
+        "
+    >
+
+        <strong style="color:#0B1F33;">
+            Des solutions adaptées à vos déplacements
+        </strong>
+
+        <br><br>
+
+        Zag Service propose des solutions de transport
+        adaptées aux besoins des particuliers et des
+        entreprises.
+
+        <br><br>
+
+        Nous pouvons vous accompagner dans l'organisation
+        de vos déplacements selon vos besoins et les
+        caractéristiques de votre demande.
+
+        <br><br>
+
+        <strong style="color:#0B1F33;">
+            Nos solutions peuvent notamment concerner :
+        </strong>
+
+        <br><br>
+
+        • Déplacements de particuliers<br>
+        • Déplacements professionnels<br>
+        • Transport lié aux événements<br>
+        • Transport pour entreprises<br>
+        • Organisation et coordination des déplacements<br>
+        • Solutions ponctuelles selon vos besoins
+
+        <br><br>
+
+        Notre priorité est de comprendre votre besoin afin
+        de vous orienter vers une solution de transport
+        adaptée.
+
+    </p>
+
+</div>
+
+
+
+<!-- ============================= -->
+<!-- IMMOBILIER -->
+<!-- ============================= -->
+
+<div
+    class="service-card"
+    style="
+        width: 250px;
+        min-height: 240px;
+        padding: 30px;
+        background: white;
+        border-radius: 16px;
+        border-top: 5px solid #C9A227;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    "
+>
+
+
+    <img
+        src="./IMG-20260816-WA0005.jpg"
+        alt="Immobilier"
+        style="
+            width:100%;
+            height:160px;
+            object-fit:cover;
+            border-radius:12px;
+            margin-bottom:15px;
+            display:block;
+        "
+    >
+
+
+    <h3 style="color:#0B1F33;">
+        Immobilier
+    </h3>
+
+
+    <p style="color:#555;">
+        Accompagnement dans vos
+        projets immobiliers.
+    </p>
+
+
+    <button
+        id="immobilierButton"
+        type="button"
+        style="
+            margin-top:15px;
+            padding:10px 18px;
+            background:#C9A227;
+            color:#0B1F33;
+            border:none;
+            border-radius:6px;
+            font-weight:bold;
+            cursor:pointer;
+        "
+    >
+        En savoir plus
+    </button>
+
+
+    <p
+        id="immobilierInfo"
+        style="
+            display:none;
+            color:#555;
+            margin-top:20px;
+            line-height:1.7;
+            text-align:left;
+        "
+    >
+
+        <strong style="color:#0B1F33;">
+            Un accompagnement pour vos projets immobiliers
+        </strong>
+
+        <br><br>
+
+        Zag Service vous accompagne dans vos recherches
+        et démarches immobilières en fonction de votre
+        projet et de vos critères.
+
+        <br><br>
+
+        <strong style="color:#0B1F33;">
+            Notre accompagnement peut notamment porter sur :
+        </strong>
+
+        <br><br>
+
+        • Recherche de biens correspondant à vos critères<br>
+        • Accompagnement dans vos projets de location<br>
+        • Accompagnement dans vos projets d'achat ou de vente<br>
+        • Orientation selon votre projet immobilier<br>
+        • Mise en relation avec les interlocuteurs concernés<br>
+        • Accompagnement dans les différentes étapes du projet
+
+        <br><br>
+
+        Notre objectif est de comprendre votre projet et
+        de vous orienter vers des solutions correspondant
+        à vos besoins.
+
+    </p>
+
+</div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ============================= -->
+<!-- POURQUOI CHOISIR ZAG SERVICE -->
+<!-- ============================= -->
+
+<section
+    id="pourquoi"
+    style="
+        background:#F7F5F0;
+        color:#0B1F33;
+        padding:60px 20px;
+        text-align:center;
+    "
+>
+
+    <h2 style="
+        color:#0B1F33;
+        font-size:32px;
+        margin-bottom:20px;
+    ">
+        Pourquoi choisir Zag Service ?
+    </h2>
+
+
+    <p style="
+        max-width:700px;
+        margin:auto;
+        font-size:17px;
+        line-height:1.7;
+    ">
+        Une approche professionnelle et des solutions adaptées
+        pour vous accompagner dans vos projets.
+    </p>
+
+
+    <div style="
+        max-width:300px;
+        margin:30px auto 0;
+        padding:25px;
+        background:white;
+        border-radius:12px;
+        border-top:4px solid #C9A227;
+        box-shadow:0 5px 15px rgba(0,0,0,0.08);
+        box-sizing:border-box;
+    ">
+
+        <div style="
+            font-size:30px;
+            margin-bottom:10px;
+        ">
+            ⭐
+        </div>
+
+        <h3 style="
+            color:#0B1F33;
+            margin:10px 0;
+        ">
+            Professionnalisme
+        </h3>
+
+        <p style="
+            color:#555;
+            line-height:1.6;
+            margin:0;
+        ">
+            Un accompagnement sérieux et attentif
+            pour répondre à vos besoins.
+        </p>
+
+    </div>
+
+
+    <div style="
+        max-width:300px;
+        margin:30px auto 0;
+        padding:25px;
+        background:white;
+        border-radius:12px;
+        border-top:4px solid #C9A227;
+        box-shadow:0 5px 15px rgba(0,0,0,0.08);
+        box-sizing:border-box;
+    ">
+
+        <div style="
+            font-size:30px;
+            margin-bottom:10px;
+        ">
+            🤝
+        </div>
+
+        <h3 style="
+            color:#0B1F33;
+            margin:10px 0;
+        ">
+            Fiabilité
+        </h3>
+
+        <p style="
+            color:#555;
+            line-height:1.6;
+            margin:0;
+        ">
+            Nous accordons de l'importance à la qualité
+            et au respect de nos engagements.
+        </p>
+
+    </div>
+
+
+    <div style="
+        max-width:300px;
+        margin:30px auto 0;
+        padding:25px;
+        background:white;
+        border-radius:12px;
+        border-top:4px solid #C9A227;
+        box-shadow:0 5px 15px rgba(0,0,0,0.08);
+        box-sizing:border-box;
+    ">
+
+        <div style="
+            font-size:30px;
+            margin-bottom:10px;
+        ">
+            🔹
+        </div>
+
+        <h3 style="
+            color:#0B1F33;
+            margin:10px 0;
+        ">
+            Polyvalence
+        </h3>
+
+        <p style="
+            color:#555;
+            line-height:1.6;
+            margin:0;
+        ">
+            Plusieurs domaines de services réunis
+            pour vous accompagner selon vos besoins.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ============================= -->
+<!-- À PROPOS -->
+<!-- ============================= -->
+
+<section
+    id="apropos"
+    style="
+        display:none;
+        background:#0B1F33;
+        color:white;
+        padding:70px 20px;
+        text-align:center;
+    "
+>
+
+    <h2 style="
+        color:#C9A227;
+        font-size:36px;
+        margin-bottom:25px;
+    ">
+        À propos de Zag Service
+    </h2>
+
+
+    <p style="
+        max-width:700px;
+        margin:auto;
+        font-size:18px;
+        line-height:1.8;
+    ">
+        Zag Service accompagne les particuliers et les
+        entreprises dans la réalisation de leurs projets
+        avec des solutions adaptées, professionnelles
+        et fiables.
+    </p>
+
+</section>
+
+
+
+<!-- ============================= -->
+<!-- CONTACT -->
+<!-- ============================= -->
+
+<section
+    id="contact"
+    style="
+        display:none;
+        background:#F7F5F0;
+        color:#0B1F33;
+        padding:70px 20px;
+        text-align:center;
+    "
+>
+
+    <h2 style="
+        color:#0B1F33;
+        font-size:36px;
+        margin-bottom:15px;
+    ">
+        Contactez-nous
+    </h2>
+
+
+    <p style="
+        font-size:18px;
+        margin-bottom:35px;
+    ">
+        Vous avez un projet ? Parlons-en.
+    </p>
+
+
+    <form
+        id="contactForm"
+        style="
+            max-width:500px;
+            margin:auto;
+            text-align:left;
+        "
+    >
+
+        <label>Nom</label>
+
+        <input
+            type="text"
+            id="nom"
+            name="nom"
+            placeholder="Votre nom"
+            required
+            style="
+                width:100%;
+                padding:14px;
+                margin:8px 0 20px;
+                border:1px solid #ddd;
+                border-radius:8px;
+                box-sizing:border-box;
+            "
+        >
+
+
+        <label>Téléphone</label>
+
+        <input
+            type="tel"
+            id="telephone"
+            name="telephone"
+            placeholder="Votre numéro de téléphone"
+            required
+            style="
+                width:100%;
+                padding:14px;
+                margin:8px 0 20px;
+                border:1px solid #ddd;
+                border-radius:8px;
+                box-sizing:border-box;
+            "
+        >
+
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Votre adresse email"
+            required
+            style="
+                width:100%;
+                padding:14px;
+                margin:8px 0 20px;
+                border:1px solid #ddd;
+                border-radius:8px;
+                box-sizing:border-box;
+            "
+        >
+
+
+        <label>Message</label>
+
+        <textarea
+            id="message"
+            name="message"
+            placeholder="Votre message"
+            rows="5"
+            required
+            style="
+                width:100%;
+                padding:14px;
+                margin:8px 0 20px;
+                border:1px solid #ddd;
+                border-radius:8px;
+                box-sizing:border-box;
+            "
+        ></textarea>
+
+
+        <div
+            class="cf-turnstile"
+            data-sitekey="0x4AAAAAAEQQNc9tHUCp53Vn"
+            data-theme="light"
+        ></div>
+
+
+        <button
+            type="submit"
+            style="
+                width:100%;
+                background:#C9A227;
+                color:#0B1F33;
+                font-weight:bold;
+                padding:14px;
+                border:none;
+                border-radius:8px;
+                cursor:pointer;
+            "
+        >
+            Envoyer le message
+        </button>
+
+
+        <p
+            id="successMessage"
+            class="success-message">
+        </p>
+
+    </form>
+
+
+    <a
+        href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20services."
+        target="_blank"
+        style="
+            display:block;
+            max-width:500px;
+            margin:25px auto 0;
+            padding:15px;
+            background:#C9A227;
+            color:#0B1F33;
+            text-decoration:none;
+            text-align:center;
+            font-weight:bold;
+            border-radius:8px;
+            box-sizing:border-box;
+        "
+    >
+        Nous contacter sur WhatsApp
+    </a>
+
+</section>
+
 
 </main>
 
 
+
+<!-- ============================= -->
 <!-- FOOTER -->
+<!-- ============================= -->
 
 <footer style="
-    background: #0B1F33;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
+    background:#0B1F33;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
 ">
 
     <h2 style="
-        color: #C9A227;
-        margin-bottom: 15px;
+        color:#C9A227;
+        margin-bottom:15px;
     ">
         ZAG SERVICE
     </h2>
 
+
     <p style="
-        color: white;
-        font-size: 16px;
+        color:white;
+        font-size:16px;
     ">
         Des solutions professionnelles pour vos projets.
     </p>
 
+
     <p style="
-        color: #C9A227;
-        margin-top: 25px;
+        color:#C9A227;
+        margin-top:25px;
     ">
         Événementiel • Transport • Immobilier
     </p>
 
+
     <p style="
-        color: white;
-        font-size: 14px;
-        margin-top: 25px;
+        color:white;
+        font-size:14px;
+        margin-top:25px;
     ">
         © 2026 Zag Service — Tous droits réservés.
     </p>
@@ -877,9 +1098,15 @@
 </footer>
 
 
+
+<!-- ============================= -->
+<!-- JAVASCRIPT -->
+<!-- ============================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="./Script.js"></script>
+
 
 </body>
 </html>
