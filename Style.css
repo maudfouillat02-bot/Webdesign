@@ -1,6 +1,8 @@
-/* =================================
+/* =========================================
    ZAG SERVICE — STYLE PRINCIPAL
-   ================================= */
+   ========================================= */
+
+/* ---------- BASE ---------- */
 
 * {
     box-sizing: border-box;
@@ -8,91 +10,233 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     background: #F7F5F0;
     color: #0B1F33;
+    overflow-x: hidden;
 }
 
-
-/* =================================
-   BOUTONS
-   ================================= */
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
 
 button {
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 button:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 
-/* =================================
+/* =========================================
    HEADER
-   ================================= */
+   ========================================= */
 
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    min-height: 70px;
     box-sizing: border-box;
 }
 
 
-/* =================================
+/* =========================================
    LOGO
-   ================================= */
+   ========================================= */
 
 .logo {
+    display: flex;
+    align-items: center;
     cursor: pointer;
     user-select: none;
 }
 
+.logo img {
+    display: block;
+    object-fit: contain;
+    max-width: 100%;
+}
 
-/* =================================
+
+/* =========================================
+   BOUTON MENU
+   ========================================= */
+
+.menu-button {
+    position: relative;
+    z-index: 100001 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation;
+}
+
+
+/* =========================================
    MENU
-   ================================= */
+   ========================================= */
 
 .menu {
     box-sizing: border-box;
+    z-index: 100000 !important;
 }
 
 .menu a {
     text-decoration: none;
+    display: block;
+    transition: background 0.2s ease,
+                color 0.2s ease;
 }
 
 .menu a:hover {
     color: #E0C45A !important;
+    background: rgba(201, 162, 39, 0.12);
 }
 
 
-/* =================================
+/* =========================================
    SERVICES
-   ================================= */
+   ========================================= */
+
+.services-container {
+    width: 100%;
+}
 
 .service-card {
     box-sizing: border-box;
+    overflow: visible;
 }
 
 .service-card button {
     cursor: pointer;
+    touch-action: manipulation;
+}
+
+.service-image {
+    display: block;
+    max-width: 100%;
 }
 
 
-/* =================================
-   RESPONSIVE MOBILE
-   ================================= */
+/* =========================================
+   INFORMATIONS DES SERVICES
+   ========================================= */
+
+.service-info {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+
+/* =========================================
+   FORMULAIRES
+   ========================================= */
+
+input,
+textarea,
+select {
+    max-width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid rgba(201, 162, 39, 0.35);
+    border-color: #C9A227;
+}
+
+
+/* =========================================
+   DEVIS
+   ========================================= */
+
+#devis {
+    width: 100%;
+}
+
+.form-container {
+    width: 100%;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form-container select {
+    cursor: pointer;
+}
+
+
+/* =========================================
+   CONTACT
+   ========================================= */
+
+#contact {
+    width: 100%;
+}
+
+.contact-container {
+    width: 100%;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    width: 100%;
+}
+
+
+/* =========================================
+   RESPONSIVE — TABLETTE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .services-container {
+        gap: 20px;
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE — MOBILE
+   ========================================= */
 
 @media (max-width: 600px) {
 
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
     .header {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .logo img {
+        max-width: 115px;
     }
 
     .menu-button {
@@ -102,12 +246,99 @@ button:hover {
     }
 
     .menu {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: auto;
+        position: absolute !important;
+        top: 68px !important;
+        right: 10px !important;
+        left: auto !important;
         width: 220px;
-        z-index: 100000;
+        max-width: calc(100vw - 20px);
+        z-index: 100000 !important;
+    }
+
+    .menu a {
+        padding: 11px 15px;
+    }
+
+    .services {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .services-container {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .service-card {
+        width: 100%;
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .service-image {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+    }
+
+    .standard-section {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #devis {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #contact {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+}
+
+
+/* =========================================
+   PETITS ÉCRANS
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    .menu {
+        width: 200px;
+        right: 5px !important;
+    }
+
+    .service-card {
+        padding: 20px;
+    }
+
+    .hero {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITÉ
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 
 }
