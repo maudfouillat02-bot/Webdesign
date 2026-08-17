@@ -22,6 +22,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ==========================================
+    // FONCTION FERMER LE MENU
+    // ==========================================
+
+    function fermerMenu() {
+
+        if (menu) {
+            menu.style.display = "none";
+        }
+
+    }
+
+
+    // ==========================================
     // MENU ☰
     // ==========================================
 
@@ -35,9 +48,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.getComputedStyle(menu).display === "flex";
 
             if (menuOuvert) {
-                menu.style.display = "none";
+
+                fermerMenu();
+
             } else {
+
                 menu.style.display = "flex";
+
             }
 
         });
@@ -47,41 +64,92 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ==========================================
     // FERMER LE MENU AU DÉFILEMENT
+    // VERSION RENFORCÉE ANDROID
     // ==========================================
 
-    window.addEventListener("scroll", function () {
-
-        if (menu && window.getComputedStyle(menu).display === "flex") {
-            menu.style.display = "none";
+    // Défilement classique
+    window.addEventListener(
+        "scroll",
+        fermerMenu,
+        {
+            passive: true
         }
+    );
 
-    });
+
+    // Molette souris
+    window.addEventListener(
+        "wheel",
+        fermerMenu,
+        {
+            passive: true
+        }
+    );
+
+
+    // Mouvement tactile Android
+    window.addEventListener(
+        "touchmove",
+        fermerMenu,
+        {
+            passive: true
+        }
+    );
+
+
+    // Début du geste tactile
+    window.addEventListener(
+        "touchstart",
+        function () {
+
+            if (
+                menu &&
+                window.getComputedStyle(menu).display === "flex"
+            ) {
+
+                // On ne ferme pas immédiatement
+                // si l'utilisateur touche simplement le menu.
+                // Le touchmove s'en chargera pendant le défilement.
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
 
 
     // ==========================================
-    // FERMER LE MENU SI ON CLIQUE AILLEURS
+    // FERMER SI ON CLIQUE AILLEURS
     // ==========================================
 
-    document.addEventListener("click", function (event) {
+    document.addEventListener(
+        "click",
+        function (event) {
 
-        if (!menu || !menuButton) {
-            return;
+            if (!menu || !menuButton) {
+                return;
+            }
+
+            const menuOuvert =
+                window.getComputedStyle(menu).display === "flex";
+
+            if (!menuOuvert) {
+                return;
+            }
+
+            if (
+                !menu.contains(event.target) &&
+                !menuButton.contains(event.target)
+            ) {
+
+                fermerMenu();
+
+            }
+
         }
-
-        const menuOuvert =
-            window.getComputedStyle(menu).display === "flex";
-
-        if (
-            menuOuvert &&
-            !menu.contains(event.target) &&
-            !menuButton.contains(event.target)
-        ) {
-
-            menu.style.display = "none";
-
-        }
-
-    });
+    );
 
 
     // ==========================================
@@ -90,37 +158,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (serviceButton && services) {
 
-        serviceButton.addEventListener("click", function () {
+        serviceButton.addEventListener(
+            "click",
+            function () {
 
-            const servicesCaches =
-                window.getComputedStyle(services).display === "none";
+                const servicesCaches =
+                    window.getComputedStyle(services).display === "none";
 
-            if (servicesCaches) {
 
-                services.style.display = "block";
+                if (servicesCaches) {
 
-                serviceButton.textContent =
-                    "Masquer les services";
+                    services.style.display = "block";
 
-                setTimeout(function () {
+                    serviceButton.textContent =
+                        "Masquer les services";
 
-                    services.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
 
-                }, 50);
+                    setTimeout(
+                        function () {
 
-            } else {
+                            services.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
 
-                services.style.display = "none";
+                        },
+                        50
+                    );
 
-                serviceButton.textContent =
-                    "Découvrir nos services";
+
+                } else {
+
+                    services.style.display = "none";
+
+                    serviceButton.textContent =
+                        "Découvrir nos services";
+
+                }
 
             }
-
-        });
+        );
 
     }
 
@@ -133,81 +210,109 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".info-button");
 
 
-    infoButtons.forEach(function (button) {
+    infoButtons.forEach(
+        function (button) {
 
-        button.addEventListener("click", function (event) {
+            button.addEventListener(
+                "click",
+                function (event) {
 
-            event.preventDefault();
-
-            const infoId =
-                button.getAttribute("data-info");
-
-            const info =
-                document.getElementById(infoId);
-
-            if (!info) {
-                console.warn(
-                    "Information introuvable :",
-                    infoId
-                );
-                return;
-            }
-
-            const card =
-                button.closest(".service-card");
-
-            const hideButton =
-                card
-                    ? card.querySelector(".hide-button")
-                    : null;
+                    event.preventDefault();
 
 
-            const infoCachee =
-                window.getComputedStyle(info).display === "none";
+                    const infoId =
+                        button.getAttribute("data-info");
 
 
-            if (infoCachee) {
+                    const info =
+                        document.getElementById(infoId);
 
-                // Afficher les informations
-                info.style.display = "block";
 
-                button.textContent = "Masquer";
+                    if (!info) {
 
-                if (hideButton) {
-                    hideButton.style.display = "block";
-                }
+                        console.warn(
+                            "Information introuvable :",
+                            infoId
+                        );
 
-                // Faire descendre légèrement l'écran
-                setTimeout(function () {
-
-                    if (hideButton) {
-
-                        hideButton.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center"
-                        });
+                        return;
 
                     }
 
-                }, 100);
 
-            } else {
+                    const card =
+                        button.closest(".service-card");
 
-                // Masquer les informations
-                info.style.display = "none";
 
-                button.textContent =
-                    "En savoir plus";
+                    const hideButton =
+                        card
+                            ? card.querySelector(".hide-button")
+                            : null;
 
-                if (hideButton) {
-                    hideButton.style.display = "none";
+
+                    const infoCachee =
+                        window.getComputedStyle(info).display === "none";
+
+
+                    if (infoCachee) {
+
+                        // Afficher les détails
+                        info.style.display = "block";
+
+                        button.textContent =
+                            "Masquer";
+
+
+                        if (hideButton) {
+
+                            hideButton.style.display =
+                                "block";
+
+                        }
+
+
+                        // Faire descendre l'écran
+                        // pour que le bouton Masquer soit visible
+                        setTimeout(
+                            function () {
+
+                                if (hideButton) {
+
+                                    hideButton.scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "center"
+                                    });
+
+                                }
+
+                            },
+                            100
+                        );
+
+
+                    } else {
+
+                        info.style.display =
+                            "none";
+
+                        button.textContent =
+                            "En savoir plus";
+
+
+                        if (hideButton) {
+
+                            hideButton.style.display =
+                                "none";
+
+                        }
+
+                    }
+
                 }
+            );
 
-            }
-
-        });
-
-    });
+        }
+    );
 
 
     // ==========================================
@@ -218,143 +323,75 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".hide-button");
 
 
-    hideButtons.forEach(function (button) {
+    hideButtons.forEach(
+        function (button) {
 
-        button.addEventListener("click", function (event) {
+            button.addEventListener(
+                "click",
+                function (event) {
 
-            event.preventDefault();
-
-            const card =
-                button.closest(".service-card");
-
-            if (!card) {
-                return;
-            }
-
-            const info =
-                card.querySelector(".service-info");
-
-            const infoButton =
-                card.querySelector(".info-button");
+                    event.preventDefault();
 
 
-            if (info) {
-                info.style.display = "none";
-            }
-
-            if (infoButton) {
-                infoButton.textContent =
-                    "En savoir plus";
-            }
-
-            button.style.display = "none";
+                    const card =
+                        button.closest(".service-card");
 
 
-            // Revenir vers le haut de la carte
-            setTimeout(function () {
-
-                card.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-            }, 50);
-
-        });
-
-    });
+                    if (!card) {
+                        return;
+                    }
 
 
-    // ==========================================
-    // BOUTONS "DEMANDER UN DEVIS"
-    // ==========================================
-
-    const quoteButtons =
-        document.querySelectorAll(".quote-button");
+                    const info =
+                        card.querySelector(".service-info");
 
 
-    quoteButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            const service =
-                button.getAttribute("data-service") || "";
-
-            // Ouvrir la section devis
-            if (devis) {
-
-                masquerToutesLesSections();
-
-                devis.style.display = "block";
-
-                devis.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
+                    const infoButton =
+                        card.querySelector(".info-button");
 
 
-            // Sélectionner automatiquement le service
-            const typeService =
-                document.getElementById("typeService");
+                    if (info) {
 
-            if (typeService && service) {
+                        info.style.display =
+                            "none";
 
-                const options =
-                    Array.from(typeService.options);
+                    }
 
-                const option =
-                    options.find(function (option) {
 
-                        return option.value === service ||
-                               option.textContent.trim() === service;
+                    if (infoButton) {
 
-                    });
+                        infoButton.textContent =
+                            "En savoir plus";
 
-                if (option) {
-                    typeService.value = option.value;
+                    }
+
+
+                    button.style.display =
+                        "none";
+
+
+                    // Retour vers la carte
+                    setTimeout(
+                        function () {
+
+                            card.scrollIntoView({
+                                behavior: "smooth",
+                                block: "center"
+                            });
+
+                        },
+                        50
+                    );
+
                 }
+            );
 
-            }
-
-        });
-
-    });
+        }
+    );
 
 
     // ==========================================
-    // BOUTONS "NOUS CONTACTER"
-    // ==========================================
-
-    const contactButtons =
-        document.querySelectorAll(".contact-button");
-
-
-    contactButtons.forEach(function (button) {
-
-        button.addEventListener("click", function () {
-
-            masquerToutesLesSections();
-
-            if (contact) {
-
-                contact.style.display = "block";
-
-                contact.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
-
-        });
-
-    });
-
-
-    // ==========================================
-    // FONCTION : MASQUER LES SECTIONS
+    // FONCTION MASQUER LES SECTIONS
     // ==========================================
 
     function masquerToutesLesSections() {
@@ -387,9 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
             serviceButton.style.display = "none";
         }
 
-        if (menu) {
-            menu.style.display = "none";
-        }
+        fermerMenu();
 
     }
 
@@ -400,9 +435,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function afficherAccueil() {
 
-        if (menu) {
-            menu.style.display = "none";
-        }
+        fermerMenu();
+
 
         if (accueil) {
             accueil.style.display = "block";
@@ -430,34 +464,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (serviceButton) {
 
-            serviceButton.style.display = "inline-block";
+            serviceButton.style.display =
+                "inline-block";
 
             serviceButton.textContent =
                 "Découvrir nos services";
 
         }
 
-        if (logo) {
-            logo.scrollIntoView({
+
+        if (accueil) {
+
+            accueil.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
+
         }
 
     }
 
 
     // ==========================================
-    // CLIC SUR LE LOGO
+    // LOGO
     // ==========================================
 
     if (logo) {
 
-        logo.addEventListener("click", function () {
+        logo.addEventListener(
+            "click",
+            function () {
 
-            afficherAccueil();
+                afficherAccueil();
 
-        });
+            }
+        );
 
     }
 
@@ -470,133 +511,283 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".menu a");
 
 
-    menuLinks.forEach(function (link) {
+    menuLinks.forEach(
+        function (link) {
 
-        link.addEventListener("click", function (event) {
+            link.addEventListener(
+                "click",
+                function (event) {
 
-            event.preventDefault();
-
-            const destination =
-                link.getAttribute("href");
-
-
-            // Fermer le menu
-            if (menu) {
-                menu.style.display = "none";
-            }
+                    event.preventDefault();
 
 
-            // ======================================
-            // ACCUEIL
-            // ======================================
-
-            if (destination === "#accueil") {
-
-                afficherAccueil();
-
-                return;
-
-            }
+                    const destination =
+                        link.getAttribute("href");
 
 
-            // ======================================
-            // SERVICES
-            // ======================================
+                    fermerMenu();
 
-            if (destination === "#services") {
 
-                masquerToutesLesSections();
+                    // ==================================
+                    // ACCUEIL
+                    // ==================================
 
-                if (services) {
+                    if (
+                        destination === "#accueil"
+                    ) {
 
-                    services.style.display = "block";
+                        afficherAccueil();
 
-                    services.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
+                        return;
+
+                    }
+
+
+                    // ==================================
+                    // SERVICES
+                    // ==================================
+
+                    if (
+                        destination === "#services"
+                    ) {
+
+                        masquerToutesLesSections();
+
+
+                        if (services) {
+
+                            services.style.display =
+                                "block";
+
+
+                            services.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+                        return;
+
+                    }
+
+
+                    // ==================================
+                    // À PROPOS
+                    // ==================================
+
+                    if (
+                        destination === "#apropos"
+                    ) {
+
+                        masquerToutesLesSections();
+
+
+                        if (apropos) {
+
+                            apropos.style.display =
+                                "block";
+
+
+                            apropos.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+                        return;
+
+                    }
+
+
+                    // ==================================
+                    // CONTACT
+                    // ==================================
+
+                    if (
+                        destination === "#contact"
+                    ) {
+
+                        masquerToutesLesSections();
+
+
+                        if (contact) {
+
+                            contact.style.display =
+                                "block";
+
+
+                            contact.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+                        return;
+
+                    }
+
+
+                    // ==================================
+                    // DEVIS
+                    // ==================================
+
+                    if (
+                        destination === "#devis"
+                    ) {
+
+                        masquerToutesLesSections();
+
+
+                        if (devis) {
+
+                            devis.style.display =
+                                "block";
+
+
+                            devis.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+                        return;
+
+                    }
 
                 }
+            );
 
-                return;
+        }
+    );
 
-            }
+
+    // ==========================================
+    // BOUTONS "DEMANDER UN DEVIS"
+    // ==========================================
+
+    const quoteButtons =
+        document.querySelectorAll(".quote-button");
 
 
-            // ======================================
-            // À PROPOS
-            // ======================================
+    quoteButtons.forEach(
+        function (button) {
 
-            if (destination === "#apropos") {
+            button.addEventListener(
+                "click",
+                function () {
 
-                masquerToutesLesSections();
+                    const service =
+                        button.getAttribute(
+                            "data-service"
+                        ) || "";
 
-                if (apropos) {
 
-                    apropos.style.display = "block";
+                    masquerToutesLesSections();
 
-                    apropos.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
+
+                    if (devis) {
+
+                        devis.style.display =
+                            "block";
+
+
+                        devis.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
+
+
+                    // Sélection automatique du service
+                    const typeService =
+                        document.getElementById(
+                            "typeService"
+                        );
+
+
+                    if (
+                        typeService &&
+                        service
+                    ) {
+
+                        const options =
+                            Array.from(
+                                typeService.options
+                            );
+
+
+                        const option =
+                            options.find(
+                                function (option) {
+
+                                    return (
+                                        option.value === service ||
+                                        option.textContent.trim() === service
+                                    );
+
+                                }
+                            );
+
+
+                        if (option) {
+
+                            typeService.value =
+                                option.value;
+
+                        }
+
+                    }
 
                 }
+            );
 
-                return;
-
-            }
-
-
-            // ======================================
-            // CONTACT
-            // ======================================
-
-            if (destination === "#contact") {
-
-                masquerToutesLesSections();
-
-                if (contact) {
-
-                    contact.style.display = "block";
-
-                    contact.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
-                }
-
-                return;
-
-            }
+        }
+    );
 
 
-            // ======================================
-            // DEVIS
-            // ======================================
+    // ==========================================
+    // BOUTONS "NOUS CONTACTER"
+    // ==========================================
 
-            if (destination === "#devis") {
+    const contactButtons =
+        document.querySelectorAll(
+            ".contact-button"
+        );
 
-                masquerToutesLesSections();
 
-                if (devis) {
+    contactButtons.forEach(
+        function (button) {
 
-                    devis.style.display = "block";
+            button.addEventListener(
+                "click",
+                function () {
 
-                    devis.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
+                    masquerToutesLesSections();
+
+
+                    if (contact) {
+
+                        contact.style.display =
+                            "block";
+
+
+                        contact.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
 
                 }
+            );
 
-                return;
-
-            }
-
-        });
-
-    });
+        }
+    );
 
 
     // ==========================================
@@ -604,7 +795,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // ==========================================
 
     const contactForm =
-        document.getElementById("contactForm");
+        document.getElementById(
+            "contactForm"
+        );
+
 
     let dernierEnvoi = 0;
 
@@ -631,17 +825,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     dernierEnvoi !== 0
                 ) {
 
-                    const successMessage =
-                        document.getElementById(
-                            "successMessage"
-                        );
-
-                    if (successMessage) {
-
-                        successMessage.textContent =
-                            "Veuillez patienter avant de renvoyer un message.";
-
-                    }
+                    afficherErreur(
+                        "Veuillez patienter avant de renvoyer un message."
+                    );
 
                     return;
 
@@ -649,26 +835,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 // ==================================
-                // RÉCUPÉRATION DES DONNÉES
+                // DONNÉES
                 // ==================================
 
                 const nom =
-                    document.getElementById("nom")?.value.trim() || "";
+                    document.getElementById(
+                        "nom"
+                    )?.value.trim() || "";
+
 
                 const telephone =
-                    document.getElementById("telephone")?.value.trim() || "";
+                    document.getElementById(
+                        "telephone"
+                    )?.value.trim() || "";
+
 
                 const email =
-                    document.getElementById("email")?.value.trim() || "";
+                    document.getElementById(
+                        "email"
+                    )?.value.trim() || "";
+
 
                 const message =
-                    document.getElementById("message")?.value.trim() || "";
-
-
-                const successMessage =
                     document.getElementById(
-                        "successMessage"
-                    );
+                        "message"
+                    )?.value.trim() || "";
 
 
                 // ==================================
@@ -719,7 +910,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                if (message.length < 10) {
+                if (
+                    message.length < 10
+                ) {
 
                     afficherErreur(
                         "Votre message doit contenir au moins 10 caractères."
@@ -734,7 +927,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 // TURNSTILE
                 // ==================================
 
-                let turnstileToken = "";
+                let turnstileToken =
+                    "";
 
 
                 if (window.turnstile) {
@@ -777,9 +971,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     );
 
 
+                const successMessage =
+                    document.getElementById(
+                        "successMessage"
+                    );
+
+
                 if (submitButton) {
 
-                    submitButton.disabled = true;
+                    submitButton.disabled =
+                        true;
 
                     submitButton.textContent =
                         "Envoi en cours...";
@@ -788,7 +989,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 // ==================================
-                // ENVOI
+                // ENVOI SUPABASE
                 // ==================================
 
                 try {
@@ -797,6 +998,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         await fetch(
                             "https://bkmhffpzhdhxrgxkinkk.supabase.co/functions/v1/swift-api",
                             {
+
                                 method: "POST",
 
                                 headers: {
@@ -804,20 +1006,25 @@ document.addEventListener("DOMContentLoaded", function () {
                                         "application/json"
                                 },
 
-                                body: JSON.stringify({
+                                body:
+                                    JSON.stringify({
 
-                                    nom: nom,
+                                        nom:
+                                            nom,
 
-                                    telephone: telephone,
+                                        telephone:
+                                            telephone,
 
-                                    email: email,
+                                        email:
+                                            email,
 
-                                    message: message,
+                                        message:
+                                            message,
 
-                                    turnstileToken:
-                                        turnstileToken
+                                        turnstileToken:
+                                            turnstileToken
 
-                                })
+                                    })
 
                             }
                         );
@@ -850,6 +1057,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                     contactForm.reset();
+
 
                     dernierEnvoi =
                         Date.now();
@@ -888,7 +1096,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (submitButton) {
 
-                        submitButton.disabled = false;
+                        submitButton.disabled =
+                            false;
 
                         submitButton.textContent =
                             "Envoyer le message";
@@ -904,7 +1113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ==========================================
-    // MESSAGE D'ERREUR SANS ALERT
+    // MESSAGE SANS ALERT
     // ==========================================
 
     function afficherErreur(message) {
@@ -913,6 +1122,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById(
                 "successMessage"
             );
+
 
         if (successMessage) {
 
@@ -929,7 +1139,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // ==========================================
 
     const devisForm =
-        document.getElementById("devisForm");
+        document.getElementById(
+            "devisForm"
+        );
 
 
     if (devisForm) {
@@ -951,7 +1163,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // ==========================================
-    // INITIALISATION
+    // FIN
     // ==========================================
 
     console.log(
