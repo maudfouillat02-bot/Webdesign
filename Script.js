@@ -1,345 +1,262 @@
+/* =========================================
+   ZAG SERVICE — SCRIPT PRINCIPAL
+   ========================================= */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    console.log("ZAG SERVICE : JavaScript chargé");
-
-    // ==========================================
-    // ÉLÉMENTS PRINCIPAUX
-    // ==========================================
+    /* =====================================
+       ELEMENTS PRINCIPAUX
+    ===================================== */
 
     const menuButton = document.getElementById("menuButton");
     const menu = document.querySelector(".menu");
-
     const serviceButton = document.getElementById("serviceButton");
     const services = document.getElementById("services");
-
-    const accueil = document.getElementById("accueil");
-    const pourquoi = document.getElementById("pourquoi");
-    const apropos = document.getElementById("apropos");
-    const contact = document.getElementById("contact");
-    const devis = document.getElementById("devis");
-
     const logo = document.getElementById("logo");
+    const devis = document.getElementById("devis");
+    const contact = document.getElementById("contact");
 
 
-    // ==========================================
-    // MENU
-    // ==========================================
+    /* =====================================
+       MENU
+    ===================================== */
 
-    function ouvrirMenu() {
-
+    function openMenu() {
         if (!menu) return;
 
-        menu.classList.add("menu-open");
+        menu.style.display = "flex";
+        menu.setAttribute("aria-hidden", "false");
 
+        if (menuButton) {
+            menuButton.setAttribute("aria-expanded", "true");
+        }
     }
 
 
-    function fermerMenu() {
-
+    function closeMenu() {
         if (!menu) return;
 
-        menu.classList.remove("menu-open");
+        menu.style.display = "none";
+        menu.setAttribute("aria-hidden", "true");
 
+        if (menuButton) {
+            menuButton.setAttribute("aria-expanded", "false");
+        }
     }
 
 
-    function menuOuvert() {
+    function toggleMenu(event) {
 
-        return menu &&
-               menu.classList.contains("menu-open");
-
-    }
-
-
-    if (menuButton && menu) {
-
-        menuButton.addEventListener("click", function (event) {
-
-            event.preventDefault();
+        if (event) {
             event.stopPropagation();
+        }
 
-            if (menuOuvert()) {
+        if (!menu) return;
 
-                fermerMenu();
+        const isOpen =
+            window.getComputedStyle(menu).display !== "none";
 
-            } else {
-
-                ouvrirMenu();
-
-            }
-
-        });
-
+        if (isOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
     }
 
 
-    // ==========================================
-    // FERMER EN CLIQUANT EN DEHORS
-    // ==========================================
+    if (menuButton) {
+
+        menuButton.setAttribute("aria-expanded", "false");
+
+        menuButton.addEventListener("click", toggleMenu);
+
+        menuButton.addEventListener("touchstart", function (event) {
+            event.stopPropagation();
+        }, { passive: true });
+    }
+
+
+    /* =====================================
+       FERMETURE DU MENU AU DÉFILEMENT
+       ===================================== */
+
+    let scrollTimer = null;
+
+    function closeMenuOnScroll() {
+
+        if (!menu) return;
+
+        const isOpen =
+            window.getComputedStyle(menu).display !== "none";
+
+        if (!isOpen) return;
+
+        closeMenu();
+
+        /*
+         * Petit verrou pour éviter que certains
+         * navigateurs mobiles ne rouvrent le menu
+         * pendant le mouvement.
+         */
+        clearTimeout(scrollTimer);
+
+        scrollTimer = setTimeout(function () {
+            closeMenu();
+        }, 100);
+    }
+
+
+    window.addEventListener("scroll", closeMenuOnScroll, {
+        passive: true
+    });
+
+
+    window.addEventListener("touchmove", closeMenuOnScroll, {
+        passive: true
+    });
+
+
+    /* =====================================
+       CLIC EN DEHORS DU MENU
+       ===================================== */
 
     document.addEventListener("click", function (event) {
 
         if (!menu || !menuButton) return;
 
-        const clicMenu = menu.contains(event.target);
-        const clicBouton = menuButton.contains(event.target);
+        const clickedInsideMenu =
+            menu.contains(event.target);
 
-        if (!clicMenu && !clicBouton) {
+        const clickedButton =
+            menuButton.contains(event.target);
 
-            fermerMenu();
-
+        if (!clickedInsideMenu && !clickedButton) {
+            closeMenu();
         }
-
     });
 
 
-    // ==========================================
-    // FERMER AU DÉFILEMENT
-    // ==========================================
+    /* =====================================
+       LIENS DU MENU
+       ===================================== */
 
-    let dernierScroll = window.scrollY;
+    if (menu) {
 
-    window.addEventListener(
-        "scroll",
-        function () {
+        const menuLinks =
+            menu.querySelectorAll("a");
 
-            const nouveauScroll = window.scrollY;
+        menuLinks.forEach(function (link) {
 
-            if (nouveauScroll !== dernierScroll) {
+            link.addEventListener("click", function () {
 
-                fermerMenu();
+                closeMenu();
 
-            }
+                /*
+                 * Petit délai pour laisser l'ancre
+                 * effectuer son déplacement.
+                 */
+                setTimeout(function () {
+                    closeMenu();
+                }, 50);
 
-            dernierScroll = nouveauScroll;
-
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    // ==========================================
-    // FERMER AVEC ESC
-    // ==========================================
-
-    document.addEventListener("keydown", function (event) {
-
-        if (event.key === "Escape") {
-
-            fermerMenu();
-
-        }
-
-    });
-
-
-    // ==========================================
-    // FERMER APRÈS UN LIEN DU MENU
-    // ==========================================
-
-    const menuLinks =
-        document.querySelectorAll(".menu a");
-
-    menuLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            fermerMenu();
+            });
 
         });
-
-    });
-
-
-    // ==========================================
-    // AFFICHER UNE SEULE SECTION
-    // ==========================================
-
-    function cacherSections() {
-
-        if (accueil)
-            accueil.style.display = "none";
-
-        if (services)
-            services.style.display = "none";
-
-        if (pourquoi)
-            pourquoi.style.display = "none";
-
-        if (apropos)
-            apropos.style.display = "none";
-
-        if (contact)
-            contact.style.display = "none";
-
-        if (devis)
-            devis.style.display = "none";
-
     }
 
 
-    function afficherAccueil() {
-
-        cacherSections();
-
-        if (accueil)
-            accueil.style.display = "block";
-
-        if (pourquoi)
-            pourquoi.style.display = "block";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-        fermerMenu();
-
-    }
-
-
-    // ==========================================
-    // BOUTON DÉCOUVRIR NOS SERVICES
-    // ==========================================
+    /* =====================================
+       DÉCOUVRIR NOS SERVICES
+       ===================================== */
 
     if (serviceButton && services) {
 
-        serviceButton.addEventListener(
-            "click",
-            function () {
+        serviceButton.addEventListener("click", function () {
 
-                cacherSections();
+            closeMenu();
 
-                services.style.display = "block";
+            services.style.display = "block";
 
-                services.scrollIntoView({
+            services.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+    }
+
+
+    /* =====================================
+       LOGO → ACCUEIL
+       ===================================== */
+
+    if (logo) {
+
+        logo.addEventListener("click", function () {
+
+            closeMenu();
+
+            const accueil =
+                document.getElementById("accueil");
+
+            if (accueil) {
+
+                accueil.scrollIntoView({
                     behavior: "smooth",
                     block: "start"
                 });
 
-                fermerMenu();
-
             }
-        );
-
+        });
     }
 
 
-    // ==========================================
-    // NAVIGATION DU MENU
-    // ==========================================
+    /* =====================================
+       AFFICHAGE DES SERVICES
+       ===================================== */
 
-    menuLinks.forEach(function (link) {
+    function showServices() {
 
-        link.addEventListener(
-            "click",
-            function (event) {
+        if (!services) return;
 
-                event.preventDefault();
-
-                const destination =
-                    link.getAttribute("href");
-
-                fermerMenu();
+        services.style.display = "block";
+    }
 
 
-                if (destination === "#accueil") {
+    /*
+     * Les liens #services du menu doivent afficher
+     * la section même si elle était cachée au départ.
+     */
+    const servicesLinks =
+        document.querySelectorAll('a[href="#services"]');
 
-                    afficherAccueil();
+    servicesLinks.forEach(function (link) {
 
-                    return;
+        link.addEventListener("click", function () {
 
-                }
+            showServices();
 
+            setTimeout(function () {
 
-                if (destination === "#services") {
+                if (services) {
 
-                    cacherSections();
-
-                    if (services) {
-
-                        services.style.display = "block";
-
-                        services.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-
-                    }
-
-                    return;
+                    services.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
 
                 }
 
+            }, 50);
 
-                if (destination === "#apropos") {
-
-                    cacherSections();
-
-                    if (apropos) {
-
-                        apropos.style.display = "block";
-
-                        apropos.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-
-                    }
-
-                    return;
-
-                }
-
-
-                if (destination === "#contact") {
-
-                    cacherSections();
-
-                    if (contact) {
-
-                        contact.style.display = "block";
-
-                        contact.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-
-                    }
-
-                    return;
-
-                }
-
-            }
-        );
+        });
 
     });
 
 
-    // ==========================================
-    // LOGO = RETOUR ACCUEIL
-    // ==========================================
-
-    if (logo) {
-
-        logo.addEventListener(
-            "click",
-            function () {
-
-                afficherAccueil();
-
-            }
-        );
-
-    }
-
-
-    // ==========================================
-    // BOUTONS "EN SAVOIR PLUS"
-    // ==========================================
+    /* =====================================
+       BOUTONS "EN SAVOIR PLUS"
+       ===================================== */
 
     const infoButtons =
         document.querySelectorAll(".info-button");
@@ -347,59 +264,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
     infoButtons.forEach(function (button) {
 
-        button.addEventListener(
-            "click",
-            function (event) {
+        button.addEventListener("click", function () {
 
-                event.preventDefault();
+            const infoId =
+                button.getAttribute("data-info");
 
-                const infoId =
-                    button.getAttribute("data-info");
+            if (!infoId) return;
 
-                const info =
-                    document.getElementById(infoId);
+            const info =
+                document.getElementById(infoId);
 
-                if (!info) return;
+            if (!info) return;
 
-                const card =
-                    button.closest(".service-card");
+            const card =
+                button.closest(".service-card");
 
-                const hideButton =
-                    card
-                    ? card.querySelector(".hide-button")
-                    : null;
+            if (!card) return;
+
+            const hideButton =
+                card.querySelector(".hide-button");
+
+            /*
+             * Fermer les autres informations
+             * avant d'ouvrir celle sélectionnée.
+             */
+            document.querySelectorAll(".service-info")
+                .forEach(function (otherInfo) {
+
+                    if (otherInfo !== info) {
+                        otherInfo.style.display = "none";
+                    }
+
+                });
 
 
-                info.style.display = "block";
+            document.querySelectorAll(".hide-button")
+                .forEach(function (otherButton) {
 
-                button.style.display = "none";
+                    if (otherButton !== hideButton) {
+                        otherButton.style.display = "none";
+                    }
 
-                if (hideButton) {
+                });
 
-                    hideButton.style.display = "block";
 
-                    // Le bouton Masquer descend avec
-                    // le contenu affiché.
-                    setTimeout(function () {
+            info.style.display = "block";
 
-                        hideButton.scrollIntoView({
-                            behavior: "smooth",
-                            block: "nearest"
-                        });
+            button.style.display = "none";
 
-                    }, 100);
+            if (hideButton) {
+                hideButton.style.display = "block";
 
-                }
-
+                /*
+                 * Le bouton Masquer reste avec le contenu
+                 * lorsque la carte s'allonge.
+                 */
+                hideButton.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest"
+                });
             }
-        );
+
+        });
 
     });
 
 
-    // ==========================================
-    // BOUTONS "MASQUER"
-    // ==========================================
+    /* =====================================
+       BOUTONS "MASQUER"
+       ===================================== */
 
     const hideButtons =
         document.querySelectorAll(".hide-button");
@@ -407,49 +340,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     hideButtons.forEach(function (button) {
 
-        button.addEventListener(
-            "click",
-            function (event) {
+        button.addEventListener("click", function () {
 
-                event.preventDefault();
+            const card =
+                button.closest(".service-card");
 
-                const card =
-                    button.closest(".service-card");
+            if (!card) return;
 
-                if (!card) return;
+            const info =
+                card.querySelector(".service-info");
 
-                const info =
-                    card.querySelector(".service-info");
+            const infoButton =
+                card.querySelector(".info-button");
 
-                const infoButton =
-                    card.querySelector(".info-button");
-
-
-                if (info) {
-
-                    info.style.display = "none";
-
-                }
-
-                button.style.display = "none";
-
-
-                if (infoButton) {
-
-                    infoButton.style.display =
-                        "inline-block";
-
-                }
-
+            if (info) {
+                info.style.display = "none";
             }
-        );
+
+            button.style.display = "none";
+
+            if (infoButton) {
+                infoButton.style.display = "inline-block";
+            }
+
+        });
 
     });
 
 
-    // ==========================================
-    // BOUTONS DEMANDER UN DEVIS
-    // ==========================================
+    /* =====================================
+       OUVRIR LE DEVIS
+       ===================================== */
 
     const quoteButtons =
         document.querySelectorAll(".quote-button");
@@ -457,65 +378,108 @@ document.addEventListener("DOMContentLoaded", function () {
 
     quoteButtons.forEach(function (button) {
 
-        button.addEventListener(
-            "click",
-            function () {
+        button.addEventListener("click", function () {
 
-                const service =
-                    button.getAttribute("data-service");
+            const service =
+                button.getAttribute("data-service");
 
-                ouvrirDevis(service);
+            closeMenu();
+
+            showServices();
+
+
+            /*
+             * Masquer les sections générales
+             * si elles existent.
+             */
+            const accueil =
+                document.getElementById("accueil");
+
+            const pourquoi =
+                document.getElementById("pourquoi");
+
+            if (devis) {
+
+                devis.style.display = "block";
 
             }
-        );
+
+
+            /*
+             * Afficher le service sélectionné
+             * dans le titre du devis.
+             */
+            const serviceTitle =
+                document.querySelector(".devis-service-title");
+
+            if (serviceTitle && service) {
+
+                serviceTitle.textContent =
+                    "Demande de devis — " + service;
+
+            }
+
+
+            /*
+             * Si un champ select "service" existe,
+             * le sélectionner automatiquement.
+             */
+            const serviceSelect =
+                document.querySelector(
+                    'select[name="service"], #service'
+                );
+
+            if (serviceSelect && service) {
+
+                const options =
+                    Array.from(serviceSelect.options);
+
+                const matchingOption =
+                    options.find(function (option) {
+
+                        return option.value === service ||
+                               option.textContent.trim() === service;
+
+                    });
+
+                if (matchingOption) {
+
+                    serviceSelect.value =
+                        matchingOption.value;
+
+                    serviceSelect.dispatchEvent(
+                        new Event("change", {
+                            bubbles: true
+                        })
+                    );
+                }
+            }
+
+
+            /*
+             * Défilement vers le devis.
+             */
+            if (devis) {
+
+                setTimeout(function () {
+
+                    devis.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }, 50);
+
+            }
+
+        });
 
     });
 
 
-    // ==========================================
-    // OUVRIR LE DEVIS
-    // ==========================================
-
-    function ouvrirDevis(service) {
-
-        cacherSections();
-
-        if (!devis) return;
-
-        devis.style.display = "block";
-
-        const titre =
-            document.getElementById("devisServiceTitle");
-
-        if (titre) {
-
-            titre.textContent =
-                "Demande de devis — " + service;
-
-        }
-
-
-        const champService =
-            document.getElementById("devisService");
-
-        if (champService) {
-
-            champService.value = service;
-
-        }
-
-
-        devis.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    }
-
-
-    // ==========================================
-    // BOUTONS NOUS CONTACTER
-    // ==========================================
+    /* =====================================
+       BOUTONS "NOUS CONTACTER"
+       ===================================== */
 
     const contactButtons =
         document.querySelectorAll(".contact-button");
@@ -523,69 +487,125 @@ document.addEventListener("DOMContentLoaded", function () {
 
     contactButtons.forEach(function (button) {
 
-        button.addEventListener(
-            "click",
-            function () {
+        button.addEventListener("click", function () {
 
-                cacherSections();
+            closeMenu();
 
-                if (contact) {
+            if (!contact) return;
 
-                    contact.style.display = "block";
+            contact.style.display = "block";
 
-                    contact.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
+            contact.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
 
-                }
-
-            }
-        );
+        });
 
     });
 
 
-    // ==========================================
-    // RETOUR DEPUIS LE DEVIS
-    // ==========================================
+    /* =====================================
+       LIEN CONTACT DU MENU
+       ===================================== */
 
-    const backButton =
-        document.querySelector(".back-button");
+    const contactLinks =
+        document.querySelectorAll('a[href="#contact"]');
+
+    contactLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            if (contact) {
+                contact.style.display = "block";
+            }
+
+        });
+
+    });
 
 
-    if (backButton) {
+    /* =====================================
+       LIEN À PROPOS
+       ===================================== */
 
-        backButton.addEventListener(
-            "click",
-            function () {
+    const aboutLinks =
+        document.querySelectorAll('a[href="#apropos"]');
 
-                cacherSections();
+    aboutLinks.forEach(function (link) {
 
-                if (services) {
+        link.addEventListener("click", function () {
 
-                    services.style.display = "block";
+            const about =
+                document.getElementById("apropos");
 
-                    services.scrollIntoView({
-                        behavior: "smooth"
+            if (about) {
+
+                about.style.display = "block";
+
+                setTimeout(function () {
+
+                    about.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
                     });
 
-                }
+                }, 50);
 
             }
-        );
 
-    }
+        });
+
+    });
 
 
-    // ==========================================
-    // INITIALISATION
-    // ==========================================
+    /* =====================================
+       RETOUR À L'ACCUEIL
+       ===================================== */
 
-    fermerMenu();
+    const accueilLinks =
+        document.querySelectorAll('a[href="#accueil"]');
 
-    console.log(
-        "ZAG SERVICE : système initialisé correctement"
-    );
+    accueilLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            closeMenu();
+
+            const accueil =
+                document.getElementById("accueil");
+
+            if (accueil) {
+
+                accueil.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        });
+
+    });
+
+
+    /* =====================================
+       ESCAPE → FERMER LE MENU
+       ===================================== */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+            closeMenu();
+        }
+
+    });
+
+
+    /* =====================================
+       INITIALISATION
+       ===================================== */
+
+    closeMenu();
 
 });
