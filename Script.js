@@ -24,19 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const SUPABASE_FUNCTION_URL =
         "https://bkmhffpzhdhxrgxkinkk.supabase.co/functions/v1/submit-demande";
 
-
-    /*
-     * Mets ici ta PUBLISHABLE KEY Supabase.
-     *
-     * NE METS JAMAIS :
-     * - SUPABASE_SECRET_KEY
-     * - SUPABASE_SERVICE_ROLE_KEY
-     *
-     * dans ce fichier.
-     */
-
     const SUPABASE_PUBLISHABLE_KEY =
-        "TA_PUBLISHABLE_KEY_SUPABASE";
+        "sb_publishable_UcQl5wt5aXwmcmwKpu3jnA_PcsD02TT";
 
 
     /* =====================================
