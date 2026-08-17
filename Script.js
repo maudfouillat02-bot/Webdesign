@@ -185,30 +185,82 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+/* =====================================
+   LOGO → HOME / RÉINITIALISATION
+   ===================================== */
 
-    /* =====================================
-       LOGO → ACCUEIL
-       ===================================== */
+if (logo) {
 
-    if (logo) {
+    logo.addEventListener("click", function () {
 
-        logo.addEventListener("click", function () {
+        /* Fermer le menu */
+        closeMenu();
 
-            closeMenu();
 
-            const accueil =
-                document.getElementById("accueil");
-
-            if (accueil) {
-
-                accueil.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
+        /* Fermer toutes les informations des services */
+        document.querySelectorAll(".service-info").forEach(function (info) {
+            info.style.display = "none";
         });
-    }
+
+
+        /* Réafficher tous les boutons "En savoir plus" */
+        document.querySelectorAll(".info-button").forEach(function (button) {
+            button.style.display = "inline-block";
+        });
+
+
+        /* Masquer tous les boutons "Masquer" */
+        document.querySelectorAll(".hide-button").forEach(function (button) {
+            button.style.display = "none";
+        });
+
+
+        /* Réinitialiser le formulaire de devis */
+        if (devis) {
+            devis.style.display = "none";
+        }
+
+
+        /* Réinitialiser le formulaire de contact */
+        if (contact) {
+            contact.style.display = "none";
+        }
+
+
+        /* Réafficher les services dans leur état normal */
+        if (services) {
+            services.style.display = "none";
+        }
+
+
+        /* Réinitialiser les champs du devis */
+        const devisForm = devis
+            ? devis.querySelector("form")
+            : null;
+
+        if (devisForm) {
+            devisForm.reset();
+        }
+
+
+        /* Réinitialiser le titre du service sélectionné */
+        const serviceTitle =
+            document.querySelector(".devis-service-title");
+
+        if (serviceTitle) {
+            serviceTitle.textContent = "";
+        }
+
+
+        /* Retour tout en haut de l'accueil */
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}}
 
 
     /* =====================================
