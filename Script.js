@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
 
     const SUPABASE_FUNCTION_URL =
-        "https://bkmhffpzhdhxrgxkinkk.supabase.co/functions/v1/submit-demande";
-
+    "https://bkmhffpzhdhxrgxkinkk.supabase.co/functions/v1/swift-api";
     const SUPABASE_PUBLISHABLE_KEY =
         "sb_publishable_UcQl5wt5aXwmcmwKpu3jnA_PcsD02TT";
 
