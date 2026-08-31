@@ -3,3 +3,7 @@
 !.env.example
 node_modules/
 .DS_Store
+
+android/.gradle/
+android/build/
+android/local.properties
