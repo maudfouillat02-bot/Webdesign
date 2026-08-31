@@ -27,18 +27,15 @@ jobs:
       - name: Synchroniser Capacitor Android
         run: npx cap sync android
 
-      - name: Configurer Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 21
+      - name: Donner les permissions au Gradle Wrapper
+        run: chmod +x android/gradlew
 
       - name: Construire l'APK Debug
         working-directory: android
-       run: bash android/gradlew assembleDebug --stacktrace
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Publier l'APK
         uses: actions/upload-artifact@v4
         with:
-          name: ZAG-SERVICE-APK
+          name: zag-service-debug
           path: android/app/build/outputs/apk/debug/app-debug.apk
