@@ -68,199 +68,101 @@ button:active {
     background: #F7F5F0;
     color: #0B1F33;
 ">
-<header class="header" style="
-    background: #0B1F33;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    box-sizing: border-box;
-">
+<header class="header">
 
     <a href="#accueil" class="logo">
-    <img
-        src="./photos/IMG-20260901-WA0001.jpg"
-        alt="ZAG SERVICE"
+        <img
+            src="./photos/IMG-20260901-WA0001.jpg"
+            alt="ZAG SERVICE"
+        >
+    </a>
+
+    <button
+        id="menuButton"
+        class="menu-button"
+        type="button"
+        aria-label="Ouvrir le menu"
     >
-</a>
-">
-     ZAG SERVICE
-</div>
+        ☰
+    </button>
 
-    <button id="menuButton" class="menu-button" style="
-    background: #0B1F33;
-    color: #C9A227;
-    border: 2px solid #C9A227;
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-size: 24px;
-    cursor: pointer;
-">
-    ☰
-</button>
+    <nav class="menu">
 
-<nav class="menu" style="
-    display: none;
-    background: #0B1F33;
-    padding: 15px;
-    border-radius: 8px;
-    gap: 8px;
-    flex-direction: column;
-">
-        <a href="#accueil" style="
-    color: #C9A227;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-weight: bold;
-">Accueil</a>
-        <a href="#services" style="color: #C9A227;">Services</a>
-        <a href="#apropos" style="color: #C9A227;">À propos</a>
-        <a href="#contact" style="color: #C9A227;">Contact</a>
+        <a href="#accueil">Accueil</a>
+
+        <a href="#services">Services</a>
+
+        <a href="#apropos">À propos</a>
+
+        <a href="#contact">Contact</a>
+
     </nav>
 
 </header>
-
-    <main style="padding-top: 70px;">
+    <main>
 
         <!-- ACCUEIL -->
 
-        <section id="accueil" class="hero" style="
-    background: #0B1F33;
-    color: white;
-    min-height: 500px;
-    padding: 60px 20px;
-    text-align: center;
-    box-sizing: border-box;
-">
+<section id="accueil" class="hero">
 
     <div class="hero-content">
 
-        <p style="
-            color: #C9A227;
-            font-size: 15px;
-            letter-spacing: 3px;
-            font-weight: bold;
-        ">
+        <p class="hero-eyebrow">
             BIENVENUE CHEZ ZAG SERVICE
         </p>
 
-        <h1 style="
-            color: white;
-            font-size: 48px;
-            margin: 25px 0;
-        ">
+        <h1>
             Des solutions pour vos projets
         </h1>
 
-        <p style="
-            color: white;
-            font-size: 19px;
-            line-height: 1.7;
-        ">
+        <p class="hero-description">
             Nous vous accompagnons avec des solutions
             adaptées dans l'événementiel, le transport
             et l'immobilier.
         </p>
 
-        <button id="serviceButton" style="
-    background: #C9A227;
-    color: #0B1F33;
-    font-weight: bold;
-    padding: 15px 28px;
-         margin: 20px auto;
-display: block; 
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-">
-    Découvrir nos services
-</button>
-      <div style="
-    margin-top: 30px;
-    color: #C9A227;
-    font-size: 14px;
-    letter-spacing: 1px;
-    animation: descendre 1.5s infinite;
-">
-    ↓ Faites défiler
-</div>
+        <button id="serviceButton" class="hero-button" type="button">
+            Découvrir nos services
+        </button>
+
+        <div class="hero-scroll">
+            ↓ Faites défiler
+        </div>
 
     </div>
 
 </section>
 
-
         <!-- SERVICES -->
 
-        <section id="services" class="services" style="
-    display: none;
-    background: #F7F5F0;
-    padding: 60px 20px;
-    text-align: center;
-">
-
-    <h2 style="
-        color: #0B1F33;
-        font-size: 36px;
-        margin-bottom: 40px;
-    ">
+<section id="services" class="services" style="display: none;">
+    <h2>
         Nos services
     </h2>
 
-    <div class="services-container"
-        style="
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        ">
+    <div class="services-container   ">
 
-        <div class="service-card"
-            style="
-                width: 100%;
-box-sizing: border-box;
-min-height: 240px;
-padding: 30px;
-                padding: 30px;
-                background: white;
-                border-radius: 12px;
-                border-top: 5px solid #C9A227;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            ">
-<img src="./photos/IMG-20260816-WA0004.jpg" alt="Événementiel" style="width:100%; height:180px; object-fit:cover; display:block;">
-            <h3 style="color: #0B1F33;">
+        <div class="service-card">
+<img src="./photos/IMG-20260816-WA0004.jpg" alt="Événementiel">
+            <h3>
                 Événementiel
             </h3>
 
-            <p style="color: #555;">
+            <p>
                 Organisation et accompagnement
                 de vos événements.
             </p>
-<button id="eventButton" type="button" style="
-    margin-top: 15px;
-    padding: 10px 18px;
-    background: #C9A227;
-    color: #0B1F33;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-">
-    En savoir plus
+<button id="eventButton" type="button">
+   En savoir plus
 </button>
 
-<p id="eventInfo" style="
-    display: none;
-    color: #555;
-    margin-top: 20px;
-    line-height: 1.6;
-">
+<p id="eventInfo" style="display: none;">
     Zag Service vous accompagne dans l'organisation
     de vos événements, de la préparation à la réalisation.
 </p>
+<button class="devis-button" type="button">
+    Demander un devis
+</button>
         </div>
 
 
@@ -268,44 +170,33 @@ padding: 30px;
             style="
                 width: 250px;
           
-            min-height: 240pxpx;
+            min-height: 240px;
           padding: 30px;
                 background: white;
                 border-radius: 16px;
                 border-top: 5px solid #C9A227;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             ">
-<img src="./photos/IMG-20260816-WA0003.jpg" alt="Transport" style="width:100%; height:180px; object-fit:cover; display:block;">
-            <h3 style="color: #0B1F33;">
+<img src="./photos/IMG-20260816-WA0003.jpg" alt="Transport">
+            <h3>
                 Transport
             </h3>
 
-            <p style="color: #555;">
+            <p>
                 Des solutions de transport
                 adaptées à vos besoins.
             </p>
-<button id="transportButton" type="button" style="
-    margin-top: 15px;
-    padding: 10px 18px;
-    background: #C9A227;
-    color: #0B1F33;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-">
+<button id="transportButton" type="button">
     En savoir plus
 </button>
 
-<p id="transportInfo" style="
-    display: none;
-    color: #555;
-    margin-top: 20px;
-    line-height: 1.6;
-">
+<p id="transportInfo" style=" display: none;">
     Zag Service propose des solutions de transport
     adaptées aux besoins des particuliers et des entreprises.
 </p>
+<button class="devis-button" type="button">
+    Demander un devis
+</button>
         </div>
 
 
@@ -319,38 +210,28 @@ padding: 30px;
                 border-top: 5px solid #C9A227;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             ">
-<img src="./photos/IMG-20260816-WA0005.jpg" alt="Immobilier" style="width:100%; height:180px; object-fit:cover; display:block;">
-            <h3 style="color: #0B1F33;">
+<img src="./photos/IMG-20260816-WA0005.jpg" alt="Immobilier">
+            <h3>
                 Immobilier
             </h3>
 
-            <p style="color: #555;">
+            <p>
                 Accompagnement dans vos
                 projets immobiliers.
             </p>
-<button id="immobilierButton" type="button" style="
-    margin-top: 15px;
-    padding: 10px 18px;
-    background: #C9A227;
-    color: #0B1F33;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-">
+<button id="immobilierButton" type="button">
     En savoir plus
 </button>
 
-<p id="immobilierInfo" style="
-    display: none;
-    color: #555;
-    margin-top: 20px;
-    line-height: 1.6;
-">
+<p id="immobilierInfo" style="display: none;">
     Zag Service vous accompagne dans vos projets
     immobiliers avec des solutions adaptées à vos besoins.
 </p>
+<button class="devis-button" type="button">
+    Demander un devis
+</button>
         </div>
+
 
     </div>
 

@@ -608,3 +608,28 @@ if (contactForm) {
     );
 
 }
+// ================================
+// DEMANDE DE DEVIS
+// ================================
+
+document.querySelectorAll(".devis-button").forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        const carte = button.closest(".service-card");
+        const titre = carte.querySelector("h3");
+
+        const service = titre
+            ? titre.textContent.trim()
+            : "Service";
+
+        alert(
+            "DEMANDE DE DEVIS\n\n" +
+            "Service : " + service + "\n\n" +
+            "Nous allons prochainement vous permettre " +
+            "d'envoyer votre demande de devis directement à ZAG SERVICE."
+        );
+
+    });
+
+});
