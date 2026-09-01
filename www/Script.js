@@ -1,7 +1,19 @@
 // ================================
 // ZAG SERVICE — SCRIPT PRINCIPAL
 // ================================
+// ================================
+// SUPABASE — INITIALISATION
+// ================================
 
+const SUPABASE_URL = "https://bkmhffpzhdhxrgxkinkk.supabase.co";
+
+// Clé Publishable / anon uniquement
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_UcQl5wt5aXwmcmwKpu3jnA_PcsD02TT";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 
 // ================================
 // ÉLÉMENTS PRINCIPAUX
@@ -706,7 +718,7 @@ if (devisForm) {
 
         try {
 
-            const { error } = await supabase
+            const { error } = await supabaseClient
                 .from("devis")
                 .insert([
                     {
@@ -744,7 +756,7 @@ if (devisForm) {
             console.error("Erreur Supabase devis :", error);
 
             if (message) {
-                message.textContent = "Impossible d'envoyer votre demande pour le moment. Veuillez réessayer.";
+                message.textContent = "Erreur : " + (error.message || error);
                 message.style.color = "#b00020";
             }
 
