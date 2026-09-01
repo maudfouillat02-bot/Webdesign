@@ -873,43 +873,40 @@ button:active {
 </a>
 </section>
     </main>
-<footer style="
-    background: #0B1F33;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-">
 
-    <h2 style="
-        color: #FFFFFF;
-        margin-bottom: 15px;
-    ">
-        ZAG SERVICE
-    </h2>
+<!-- =====================================================
+     BARRE DE NAVIGATION MOBILE
+===================================================== -->
 
-    <p style="
-        color: white;
-        font-size: 16px;
-    ">
-        Des solutions professionnelles pour vos projets.
-    </p>
+<nav class="bottom-nav" aria-label="Navigation principale">
 
-    <p style="
-        color: #FFFFFF;
-        margin-top: 25px;
-    ">
-        Événementiel • Transport • Immobilier
-    </p>
+    <button type="button" data-target="accueil">
+        <span class="bottom-nav-icon">⌂</span>
+        <span>Accueil</span>
+    </button>
 
-    <p style="
-        color: white;
-        font-size: 14px;
-        margin-top: 25px;
-    ">
-        © 2026 Zag Service — Tous droits réservés.
-    </p>
+    <button type="button" data-target="services">
+        <span class="bottom-nav-icon">▦</span>
+        <span>Services</span>
+    </button>
 
-</footer>
+    <button type="button" data-target="apropos">
+        <span class="bottom-nav-icon">ℹ</span>
+        <span>À propos</span>
+    </button>
+
+    <button type="button" data-target="contact">
+        <span class="bottom-nav-icon">✉</span>
+        <span>Contact</span>
+    </button>
+
+    <button type="button" id="bottomMenuButton">
+        <span class="bottom-nav-icon">☰</span>
+        <span>Menu</span>
+    </button>
+
+</nav>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="./Script.js"></script>

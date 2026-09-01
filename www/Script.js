@@ -633,3 +633,74 @@ document.querySelectorAll(".devis-button").forEach(function(button) {
     });
 
 });
+
+
+// =========================================================
+// ZAG SERVICE — NAVIGATION BASSE
+// =========================================================
+
+document.querySelectorAll(".bottom-nav [data-target]").forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        const targetId = button.getAttribute("data-target");
+        const target = document.getElementById(targetId);
+
+        if (!target) {
+            return;
+        }
+
+        // Fermer le menu principal s'il est ouvert
+        const menu = document.querySelector(".menu");
+
+        if (menu) {
+            menu.classList.remove("active");
+        }
+
+        // Afficher la section demandée
+        document.querySelectorAll("main > section").forEach(function(section) {
+
+            if (section.id === targetId) {
+                section.style.display = "block";
+            } else if (
+                section.id === "accueil" ||
+                section.id === "services" ||
+                section.id === "apropos" ||
+                section.id === "contact" ||
+                section.id === "pourquoi" ||
+                section.id === "devis"
+            ) {
+                section.style.display = "none";
+            }
+
+        });
+
+        target.style.display = "block";
+
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    });
+
+});
+
+
+// Bouton Menu de la barre basse
+
+const bottomMenuButton = document.getElementById("bottomMenuButton");
+
+if (bottomMenuButton) {
+
+    bottomMenuButton.addEventListener("click", function() {
+
+        const menuButton = document.getElementById("menuButton");
+
+        if (menuButton) {
+            menuButton.click();
+        }
+
+    });
+
+}

@@ -1029,3 +1029,111 @@ body::before {
         max-height: 470px !important;
     }
 }
+
+
+/* =========================================================
+   ZAG SERVICE — BARRE DE NAVIGATION BASSE
+   ========================================================= */
+
+.bottom-nav {
+    position: fixed !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    background: rgba(11, 31, 51, 0.97) !important;
+
+    border-top: 1px solid rgba(255,255,255,.12);
+
+    box-shadow: 0 -8px 25px rgba(0,0,0,.15);
+
+    padding:
+        5px 6px
+        env(safe-area-inset-bottom);
+
+    box-sizing: border-box;
+}
+
+.bottom-nav button {
+    flex: 1;
+
+    height: 58px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    background: transparent !important;
+
+    color: #FFFFFF !important;
+
+    border: none !important;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    padding: 4px 2px;
+}
+
+.bottom-nav-icon {
+    display: block;
+
+    font-size: 21px;
+    line-height: 1;
+
+    color: #FFFFFF !important;
+}
+
+.bottom-nav button:hover {
+    background: rgba(255,255,255,.08) !important;
+    color: #FFFFFF !important;
+}
+
+.bottom-nav button:active {
+    transform: scale(.94);
+}
+
+
+/* Contenu non caché derrière la barre */
+
+body {
+    padding-bottom: 78px !important;
+}
+
+
+/* Sur téléphone */
+
+@media (max-width: 600px) {
+
+    .bottom-nav {
+        height: 64px;
+    }
+
+    .bottom-nav button {
+        height: 54px;
+        font-size: 9px;
+    }
+
+    .bottom-nav-icon {
+        font-size: 19px;
+    }
+
+    body {
+        padding-bottom: 72px !important;
+    }
+}
+
