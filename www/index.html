@@ -174,7 +174,7 @@ button:active {
           padding: 30px;
                 background: white;
                 border-radius: 16px;
-                border-top: 5px solid #C9A227;
+                border-top: 5px solid #FFFFFF;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             ">
 <img src="./photos/IMG-20260816-WA0003.jpg" alt="Transport">
@@ -207,7 +207,7 @@ button:active {
                 padding: 30px;
                 background: white;
                 border-radius: 16px;
-                border-top: 5px solid #C9A227;
+                border-top: 5px solid #FFFFFF;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             ">
 <img src="./photos/IMG-20260816-WA0005.jpg" alt="Immobilier">
@@ -266,7 +266,7 @@ button:active {
     padding: 25px;
     background: white;
     border-radius: 12px;
-    border-top: 4px solid #C9A227;
+    border-top: 4px solid #FFFFFF;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     box-sizing: border-box;
 ">
@@ -305,7 +305,7 @@ button:active {
     padding: 25px;
     background: white;
     border-radius: 12px;
-    border-top: 4px solid #C9A227;
+    border-top: 4px solid #FFFFFF;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     box-sizing: border-box;
 ">
@@ -340,7 +340,7 @@ button:active {
     padding: 25px;
     background: white;
     border-radius: 12px;
-    border-top: 4px solid #C9A227;
+    border-top: 4px solid #FFFFFF;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     box-sizing: border-box;
 ">
@@ -378,7 +378,7 @@ button:active {
 ">
 
     <h2 style="
-        color: #C9A227;
+        color: #FFFFFF;
         font-size: 36px;
         margin-bottom: 25px;
     ">
@@ -397,7 +397,339 @@ button:active {
     </p>
 
 </section>
-      <section id="contact" style="display: none; background: #F7F5F0;
+      
+<!-- =====================================================
+     DEMANDE DE DEVIS
+===================================================== -->
+
+<section id="devis" class="devis-section" style="display:none;">
+
+    <div class="devis-container">
+
+        <button
+            id="retourServices"
+            type="button"
+            class="devis-retour"
+        >
+            ← Retour aux services
+        </button>
+
+        <p class="devis-eyebrow">
+            ZAG SERVICE
+        </p>
+
+        <h2>
+            Demander un devis
+        </h2>
+
+        <p class="devis-intro">
+            Décrivez votre projet et notre équipe vous contactera
+            pour vous proposer une solution adaptée.
+        </p>
+
+        <form id="devisForm" class="devis-form">
+
+            <label for="devisNom">
+                Nom complet
+            </label>
+
+            <input
+                type="text"
+                id="devisNom"
+                name="nom"
+                placeholder="Votre nom"
+                required
+            >
+
+            <label for="devisTelephone">
+                Téléphone
+            </label>
+
+            <input
+                type="tel"
+                id="devisTelephone"
+                name="telephone"
+                placeholder="Votre numéro de téléphone"
+                required
+            >
+
+            <label for="devisEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="devisEmail"
+                name="email"
+                placeholder="Votre adresse email"
+            >
+
+            <label for="devisService">
+                Service demandé
+            </label>
+
+            <input
+                type="text"
+                id="devisService"
+                name="service"
+                placeholder="Service"
+                readonly
+                required
+            >
+
+            <label for="devisCommune">
+                Commune
+            </label>
+
+            <input
+                type="text"
+                id="devisCommune"
+                name="commune"
+                placeholder="Ex. Cocody, Yopougon, Abobo..."
+                required
+            >
+
+            <label for="devisDate">
+                Date souhaitée
+            </label>
+
+            <input
+                type="date"
+                id="devisDate"
+                name="date"
+            >
+
+            <label for="devisBudget">
+                Budget indicatif
+            </label>
+
+            <select
+                id="devisBudget"
+                name="budget"
+            >
+                <option value="">
+                    Sélectionner un budget
+                </option>
+
+                <option value="Moins de 100 000 FCFA">
+                    Moins de 100 000 FCFA
+                </option>
+
+                <option value="100 000 - 300 000 FCFA">
+                    100 000 - 300 000 FCFA
+                </option>
+
+                <option value="300 000 - 500 000 FCFA">
+                    300 000 - 500 000 FCFA
+                </option>
+
+                <option value="Plus de 500 000 FCFA">
+                    Plus de 500 000 FCFA
+                </option>
+
+                <option value="À définir">
+                    À définir
+                </option>
+
+            </select>
+
+            <label for="devisDescription">
+                Décrivez votre projet
+            </label>
+
+            <textarea
+                id="devisDescription"
+                name="description"
+                rows="5"
+                placeholder="Expliquez-nous votre besoin..."
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="devis-submit"
+            >
+                Envoyer ma demande
+            </button>
+
+            <p
+                id="devisMessage"
+                class="devis-message"
+            ></p>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DEMANDE DE DEVIS
+===================================================== -->
+
+<section id="devis" class="devis-section" style="display:none;">
+
+    <div class="devis-container">
+
+        <button
+            id="retourServices"
+            type="button"
+            class="devis-retour"
+        >
+            ← Retour aux services
+        </button>
+
+        <p class="devis-eyebrow">
+            ZAG SERVICE
+        </p>
+
+        <h2>
+            Demander un devis
+        </h2>
+
+        <p class="devis-intro">
+            Décrivez votre projet et notre équipe vous contactera
+            pour vous proposer une solution adaptée.
+        </p>
+
+        <form id="devisForm" class="devis-form">
+
+            <label for="devisNom">
+                Nom complet
+            </label>
+
+            <input
+                type="text"
+                id="devisNom"
+                name="nom"
+                placeholder="Votre nom"
+                required
+            >
+
+            <label for="devisTelephone">
+                Téléphone
+            </label>
+
+            <input
+                type="tel"
+                id="devisTelephone"
+                name="telephone"
+                placeholder="Votre numéro de téléphone"
+                required
+            >
+
+            <label for="devisEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="devisEmail"
+                name="email"
+                placeholder="Votre adresse email"
+            >
+
+            <label for="devisService">
+                Service demandé
+            </label>
+
+            <input
+                type="text"
+                id="devisService"
+                name="service"
+                placeholder="Service"
+                readonly
+                required
+            >
+
+            <label for="devisCommune">
+                Commune
+            </label>
+
+            <input
+                type="text"
+                id="devisCommune"
+                name="commune"
+                placeholder="Ex. Cocody, Yopougon, Abobo..."
+                required
+            >
+
+            <label for="devisDate">
+                Date souhaitée
+            </label>
+
+            <input
+                type="date"
+                id="devisDate"
+                name="date"
+            >
+
+            <label for="devisBudget">
+                Budget indicatif
+            </label>
+
+            <select
+                id="devisBudget"
+                name="budget"
+            >
+                <option value="">
+                    Sélectionner un budget
+                </option>
+
+                <option value="Moins de 100 000 FCFA">
+                    Moins de 100 000 FCFA
+                </option>
+
+                <option value="100 000 - 300 000 FCFA">
+                    100 000 - 300 000 FCFA
+                </option>
+
+                <option value="300 000 - 500 000 FCFA">
+                    300 000 - 500 000 FCFA
+                </option>
+
+                <option value="Plus de 500 000 FCFA">
+                    Plus de 500 000 FCFA
+                </option>
+
+                <option value="À définir">
+                    À définir
+                </option>
+
+            </select>
+
+            <label for="devisDescription">
+                Décrivez votre projet
+            </label>
+
+            <textarea
+                id="devisDescription"
+                name="description"
+                rows="5"
+                placeholder="Expliquez-nous votre besoin..."
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="devis-submit"
+            >
+                Envoyer ma demande
+            </button>
+
+            <p
+                id="devisMessage"
+                class="devis-message"
+            ></p>
+
+        </form>
+
+    </div>
+
+</section>
+
+<section id="contact" style="display: none; background: #F7F5F0;
     background: #F7F5F0;
     color: #0B1F33;
     padding: 70px 20px;
@@ -507,7 +839,7 @@ button:active {
         type="submit"
         style="
             width: 100%;
-            background: #C9A227;
+            background: #FFFFFF;
             color: #0B1F33;
             font-weight: bold;
             padding: 14px;
@@ -529,7 +861,7 @@ button:active {
        max-width: 500px;
        margin: 25px auto 0;
        padding: 15px;
-       background: #C9A227;
+       background: #FFFFFF;
        color: #0B1F33;
        text-decoration: none;
        text-align: center;
@@ -549,7 +881,7 @@ button:active {
 ">
 
     <h2 style="
-        color: #C9A227;
+        color: #FFFFFF;
         margin-bottom: 15px;
     ">
         ZAG SERVICE
@@ -563,7 +895,7 @@ button:active {
     </p>
 
     <p style="
-        color: #C9A227;
+        color: #FFFFFF;
         margin-top: 25px;
     ">
         Événementiel • Transport • Immobilier
