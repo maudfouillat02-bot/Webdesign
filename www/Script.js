@@ -609,7 +609,7 @@ if (contactForm) {
 
 }
 // ================================
-// DEMANDE DE DEVIS
+// DEMANDE DE DEVIS — SUPABASE
 // ================================
 
 document.querySelectorAll(".devis-button").forEach(function(button) {
@@ -617,23 +617,149 @@ document.querySelectorAll(".devis-button").forEach(function(button) {
     button.addEventListener("click", function() {
 
         const carte = button.closest(".service-card");
-        const titre = carte.querySelector("h3");
+        const titre = carte ? carte.querySelector("h3") : null;
 
         const service = titre
             ? titre.textContent.trim()
             : "Service";
 
-        alert(
-            "DEMANDE DE DEVIS\n\n" +
-            "Service : " + service + "\n\n" +
-            "Nous allons prochainement vous permettre " +
-            "d'envoyer votre demande de devis directement à ZAG SERVICE."
-        );
+        const devisSection = document.getElementById("devis");
+
+        if (!devisSection) {
+            console.error("Section devis introuvable.");
+            return;
+        }
+
+        const serviceInput = document.getElementById("devisService");
+
+        if (serviceInput) {
+            serviceInput.value = service;
+        }
+
+        // Masquer les autres sections
+        document.querySelectorAll("main > section").forEach(function(section) {
+            section.style.display = "none";
+        });
+
+        // Afficher le formulaire
+        devisSection.style.display = "block";
+
+        devisSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        const nomInput = document.getElementById("devisNom");
+
+        if (nomInput) {
+            setTimeout(function() {
+                nomInput.focus();
+            }, 500);
+        }
 
     });
 
 });
 
+
+// Envoi du formulaire de devis vers Supabase
+
+const devisForm = document.getElementById("devisForm");
+
+if (devisForm) {
+
+    devisForm.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const message = document.getElementById("devisMessage");
+        const submitButton = devisForm.querySelector(".devis-submit");
+
+        const nom = document.getElementById("devisNom").value.trim();
+        const telephone = document.getElementById("devisTelephone").value.trim();
+        const email = document.getElementById("devisEmail").value.trim();
+        const service = document.getElementById("devisService").value.trim();
+        const commune = document.getElementById("devisCommune").value.trim();
+        const date = document.getElementById("devisDate").value || null;
+        const budget = document.getElementById("devisBudget").value || null;
+        const description = document.getElementById("devisDescription").value.trim();
+
+        if (!nom || !telephone || !service || !commune || !description) {
+
+            if (message) {
+                message.textContent = "Veuillez remplir tous les champs obligatoires.";
+                message.style.color = "#b00020";
+            }
+
+            return;
+        }
+
+        if (message) {
+            message.textContent = "Envoi de votre demande...";
+            message.style.color = "#555";
+        }
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = "Envoi en cours...";
+        }
+
+        try {
+
+            const { error } = await supabase
+                .from("devis")
+                .insert([
+                    {
+                        nom: nom,
+                        telephone: telephone,
+                        email: email || null,
+                        service: service,
+                        commune: commune,
+                        date_souhaitee: date,
+                        budget: budget,
+                        description: description
+                    }
+                ]);
+
+            if (error) {
+                throw error;
+            }
+
+            if (message) {
+                message.textContent = "Votre demande de devis a bien été envoyée à ZAG SERVICE.";
+                message.style.color = "#16803c";
+            }
+
+            devisForm.reset();
+
+            // Le service doit rester vide après l'envoi
+            const serviceInput = document.getElementById("devisService");
+
+            if (serviceInput) {
+                serviceInput.value = "";
+            }
+
+        } catch (error) {
+
+            console.error("Erreur Supabase devis :", error);
+
+            if (message) {
+                message.textContent = "Impossible d'envoyer votre demande pour le moment. Veuillez réessayer.";
+                message.style.color = "#b00020";
+            }
+
+        } finally {
+
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = "Envoyer ma demande";
+            }
+
+        }
+
+    });
+
+}
 
 // =========================================================
 // ZAG SERVICE — NAVIGATION BASSE
