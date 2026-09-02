@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zag Service</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-client.css">
+  <style>
+    .menu {
+        animation: menuApparition 0.3s ease;
+    }
+
+    @keyframes menuApparition {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .service-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+    button {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+</style>
+  <style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+    @keyframes descendre {
+
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(8px);
+        opacity: 1;
+    }
+
+}
+</style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+
+<body style="
+    margin: 0;
+    background: #F7F5F0;
+    color: #0B1F33;
+">
+
+<header class="header">
+
+    <button class="menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+        ☰
+    </button>
+
+    <a href="#accueil" class="logo">
+        <img
+            src="./photos/IMG-20260901-WA0001.jpg"
+            alt="ZAG SERVICE"
+        >
+    </a>
+
+    
+
+    <nav class="menu">
+
+        <a href="#accueil">Accueil</a>
+
+        <a href="#services">Services</a>
+
+        <a href="#apropos">À propos</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+</header>
+    <main>
+
+        <!-- ACCUEIL -->
+
+<section id="accueil" class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-eyebrow">
+            BIENVENUE CHEZ ZAG SERVICE
+        </p>
+
+        <h1>
+            Des solutions pour vos projets
+        </h1>
+
+        <p class="hero-description">
+            Nous vous accompagnons avec des solutions
+            adaptées dans l'événementiel, le transport
+            et l'immobilier.
+        </p>
+
+        <button id="serviceButton" class="hero-button" type="button">
+            Découvrir nos services
+        </button>
+
+        <div class="hero-scroll">
+            ↓ Faites défiler
+        </div>
+
+    </div>
+
+
+    
+    <div class="hero-devices" aria-label="ZAG SERVICE sur mobile et ordinateur">
+
+        <div class="device-laptop">
+            <div class="laptop-screen">
+
+                <div class="mock-browser-bar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="mock-web-page">
+
+                    <div class="mock-web-header">
+                        <strong>ZAG SERVICE</strong>
+                        <small>Accueil · Services · Contact</small>
+                    </div>
+
+                    <div class="mock-web-content">
+                        <small>DES SOLUTIONS POUR VOS PROJETS</small>
+                        <h3>ZAG SERVICE</h3>
+                        <p>Événementiel · Transport · Immobilier · Digital</p>
+
+                        <div class="mock-web-services">
+                            <span>Événementiel</span>
+                            <span>Transport</span>
+                            <span>Immobilier</span>
+                            <span>Digital</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="laptop-base"></div>
+        </div>
+
+        <div class="device-phone">
+
+            <div class="phone-speaker"></div>
+
+            <div class="phone-screen">
+
+                <div class="mock-phone-top">
+                    <strong>ZAG SERVICE</strong>
+                    <span>•••</span>
+                </div>
+
+                <div class="mock-phone-hero">
+                    <small>BIENVENUE</small>
+                    <h3>Des solutions<br>pour vos projets</h3>
+                    <button type="button">Découvrir</button>
+                </div>
+
+                <div class="mock-phone-title">
+                    Nos services
+                </div>
+
+                <div class="mock-phone-services">
+                    <span>Événementiel</span>
+                    <span>Transport</span>
+                    <span>Immobilier</span>
+                    <span>Digital</span>
+                </div>
+
+            </div>
+
+            <div class="phone-home"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- SERVICES -->
+
+<section id="services" class="services">
+    <h2>
+        Nos services
+    </h2>
+
+    <div class="services-container   ">
+
+        <div class="service-card">
+<img src="./photos/IMG-20260816-WA0004.jpg" alt="Événementiel">
+            <h3>
+                Événementiel
+            </h3>
+
+            <p>
+                Organisation et accompagnement
+                de vos événements.
+            </p>
+<button id="eventButton" type="button">
+   En savoir plus
+</button>
+
+<p id="eventInfo" style="display: none;">
+    Zag Service vous accompagne dans l'organisation
+    de vos événements, de la préparation à la réalisation.
+</p>
+<button class="devis-button" type="button">
+    Demander un devis
+</button>
+        </div>
+
+
+        <div class="service-card"
+            style="
+                width: 250px;
+          
+            min-height: 240px;
+          padding: 30px;
+                background: white;
+                border-radius: 16px;
+                border-top: 5px solid #FFFFFF;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            ">
+<img src="./photos/IMG-20260816-WA0003.jpg" alt="Transport">
+            <h3>
+                Transport
+            </h3>
+
+            <p>
+                Des solutions de transport
+                adaptées à vos besoins.
+            </p>
+<button id="transportButton" type="button">
+    En savoir plus
+</button>
+
+<p id="transportInfo" style=" display: none;">
+    Zag Service propose des solutions de transport
+    adaptées aux besoins des particuliers et des entreprises.
+</p>
+<button class="devis-button" type="button">
+    Demander un devis
+</button>
+        </div>
+
+
+        <div class="service-card"
+            style="
+                width: 250px;
+          min-height: 240px;
+                padding: 30px;
+                background: white;
+                border-radius: 16px;
+                border-top: 5px solid #FFFFFF;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            ">
+<img src="./photos/IMG-20260816-WA0005.jpg" alt="Immobilier">
+            <h3>
+                Immobilier
+            </h3>
+
+            <p>
+                Accompagnement dans vos
+                projets immobiliers.
+            </p>
+<button id="immobilierButton" type="button">
+    En savoir plus
+</button>
+
+<p id="immobilierInfo" style="display: none;">
+    Zag Service vous accompagne dans vos projets
+    immobiliers avec des solutions adaptées à vos besoins.
+</p>
+<button class="devis-button" type="button">
+    Demander un devis
+</button>
+        </div>
+
+
+    
+    <div class="service-card">
+        <img src="./photos/1788346890207.png" alt="Digital">
+
+        <h3>
+            Digital
+        </h3>
+
+        <p>
+            Conception de sites internet
+            et d'applications mobiles.
+        </p>
+
+        <button id="digitalButton" type="button">
+            En savoir plus
+        </button>
+
+        <p id="digitalInfo" style="display: none;">
+            Zag Service conçoit des solutions digitales modernes,
+            notamment des sites internet professionnels et des
+            applications mobiles adaptées à vos besoins.
+        </p>
+
+        <button class="devis-button" type="button">
+            Demander un devis
+        </button>
+    </div>
+
+</div>
+
+</section>
+      <section id="pourquoi" style="
+    background: #F7F5F0;
+    color: #0B1F33;
+    padding: 60px 20px;
+    text-align: center;
+">
+
+    <h2 style="
+        color: #0B1F33;
+        font-size: 32px;
+        margin-bottom: 20px;
+    ">
+        Pourquoi choisir Zag Service ?
+    </h2>
+
+    <p style="
+        max-width: 700px;
+        margin: auto;
+        font-size: 17px;
+        line-height: 1.7;
+    ">
+        Une approche professionnelle et des solutions adaptées
+        pour vous accompagner dans vos projets.
+    </p>
+<div style="
+    max-width: 300px;
+    margin: 30px auto 0;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    border-top: 4px solid #FFFFFF;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+">
+
+
+
+    <div style="
+        font-size: 30px;
+        margin-bottom: 10px;
+    ">
+        ⭐
+    </div>
+
+    <h3 style="
+        color: #0B1F33;
+        margin: 10px 0;
+    ">
+        Professionnalisme
+    </h3>
+
+    <p style="
+        color: #555;
+        line-height: 1.6;
+        margin: 0;
+    ">
+        Un accompagnement sérieux et attentif
+        pour répondre à vos besoins.
+    </p>
+
+</div>
+
+
+<div style="
+    max-width: 300px;
+    margin: 30px auto 0;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    border-top: 4px solid #FFFFFF;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+">
+
+    <div style="
+        font-size: 30px;
+        margin-bottom: 10px;
+    ">
+        🤝
+    </div>
+
+    <h3 style="
+        color: #0B1F33;
+        margin: 10px 0;
+    ">
+        Fiabilité
+    </h3>
+
+    <p style="
+        color: #555;
+        line-height: 1.6;
+        margin: 0;
+    ">
+        Nous accordons de l'importance à la qualité
+        et au respect de nos engagements.
+    </p>
+
+</div>
+        <div style="
+    max-width: 300px;
+    margin: 30px auto 0;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    border-top: 4px solid #FFFFFF;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+">
+
+    <div style="
+        font-size: 30px;
+        margin-bottom: 10px;
+    ">
+        🔹
+    </div>
+
+    <h3 style="
+        color: #0B1F33;
+        margin: 10px 0;
+    ">
+        Polyvalence
+    </h3>
+
+    <p style="
+        color: #555;
+        line-height: 1.6;
+        margin: 0;
+    ">
+        Plusieurs domaines de services réunis
+        pour vous accompagner selon vos besoins.
+    </p>
+
+</div>
+</section>
+<section id="apropos" style="background: #0B1F33;
+    background: #0B1F33;
+    color: white;
+    padding: 70px 20px;
+    text-align: center;
+">
+
+    <h2 style="
+        color: #FFFFFF;
+        font-size: 36px;
+        margin-bottom: 25px;
+    ">
+        À propos de Zag Service
+    </h2>
+
+    <p style="
+        max-width: 700px;
+        margin: auto;
+        font-size: 18px;
+        line-height: 1.8;
+    ">
+        Zag Service accompagne les particuliers et les entreprises
+        dans la réalisation de leurs projets avec des solutions
+        adaptées, professionnelles et fiables.
+    </p>
+
+</section>
+      
+<!-- =====================================================
+     DEMANDE DE DEVIS
+===================================================== -->
+
+<section id="devis" class="devis-section" style="display:none;">
+
+    <div class="devis-container">
+
+        <button
+            id="retourServices"
+            type="button"
+            class="devis-retour"
+        >
+            ← Retour aux services
+        </button>
+
+        <p class="devis-eyebrow">
+            ZAG SERVICE
+        </p>
+
+        <h2>
+            Demander un devis
+        </h2>
+
+        <p class="devis-intro">
+            Décrivez votre projet et notre équipe vous contactera
+            pour vous proposer une solution adaptée.
+        </p>
+
+        <form id="devisForm" class="devis-form">
+
+            <label for="devisNom">
+                Nom complet
+            </label>
+
+            <input
+                type="text"
+                id="devisNom"
+                name="nom"
+                placeholder="Votre nom"
+                required
+            >
+
+            <label for="devisTelephone">
+                Téléphone
+            </label>
+
+            <input
+                type="tel"
+                id="devisTelephone"
+                name="telephone"
+                placeholder="Votre numéro de téléphone"
+                required
+            >
+
+            <label for="devisEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="devisEmail"
+                name="email"
+                placeholder="Votre adresse email"
+            >
+
+            <label for="devisService">
+                Service demandé
+            </label>
+
+            <input
+                type="text"
+                id="devisService"
+                name="service"
+                placeholder="Service"
+                readonly
+                required
+            >
+
+            <div id="digitalOptions" style="display: none;">
+
+                <label for="devisDigitalType">
+                    Type de prestation
+                </label>
+
+                <select
+                    id="devisDigitalType"
+                    name="digital_type"
+                >
+                    <option value="">
+                        Sélectionner une prestation
+                    </option>
+
+                    <option value="Conception de site internet">
+                        Conception de site internet
+                    </option>
+
+                    <option value="Application mobile">
+                        Application mobile
+                    </option>
+                </select>
+
+            </div>
+
+            <label for="devisCommune">
+                Commune
+            </label>
+
+            <input
+                type="text"
+                id="devisCommune"
+                name="commune"
+                placeholder="Ex. Cocody, Yopougon, Abobo..."
+                required
+            >
+
+            <label for="devisDate">
+                Date souhaitée
+            </label>
+
+            <input
+                type="date"
+                id="devisDate"
+                name="date"
+            >
+
+            <label for="devisBudget">
+                Budget indicatif
+            </label>
+
+            <select
+                id="devisBudget"
+                name="budget"
+            >
+                <option value="">
+                    Sélectionner un budget
+                </option>
+
+                <option value="Moins de 100 000 FCFA">
+                    Moins de 100 000 FCFA
+                </option>
+
+                <option value="100 000 - 300 000 FCFA">
+                    100 000 - 300 000 FCFA
+                </option>
+
+                <option value="300 000 - 500 000 FCFA">
+                    300 000 - 500 000 FCFA
+                </option>
+
+                <option value="Plus de 500 000 FCFA">
+                    Plus de 500 000 FCFA
+                </option>
+
+                <option value="À définir">
+                    À définir
+                </option>
+
+            </select>
+
+            <label for="devisDescription">
+                Décrivez votre projet
+            </label>
+
+            <textarea
+                id="devisDescription"
+                name="description"
+                rows="5"
+                placeholder="Expliquez-nous votre besoin..."
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="devis-submit"
+            >
+                Envoyer ma demande
+            </button>
+
+            <p
+                id="devisMessage"
+                class="devis-message"
+            ></p>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DEMANDE DE DEVIS
+===================================================== -->
+
+
+
+<section id="contact" style="background: #F7F5F0;
+    background: #F7F5F0;
+    color: #0B1F33;
+    padding: 70px 20px;
+    text-align: center;
+">
+
+    <h2 style="
+        color: #0B1F33;
+        font-size: 36px;
+        margin-bottom: 15px;
+    ">
+        Contactez-nous
+    </h2>
+
+    <p style="
+        font-size: 18px;
+        margin-bottom: 35px;
+    ">
+        Vous avez un projet ? Parlons-en.
+    </p>
+
+<form id="contactForm" style="
+    max-width: 500px;
+    margin: auto;
+    text-align: left;
+">
+
+    <label>Nom</label>
+
+    <input
+        type="text"
+        id="nom"
+        name="nom"
+        placeholder="Votre nom"
+        required
+        style="
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        "
+    >
+
+    <label>Téléphone</label>
+
+    <input
+        type="tel"
+        id="telephone"
+        name="telephone"
+        placeholder="Votre numéro de téléphone"
+        required
+        style="
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        "
+    >
+
+    <label>Email</label>
+
+    <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Votre adresse email"
+        required
+        style="
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        "
+    >
+
+    <label>Message</label>
+
+    <textarea
+        id="message"
+        name="message"
+        placeholder="Votre message"
+        rows="5"
+        required
+        style="
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        "
+    ></textarea>
+
+    <div
+        class="cf-turnstile"
+        data-sitekey="0x4AAAAAAEQQNc9tHUCp53Vn"
+        data-theme="light">
+    </div>
+
+    <button
+        type="submit"
+        style="
+            width: 100%;
+            background: #FFFFFF;
+            color: #0B1F33;
+            font-weight: bold;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        "
+    >
+        Envoyer le message
+    </button>
+
+    <p id="successMessage" class="success-message"></p>
+
+</form>
+<a href="https://wa.me/2250779177086?text=Bonjour%20Zag%20Service,%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20services."
+   target="_blank"
+   style="
+       display: block;
+       max-width: 500px;
+       margin: 25px auto 0;
+       padding: 15px;
+       background: #FFFFFF;
+       color: #0B1F33;
+       text-decoration: none;
+       text-align: center;
+       font-weight: bold;
+       border-radius: 8px;
+       box-sizing: border-box;
+   ">
+    Nous contacter sur WhatsApp
+</a>
+</section>
+    </main>
+
+<!-- =====================================================
+     BARRE DE NAVIGATION MOBILE
+===================================================== -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="./Script-client.js"></script>
+
+</body>
+
