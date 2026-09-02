@@ -19,9 +19,6 @@ const supabaseClient = window.supabase.createClient(
 // ÉLÉMENTS PRINCIPAUX
 // ================================
 
-const menuButton = document.getElementById("menuButton");
-const menu = document.querySelector(".menu");
-
 const accueil = document.getElementById("accueil");
 const services = document.getElementById("services");
 const pourquoi = document.getElementById("pourquoi");
@@ -33,144 +30,66 @@ const logo = document.querySelector(".logo");
 
 
 // ================================
-// FONCTION POUR CACHER LES SECTIONS
+// NAVIGATION PRINCIPALE
 // ================================
 
-function cacherToutesLesSections() {
+const sectionsPrincipales = [
+    "accueil",
+    "services",
+    "pourquoi",
+    "apropos",
+    "devis",
+    "contact"
+];
 
-    if (services) {
-        services.style.display = "none";
-    }
+function afficherSection(id) {
 
-    if (pourquoi) {
-        pourquoi.style.display = "none";
-    }
+    sectionsPrincipales.forEach(function(sectionId) {
 
-    if (apropos) {
-        apropos.style.display = "none";
-    }
+        const section = document.getElementById(sectionId);
 
-    if (contact) {
-        contact.style.display = "none";
-    }
-
-}
-
-
-// ================================
-// AFFICHER ACCUEIL
-// ================================
-
-function afficherAccueil() {
-
-    cacherToutesLesSections();
-
-    if (accueil) {
-        accueil.style.display = "block";
-        accueil.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
-
-    if (serviceButton) {
-        serviceButton.style.display = "block";
-        serviceButton.textContent = "Découvrir nos services";
-    }
-
-}
-
-
-// ================================
-// AFFICHER SERVICES
-// ================================
-
-function afficherServices() {
-
-    cacherToutesLesSections();
-
-    if (services) {
-        services.style.display = "block";
-        services.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
-
-    if (serviceButton) {
-        serviceButton.style.display = "none";
-    }
-
-}
-
-
-// ================================
-// AFFICHER À PROPOS
-// ================================
-
-function afficherApropos() {
-
-    cacherToutesLesSections();
-
-    if (apropos) {
-        apropos.style.display = "block";
-        apropos.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
-
-    if (serviceButton) {
-        serviceButton.style.display = "none";
-    }
-
-}
-
-
-// ================================
-// AFFICHER CONTACT
-// ================================
-
-function afficherContact() {
-
-    cacherToutesLesSections();
-
-    if (contact) {
-        contact.style.display = "block";
-        contact.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
-
-    if (serviceButton) {
-        serviceButton.style.display = "none";
-    }
-
-}
-
-
-// ================================
-// MENU
-// ================================
-
-if (menuButton && menu) {
-
-    menuButton.addEventListener("click", function () {
-
-        if (
-            menu.style.display === "none" ||
-            menu.style.display === ""
-        ) {
-
-            menu.style.display = "flex";
-
-        } else {
-
-            menu.style.display = "none";
-
+        if (section) {
+            section.style.display =
+                sectionId === id ? "block" : "none";
         }
 
     });
 
+    if (serviceButton) {
+        serviceButton.style.display =
+            id === "accueil" ? "block" : "none";
+
+        if (id === "accueil") {
+            serviceButton.textContent =
+                "Découvrir nos services";
+        }
+    }
+
+    const target = document.getElementById(id);
+
+    if (target) {
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
 }
 
+function afficherAccueil() {
+    afficherSection("accueil");
+}
+
+function afficherServices() {
+    afficherSection("services");
+}
+
+function afficherApropos() {
+    afficherSection("apropos");
+}
+
+function afficherContact() {
+    afficherSection("contact");
+}
 
 // ================================
 // BOUTON DÉCOUVRIR LES SERVICES
@@ -188,79 +107,13 @@ if (serviceButton) {
 
 
 // ================================
-// LIENS DU MENU
-// ================================
-
-const menuLinks = document.querySelectorAll(".menu a");
-
-menuLinks.forEach(function (link) {
-
-    link.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        if (menu) {
-            menu.style.display = "none";
-        }
-
-        const destination =
-            link.getAttribute("href");
-
-
-        // ACCUEIL
-
-        if (destination === "#accueil") {
-
-            afficherAccueil();
-
-        }
-
-
-        // SERVICES
-
-        if (destination === "#services") {
-
-            afficherServices();
-
-        }
-
-
-        // À PROPOS
-
-        if (destination === "#apropos") {
-
-            afficherApropos();
-
-        }
-
-
-        // CONTACT
-
-        if (destination === "#contact") {
-
-            afficherContact();
-
-        }
-
-    });
-
-});
-
-
-// ================================
 // LOGO
 // ================================
 
 if (logo) {
 
     logo.addEventListener("click", function () {
-
-        if (menu) {
-            menu.style.display = "none";
-        }
-
         afficherAccueil();
-
     });
 
 }
@@ -317,6 +170,11 @@ afficherInformation(
 afficherInformation(
     "immobilierButton",
     "immobilierInfo"
+);
+
+afficherInformation(
+    "digitalButton",
+    "digitalInfo"
 );
 
 
@@ -629,23 +487,44 @@ document.querySelectorAll(".devis-button").forEach(function(button) {
     button.addEventListener("click", function() {
 
         const carte = button.closest(".service-card");
-        const titre = carte ? carte.querySelector("h3") : null;
+        const titre = carte
+            ? carte.querySelector("h3")
+            : null;
 
         const service = titre
             ? titre.textContent.trim()
             : "Service";
 
-        const devisSection = document.getElementById("devis");
+        const devisSection =
+            document.getElementById("devis");
 
         if (!devisSection) {
             console.error("Section devis introuvable.");
             return;
         }
 
-        const serviceInput = document.getElementById("devisService");
+        const serviceInput =
+            document.getElementById("devisService");
+
+        const digitalOptions =
+            document.getElementById("digitalOptions");
+
+        const digitalType =
+            document.getElementById("devisDigitalType");
 
         if (serviceInput) {
             serviceInput.value = service;
+        }
+
+        // Afficher les options uniquement pour Digital
+        if (digitalOptions) {
+            digitalOptions.style.display =
+                service === "Digital" ? "block" : "none";
+        }
+
+        // Réinitialiser le choix Digital
+        if (digitalType) {
+            digitalType.value = "";
         }
 
         // Masquer les autres sections
@@ -661,7 +540,8 @@ document.querySelectorAll(".devis-button").forEach(function(button) {
             block: "start"
         });
 
-        const nomInput = document.getElementById("devisNom");
+        const nomInput =
+            document.getElementById("devisNom");
 
         if (nomInput) {
             setTimeout(function() {
@@ -672,7 +552,6 @@ document.querySelectorAll(".devis-button").forEach(function(button) {
     });
 
 });
-
 
 // Envoi du formulaire de devis vers Supabase
 
@@ -694,7 +573,37 @@ if (devisForm) {
         const commune = document.getElementById("devisCommune").value.trim();
         const date = document.getElementById("devisDate").value || null;
         const budget = document.getElementById("devisBudget").value || null;
-        const description = document.getElementById("devisDescription").value.trim();
+
+        const digitalTypeElement =
+            document.getElementById("devisDigitalType");
+
+        const digitalType =
+            digitalTypeElement
+                ? digitalTypeElement.value.trim()
+                : "";
+
+        let description =
+            document.getElementById("devisDescription").value.trim();
+
+        // Pour Digital, ajouter automatiquement le type de prestation
+        if (service === "Digital") {
+
+            if (!digitalType) {
+                if (message) {
+                    message.textContent =
+                        "Veuillez sélectionner le type de prestation Digital.";
+                    message.style.color = "#b00020";
+                }
+
+                return;
+            }
+
+            description =
+                "Type de prestation : " +
+                digitalType +
+                "\n\n" +
+                description;
+        }
 
         if (!nom || !telephone || !service || !commune || !description) {
 
@@ -746,9 +655,19 @@ if (devisForm) {
 
             // Le service doit rester vide après l'envoi
             const serviceInput = document.getElementById("devisService");
+            const digitalOptions = document.getElementById("digitalOptions");
+            const digitalType = document.getElementById("devisDigitalType");
 
             if (serviceInput) {
                 serviceInput.value = "";
+            }
+
+            if (digitalOptions) {
+                digitalOptions.style.display = "none";
+            }
+
+            if (digitalType) {
+                digitalType.value = "";
             }
 
         } catch (error) {
@@ -788,13 +707,6 @@ document.querySelectorAll(".bottom-nav [data-target]").forEach(function(button) 
             return;
         }
 
-        // Fermer le menu principal s'il est ouvert
-        const menu = document.querySelector(".menu");
-
-        if (menu) {
-            menu.classList.remove("active");
-        }
-
         // Afficher la section demandée
         document.querySelectorAll("main > section").forEach(function(section) {
 
@@ -825,20 +737,3 @@ document.querySelectorAll(".bottom-nav [data-target]").forEach(function(button) 
 });
 
 
-// Bouton Menu de la barre basse
-
-const bottomMenuButton = document.getElementById("bottomMenuButton");
-
-if (bottomMenuButton) {
-
-    bottomMenuButton.addEventListener("click", function() {
-
-        const menuButton = document.getElementById("menuButton");
-
-        if (menuButton) {
-            menuButton.click();
-        }
-
-    });
-
-}

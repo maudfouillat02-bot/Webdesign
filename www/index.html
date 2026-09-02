@@ -1,5 +1,5 @@
-<html lang="fr">
 <!DOCTYPE html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -64,10 +64,12 @@ button:active {
 </head>
 
 <body style="
-<a href="./admin/index.html" class="server-login-button">Connexion serveur</a>
     margin: 0;
     background: #F7F5F0;
     color: #0B1F33;
+">
+
+<a href="./admin/index.html" class="server-login-button">Connexion serveur</a>
 <header class="header">
 
     <a href="#accueil" class="logo">
@@ -120,6 +122,81 @@ button:active {
 
         <div class="hero-scroll">
             ↓ Faites défiler
+        </div>
+
+    </div>
+
+
+    
+    <div class="hero-devices" aria-label="ZAG SERVICE sur mobile et ordinateur">
+
+        <div class="device-laptop">
+            <div class="laptop-screen">
+
+                <div class="mock-browser-bar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="mock-web-page">
+
+                    <div class="mock-web-header">
+                        <strong>ZAG SERVICE</strong>
+                        <small>Accueil · Services · Contact</small>
+                    </div>
+
+                    <div class="mock-web-content">
+                        <small>DES SOLUTIONS POUR VOS PROJETS</small>
+                        <h3>ZAG SERVICE</h3>
+                        <p>Événementiel · Transport · Immobilier · Digital</p>
+
+                        <div class="mock-web-services">
+                            <span>Événementiel</span>
+                            <span>Transport</span>
+                            <span>Immobilier</span>
+                            <span>Digital</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="laptop-base"></div>
+        </div>
+
+        <div class="device-phone">
+
+            <div class="phone-speaker"></div>
+
+            <div class="phone-screen">
+
+                <div class="mock-phone-top">
+                    <strong>ZAG SERVICE</strong>
+                    <span>•••</span>
+                </div>
+
+                <div class="mock-phone-hero">
+                    <small>BIENVENUE</small>
+                    <h3>Des solutions<br>pour vos projets</h3>
+                    <button type="button">Découvrir</button>
+                </div>
+
+                <div class="mock-phone-title">
+                    Nos services
+                </div>
+
+                <div class="mock-phone-services">
+                    <span>Événementiel</span>
+                    <span>Transport</span>
+                    <span>Immobilier</span>
+                    <span>Digital</span>
+                </div>
+
+            </div>
+
+            <div class="phone-home"></div>
+
         </div>
 
     </div>
@@ -226,7 +303,35 @@ button:active {
         </div>
 
 
+    
+    <div class="service-card">
+        <img src="./photos/IMG-20260816-WA0004.jpg" alt="Digital">
+
+        <h3>
+            Digital
+        </h3>
+
+        <p>
+            Conception de sites internet
+            et d'applications mobiles.
+        </p>
+
+        <button id="digitalButton" type="button">
+            En savoir plus
+        </button>
+
+        <p id="digitalInfo" style="display: none;">
+            Zag Service conçoit des solutions digitales modernes,
+            notamment des sites internet professionnels et des
+            applications mobiles adaptées à vos besoins.
+        </p>
+
+        <button class="devis-button" type="button">
+            Demander un devis
+        </button>
     </div>
+
+</div>
 
 </section>
       <section id="pourquoi" style="
@@ -469,6 +574,31 @@ button:active {
                 readonly
                 required
             >
+
+            <div id="digitalOptions" style="display: none;">
+
+                <label for="devisDigitalType">
+                    Type de prestation
+                </label>
+
+                <select
+                    id="devisDigitalType"
+                    name="digital_type"
+                >
+                    <option value="">
+                        Sélectionner une prestation
+                    </option>
+
+                    <option value="Conception de site internet">
+                        Conception de site internet
+                    </option>
+
+                    <option value="Application mobile">
+                        Application mobile
+                    </option>
+                </select>
+
+            </div>
 
             <label for="devisCommune">
                 Commune

@@ -1288,3 +1288,352 @@ body {
         font-size: 10px;
     }
 }
+
+/* =========================================================
+   ZAG SERVICE — HERO DEVICES
+   SMARTPHONE + VERSION WEB
+========================================================= */
+
+.hero-devices {
+    position: relative;
+    width: min(100%, 760px);
+    height: 390px;
+    margin: 38px auto 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    perspective: 1200px;
+    pointer-events: none;
+}
+
+/* =========================
+   ORDINATEUR
+========================= */
+
+.device-laptop {
+    position: absolute;
+    right: 2%;
+    bottom: 8px;
+    width: min(82%, 570px);
+    transform: rotateY(-5deg) rotateX(2deg);
+    filter: drop-shadow(0 25px 30px rgba(0,0,0,.22));
+}
+
+.laptop-screen {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    padding: 9px;
+    box-sizing: border-box;
+    background: linear-gradient(145deg,#42484d,#11151a);
+    border: 1px solid #686f75;
+    border-radius: 14px 14px 5px 5px;
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.28),
+        0 10px 25px rgba(0,0,0,.18);
+}
+
+.mock-browser-bar {
+    height: 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 6px;
+    box-sizing: border-box;
+    background: #20252a;
+    border-radius: 7px 7px 0 0;
+}
+
+.mock-browser-bar span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #8b9298;
+}
+
+.mock-web-page {
+    height: calc(100% - 16px);
+    overflow: hidden;
+    background: #f5f6f7;
+    border-radius: 0 0 5px 5px;
+    font-family: "Manrope",sans-serif;
+}
+
+.mock-web-header {
+    height: 17%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    box-sizing: border-box;
+    background: #0B1F33;
+    color: #fff;
+}
+
+.mock-web-header strong {
+    font-size: clamp(8px,1.2vw,13px);
+    letter-spacing: .5px;
+}
+
+.mock-web-header small {
+    font-size: clamp(5px,.8vw,8px);
+    opacity: .85;
+}
+
+.mock-web-content {
+    padding: 8%;
+    color: #111;
+}
+
+.mock-web-content small {
+    color: #687078;
+    font-size: clamp(5px,.8vw,8px);
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.mock-web-content h3 {
+    margin: 5px 0 3px;
+    color: #111;
+    font-size: clamp(15px,2.8vw,30px);
+    line-height: 1;
+    font-weight: 800;
+}
+
+.mock-web-content p {
+    margin: 0;
+    color: #70767b;
+    font-size: clamp(6px,1vw,10px);
+}
+
+.mock-web-services {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 5px;
+    margin-top: 7%;
+}
+
+.mock-web-services span {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #e1e4e7;
+    border-radius: 5px;
+    color: #0B1F33;
+    font-size: clamp(5px,.8vw,8px);
+    font-weight: 800;
+    text-align: center;
+}
+
+.laptop-base {
+    width: 112%;
+    height: 13px;
+    margin-left: -6%;
+    background: linear-gradient(180deg,#596168,#252a2f);
+    border-radius: 2px 2px 14px 14px;
+    box-shadow: 0 8px 12px rgba(0,0,0,.2);
+}
+
+/* =========================
+   SMARTPHONE
+========================= */
+
+.device-phone {
+    position: absolute;
+    z-index: 5;
+    left: 7%;
+    bottom: 4px;
+    width: 180px;
+    height: 350px;
+    padding: 9px;
+    box-sizing: border-box;
+    background: linear-gradient(145deg,#4c5359,#11151a 65%,#30363b);
+    border: 1px solid #70777d;
+    border-radius: 27px;
+    transform: rotateY(8deg) rotateZ(-3deg);
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.35),
+        0 28px 45px rgba(0,0,0,.28);
+}
+
+.phone-speaker {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    z-index: 3;
+    width: 42px;
+    height: 4px;
+    transform: translateX(-50%);
+    background: #111;
+    border-radius: 10px;
+}
+
+.phone-screen {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #f5f6f7;
+    border-radius: 20px;
+    font-family: "Manrope",sans-serif;
+}
+
+.mock-phone-top {
+    height: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 13px;
+    box-sizing: border-box;
+    background: #0B1F33;
+    color: #fff;
+}
+
+.mock-phone-top strong {
+    font-size: 9px;
+}
+
+.mock-phone-top span {
+    font-size: 9px;
+    opacity: .7;
+}
+
+.mock-phone-hero {
+    padding: 22px 14px 17px;
+    background: linear-gradient(145deg,#fff,#e7eaed);
+}
+
+.mock-phone-hero small {
+    color: #697077;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.mock-phone-hero h3 {
+    margin: 5px 0 12px;
+    color: #111;
+    font-size: 18px;
+    line-height: 1.05;
+    letter-spacing: -1px;
+}
+
+.mock-phone-hero button {
+    min-height: 25px;
+    padding: 0 11px;
+    background: #0B1F33;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    font-size: 7px;
+    font-weight: 800;
+}
+
+.mock-phone-title {
+    padding: 12px 14px 7px;
+    color: #0B1F33;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.mock-phone-services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 0 14px;
+}
+
+.mock-phone-services span {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #e0e3e6;
+    border-radius: 7px;
+    color: #0B1F33;
+    font-size: 7px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.phone-home {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 38px;
+    height: 3px;
+    transform: translateX(-50%);
+    background: #777;
+    border-radius: 10px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:650px) {
+
+    .hero-devices {
+        width: 100%;
+        height: 300px;
+        margin-top: 28px;
+    }
+
+    .device-laptop {
+        right: -4%;
+        bottom: 8px;
+        width: 82%;
+        transform: rotateY(-4deg) rotateX(2deg);
+    }
+
+    .device-phone {
+        left: 1%;
+        bottom: 0;
+        width: 135px;
+        height: 265px;
+        border-radius: 22px;
+        padding: 7px;
+    }
+
+    .phone-screen {
+        border-radius: 16px;
+    }
+
+    .mock-phone-hero {
+        padding: 17px 11px 12px;
+    }
+
+    .mock-phone-hero h3 {
+        font-size: 14px;
+        margin-bottom: 9px;
+    }
+
+    .mock-phone-services {
+        gap: 4px;
+        padding: 0 10px;
+    }
+
+    .mock-phone-services span {
+        min-height: 32px;
+        font-size: 6px;
+    }
+
+    .mock-phone-title {
+        padding: 9px 10px 5px;
+        font-size: 7px;
+    }
+
+    .mock-web-services {
+        gap: 3px;
+    }
+
+    .mock-web-services span {
+        min-height: 28px;
+    }
+}
+
