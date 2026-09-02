@@ -531,3 +531,19 @@ body {
         width: 100%;
     }
 }
+
+.server-back-button {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 18px;
+
+    color: #0B1F33;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.server-back-button:hover {
+    text-decoration: underline;
+}
