@@ -1,0 +1,43 @@
+name: Build ZAG SERVICE APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le projet
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Synchroniser Capacitor
+        run: npx cap sync android
+
+      - name: Configurer Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Construire APK Debug
+        working-directory: android
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Publier l'APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: zag-service-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
